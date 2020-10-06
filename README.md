@@ -1,7 +1,8 @@
 # HandyHelp Frontend
 
 # Project Summary
-One sentence description: Virtual marketplace for individuals with unique skillsets to interact with people in need of such skills.
+One sentence description: 
+Virtual marketplace for individuals with unique skillsets to interact with people in need of such skills.
 
 Project Overview: 
 Many people will have common household tasks or issues that they might not be able to do on their own, such as common repairs, yardwork, construction projects, etc. With HandyHelp, they can search for other people with specific skillsets that can help with their tasks. These users can make listings which describe the work needed, and other (contractor) users can respond and offer their help. 
