@@ -13,7 +13,8 @@ const ClientListingList = ({ active }) => {
 
     return (
         <div className="component-border">
-            <h1>ClientListingList component ({active ? "Active" : "Past"})</h1>
+            <h1>ClientListingList component</h1>
+            <h4>({active ? "Query Active Listings" : "Query Inactive Listings"})</h4>
             <div className="flex-list">
                 {fakeClientListingItems.map((item) => (
                     <ClientListingItem props={item} />
