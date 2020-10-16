@@ -6,18 +6,21 @@ import Navbar from './components/Navbar';
 import ClientPage from './components/pages/ClientPage';
 import ContractorPage from './components/pages/ContractorPage';
 import HomePage from './components/pages/HomePage';
-import ListingsPage from './components/pages/ListingsPage';
+import SearchListingsPage from './components/pages/SearchListingsPage';
 import SearchContractorsPage from './components/pages/SearchContractorsPage';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
     return (
         <main>
-            <Navbar />
+            <div>
+                <Navbar />
+            </div>
             <Switch>
                 <Route path="/" component={HomePage} exact />
                 <Route path="/client" component={ClientPage} />
                 <Route path="/contractor" component={ContractorPage} />
-                <Route path="/listings" component={ListingsPage} />
+                <Route path="/searchlistings" component={SearchListingsPage} />
                 <Route path="/searchcontractors" component={SearchContractorsPage} />
                 <Route component={Error} />
             </Switch>
