@@ -6,7 +6,7 @@ const ClientProfile = () => {
     return (
         <div className="component-border">
             <h1>ClientProfile component</h1>
-            <div style={{ paddingLeft: "50px" }}>
+            <div>
                 <ClientListingList />
             </div>
         </div>

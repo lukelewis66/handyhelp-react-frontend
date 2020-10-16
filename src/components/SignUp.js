@@ -12,7 +12,7 @@ const SignUp = () => {
     const handleShow = () => setShow(true);
     return (
         <div>
-            <Button variant="primary" onClick={handleShow}>
+            <Button className="sign-button" variant="primary" onClick={handleShow}>
                 SignUp
           </Button>
 
@@ -26,7 +26,7 @@ const SignUp = () => {
                         Close
               </Button>
                     <Button variant="primary" onClick={handleClose}>
-                        Sign In
+                        Sign Up
               </Button>
                 </Modal.Footer>
             </Modal>

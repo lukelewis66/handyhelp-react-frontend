@@ -12,7 +12,7 @@ const SignIn = () => {
     const handleShow = () => setShow(true);
     return (
         <div>
-            <Button variant="primary" onClick={handleShow}>
+            <Button className="sign-button" variant="primary" onClick={handleShow}>
                 SignIn
           </Button>
 

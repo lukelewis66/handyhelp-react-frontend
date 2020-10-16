@@ -30,7 +30,11 @@ html {
 .flex-list {
   display: flex;
   flex-wrap: wrap; 
-  justify-content: space-evenly;
+  justify-content: center;
+}
+
+.flex-list .component-border {
+  width: 45%;
 }
 
 /* https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space */
@@ -53,4 +57,8 @@ html {
 
 .box-body{
   flex: 1 1 auto;
+}
+
+.sign-button{
+  margin: 3px 3px;
 }

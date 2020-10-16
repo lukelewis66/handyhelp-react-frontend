@@ -2,7 +2,7 @@ import React from "react";
 
 const SearchListingsItem = ({ props }) => {
     return (
-        <div className="component-border" style={{ width: "40%" }}>
+        <div className="component-border">
             <h3>SearchListingsItem component</h3>
             <ul>
                 <li>{props.description}</li>

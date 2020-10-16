@@ -3,6 +3,8 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 import { Navbar as BootNav, Nav } from "react-bootstrap";
+import SignIn from "./SignIn";
+import SignUp from "./SignUp";
 
 //https://react-bootstrap.netlify.app/components/navbar/#navbars
 
@@ -46,8 +48,8 @@ function Navbar() {
             >Search Contractors</Nav.Link>
           </Nav>
           <Nav>
-            <Nav.Link >Sign Up</Nav.Link>
-            <Nav.Link>Sign In</Nav.Link>
+            <SignUp />
+            <SignIn />
           </Nav>
         </BootNav.Collapse>
       </BootNav>
