@@ -4,7 +4,7 @@ import ClientListingList from "./ClientListingList";
 
 const ClientProfile = () => {
     return (
-        <div style={{ border: "solid", padding: "5px" }}>
+        <div className="component-border">
             <h1>ClientProfile component</h1>
             <div style={{ paddingLeft: "50px" }}>
                 <ClientListingList />

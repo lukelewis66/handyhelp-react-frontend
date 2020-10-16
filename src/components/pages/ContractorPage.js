@@ -3,11 +3,9 @@ import ContractorProfile from "../contractor/ContractorProfile";
 
 const ContractorPage = () => {
     return (
-        <div style={{ border: "solid", padding: "5px" }}>
+        <div>
             <h1>ContractorPage component</h1>
-            <div style={{ paddingLeft: "50px" }}>
-                <ContractorProfile />
-            </div>
+            <ContractorProfile />
         </div>
     );
 }

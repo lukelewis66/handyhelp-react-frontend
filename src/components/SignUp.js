@@ -1,38 +1,37 @@
 import React, { useState } from "react";
 
+import { Button, Modal } from "react-bootstrap";
 
-import { Modal, Button } from "react-bootstrap";
 
-const MakeListingModal = () => {
+
+const SignUp = () => {
     //https://react-bootstrap.github.io/components/modal/
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return (
-        <div className="component-border">
-            <h3>MakeListingModal component</h3>
+        <div>
             <Button variant="primary" onClick={handleShow}>
-                Create Listing
+                SignUp
           </Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Enter Listing Info</Modal.Title>
+                    <Modal.Title>SignUp Component</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Make listing form</Modal.Body>
+                <Modal.Body>SignUp Form</Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
               </Button>
                     <Button variant="primary" onClick={handleClose}>
-                        Publish Listing
+                        Sign In
               </Button>
                 </Modal.Footer>
             </Modal>
         </div>
     );
+};
 
-}
-
-export default MakeListingModal;
+export default SignUp;

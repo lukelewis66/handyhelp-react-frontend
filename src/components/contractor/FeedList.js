@@ -10,9 +10,9 @@ const FeedList = () => {
     ];
 
     return (
-        <div style={{ border: "solid", padding: "5px" }}>
+        <div className="component-border">
             <h1>FeedList component</h1>
-            <div style={{ display: "flex" }}>
+            <div className="flex-list">
                 {fakeFeedItems.map((item) => (
                     <FeedItem props={item} />
                 ))}

@@ -1,10 +1,9 @@
 import React from "react";
 
-const FeedItem = ({ props }) => {
-
+const SearchListingsItem = ({ props }) => {
     return (
-        <div className="component-border">
-            <h3>FeedItem component</h3>
+        <div className="component-border" style={{ width: "40%" }}>
+            <h3>SearchListingsItem component</h3>
             <ul>
                 <li>{props.description}</li>
                 <li>{props.image}</li>
@@ -14,4 +13,4 @@ const FeedItem = ({ props }) => {
     );
 }
 
-export default FeedItem;
+export default SearchListingsItem;

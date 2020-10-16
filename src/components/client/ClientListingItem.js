@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 
 const ClientListingItem = ({ props }) => {
 
     return (
-        <div style={{ border: "solid", padding: "5px" }}>
+        <div className="component-border">
             <h3>ClientListingItem component</h3>
             <ul>
                 <li>{props.description}</li>

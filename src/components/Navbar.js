@@ -8,7 +8,7 @@ import { Navbar as BootNav, Nav } from "react-bootstrap";
 
 function Navbar() {
   return (
-    <div style={{ margin: "auto" }}>
+    <div>
       {/* <div style={{ display: "flex" }}>
         <Link className="component-border" to="/">Home</Link>{" "}
         <Link className="component-border" to="/client">Client</Link>{" "}
@@ -44,6 +44,10 @@ function Navbar() {
               as={Link}
               to="/searchcontractors"
             >Search Contractors</Nav.Link>
+          </Nav>
+          <Nav>
+            <Nav.Link >Sign Up</Nav.Link>
+            <Nav.Link>Sign In</Nav.Link>
           </Nav>
         </BootNav.Collapse>
       </BootNav>

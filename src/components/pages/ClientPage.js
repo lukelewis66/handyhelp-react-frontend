@@ -4,7 +4,7 @@ import ClientProfile from "../client/ClientProfile";
 
 const ClientPage = () => {
     return (
-        <div className="component-border">
+        <div>
             <h1>ClientPage component</h1>
             <ClientProfile />
         </div>

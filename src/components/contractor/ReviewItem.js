@@ -2,7 +2,7 @@ import React from "react";
 
 const ReviewItem = ({ props }) => {
     return (
-        <div style={{ border: "solid", padding: "5px" }}>
+        <div className="component-border">
             <h3>ReviewItem component</h3>
             <ul>
                 <li>{props.rating}</li>

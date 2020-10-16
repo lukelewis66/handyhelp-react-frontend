@@ -11,9 +11,9 @@ const ReviewList = () => {
     ];
 
     return (
-        <div style={{ border: "solid", padding: "5px" }}>
+        <div className="component-border">
             <h1>ReviewList component</h1>
-            <div style={{ display: "flex" }}>
+            <div className="flex-list">
                 {fakeReviewItems.map((item) => (
                     <ReviewItem props={item} />
                 ))}

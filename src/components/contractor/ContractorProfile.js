@@ -5,12 +5,10 @@ import ReviewList from "./ReviewList";
 
 const ContractorProfile = () => {
     return (
-        <div style={{ border: "solid", padding: "5px" }}>
+        <div className="component-border">
             <h1>ContractorProfile component</h1>
-            <div style={{ paddingLeft: "50px" }}>
-                <FeedList />
-                <ReviewList />
-            </div>
+            <FeedList />
+            <ReviewList />
         </div>
     );
 }

@@ -1,27 +1,24 @@
 import React from "react";
 
-import ClientListingItem from "./ClientListingItem";
-import MakeListingModal from "./MakeListingModal";
+import SearchListingsItem from "./SearchListingsItem";
 
-const ClientListingList = () => {
-    const fakeClientListingItems = [
+const SearchListingsList = () => {
+    const fakeListingItems = [
         { description: "description 1", image: "image 1", skilltags: "fake skilltags 1" },
         { description: "description 2", image: "image 2", skilltags: "fake skilltags 2" },
         { description: "description 3", image: "image 3", skilltags: "fake skilltags 3" },
         { description: "description 4", image: "image 4", skilltags: "fake skilltags 4" },
     ];
-
     return (
         <div className="component-border">
-            <h1>ClientListingList component</h1>
+            <h1>SearchListingsList component</h1>
             <div className="flex-list">
-                {fakeClientListingItems.map((item) => (
-                    <ClientListingItem props={item} />
+                {fakeListingItems.map((item) => (
+                    <SearchListingsItem props={item} />
                 ))}
             </div>
-            <MakeListingModal />
         </div>
     );
 }
 
-export default ClientListingList;
+export default SearchListingsList;
