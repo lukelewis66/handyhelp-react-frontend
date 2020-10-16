@@ -13,7 +13,7 @@ const SignIn = () => {
     return (
         <div>
             <Button className="sign-button" variant="primary" onClick={handleShow}>
-                SignIn
+                Sign In
           </Button>
 
             <Modal show={show} onHide={handleClose}>
