@@ -25,7 +25,7 @@ const SearchFilter = ({ handleFilters }) => {
             <h1>SearchFilter Component</h1>
             <p>tagFilters: {tagFilters}</p>
             <Form>
-                {allSkillTags.map((skilltag) => <Form.Check type="checkbox" label={skilltag} onChange={() => handleSkillCheck(skilltag)} />)}
+                {allSkillTags.map((skilltag) => <Form.Check key={skilltag} type="checkbox" label={skilltag} onChange={() => handleSkillCheck(skilltag)} />)}
                 <Button onClick={() => doFilter()}>Filter</Button>
             </Form>
         </div>

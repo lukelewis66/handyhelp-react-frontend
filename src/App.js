@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -12,12 +12,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space
 
 function App() {
+    const pageOnLoad = window.location.pathname.toString();
+    console.log("pageOnLoad: ", pageOnLoad);
     return (
         <main>
             <div className="box">
                 <div className="box-header">
-                    <Navbar />
+                    <Navbar activepage={pageOnLoad} />
                 </div>
+                {/* box-body div will stretch to fill out the screen until footer (if its smaller than the screen) */}
                 <div className="box-body">
                     <Switch>
                         <Route path="/" component={HomePage} exact />

@@ -14,7 +14,7 @@ const SearchContractorsList = () => {
             <h1>SearchContractorsList component</h1>
             <div className="flex-list">
                 {fakeContractorItems.map((item) => (
-                    <SearchContractorsItem props={item} />
+                    <SearchContractorsItem key={item.name} props={item} />
                 ))}
             </div>
         </div>

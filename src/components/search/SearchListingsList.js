@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import SearchListingsItem from "./SearchListingsItem";
 
@@ -15,7 +15,7 @@ const SearchListingsList = ({ selectedFilters }) => {
             <p>Selected Filters: {selectedFilters}</p>
             <div className="flex-list">
                 {fakeListingItems.map((item) => (
-                    <SearchListingsItem props={item} />
+                    <SearchListingsItem key={item.description} props={item} />
                 ))}
             </div>
         </div>
