@@ -5,9 +5,60 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+html {
+  height: 100%;
+}
+
+.component-border{
+  border: solid;
+  padding: 5px;
+  margin: 10px;
+}
+
+#root, #root main{
+  height: 100%;
+}
+
+.flex-list {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+}
+
+.flex-list .component-border {
+  width: 45%;
+}
+
+/* https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space */
+
+.box {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+
+.box-header, .box-footer {
+  flex: 0 1 auto;
+  /* The above is shorthand for:
+  flex-grow: 0,
+  flex-shrink: 1,
+  flex-basis: auto
+  */
+}
+
+.box-body{
+  flex: 1 1 auto;
+}
+
+.sign-button{
+  margin: 3px 3px;
 }

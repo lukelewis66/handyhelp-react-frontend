@@ -1,18 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Home from './components/Home';
-import CredsForm from './components/SaveCreds';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import ClientPage from './components/pages/ClientPage';
+import ContractorPage from './components/pages/ContractorPage';
+import HomePage from './components/pages/HomePage';
+import SearchListingsPage from './components/pages/SearchListingsPage';
+import SearchContractorsPage from './components/pages/SearchContractorsPage';
+import "bootstrap/dist/css/bootstrap.min.css";
+
+//https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space
 
 function App() {
+    const pageOnLoad = window.location.pathname.toString();
+    console.log("pageOnLoad: ", pageOnLoad);
     return (
         <main>
-            <Switch>
-		<Route path="/" component={Home} exact />
-                <Route path="/creds" component={CredsForm} />
-	        <Route component={Error} />
-            </Switch>
-	    <Navbar />
+            <div className="box">
+                <div className="box-header">
+                    <Navbar activepage={pageOnLoad} />
+                </div>
+                {/* box-body div will stretch to fill out the screen until footer (if its smaller than the screen) */}
+                <div className="box-body">
+                    <Switch>
+                        <Route path="/" component={HomePage} exact />
+                        <Route path="/client" component={ClientPage} />
+                        <Route path="/contractor" component={ContractorPage} />
+                        <Route path="/searchlistings" component={SearchListingsPage} />
+                        <Route path="/searchcontractors" component={SearchContractorsPage} />
+                        <Route component={Error} />
+                    </Switch>
+                </div>
+                <div className="box-footer">
+                    <Footer />
+                </div>
+            </div>
         </main>
     );
 };
