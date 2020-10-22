@@ -56,6 +56,10 @@ const Navbar = ({ activepage }) => {
               to="/searchcontractors"
               eventKey="/searchcontractors"
             >Search Contractors</Nav.Link>
+            <Nav.Link
+              as={Link}
+              to="/firebaseplayground"
+              eventKey="/firebaseplayground">Firebase Playground</Nav.Link>
           </Nav>
           <Nav>
             <SignUp />
