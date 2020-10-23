@@ -20,7 +20,9 @@ const MakeListingModal = () => {
                 <Modal.Header closeButton>
                     <Modal.Title>Enter Listing Info</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Make listing form</Modal.Body>
+                <Modal.Body>
+                    Make listing form
+                    </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
