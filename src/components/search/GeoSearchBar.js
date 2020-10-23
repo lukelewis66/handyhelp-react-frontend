@@ -41,6 +41,7 @@ const GeoSearchBar = ({ handleCoordinates }) => {
 
     function getCoordinates() {
         // Get the place details from the autocomplete object.
+        console.log("wadup");
         const place = autocomplete.getPlace();
         const lat = place.geometry.location.lat();
         const lng = place.geometry.location.lng();
@@ -63,7 +64,6 @@ const GeoSearchBar = ({ handleCoordinates }) => {
                         center: geolocation,
                         radius: position.coords.accuracy,
                     });
-                    console.log("before it all breaks: ", autocomplete);
                     autocomplete.setBounds(circle.getBounds());
                 });
             }
@@ -77,13 +77,16 @@ const GeoSearchBar = ({ handleCoordinates }) => {
                 navigator.geolocation.getCurrentPosition((position) => {
                     const lat = position.coords.latitude;
                     const lng = position.coords.longitude;
-                    console.log("hi");
                     handleCoordinates(lat, lng);
                 }
                 )
             }
         }
         setChecked(!checked);
+    }
+
+    function sendEmptyCoordinates() {
+        handleCoordinates(null, null);
     }
 
     return (
@@ -96,6 +99,7 @@ const GeoSearchBar = ({ handleCoordinates }) => {
                 type="text"
                 ref={autocompleteRef}
                 disabled={checked}
+                onChange={() => sendEmptyCoordinates()}
             />
 
             <Form.Check label="Use current location" style={{ paddingTop: "5px" }} type="checkbox" checked={checked} onClick={() => handleCheck()} />
