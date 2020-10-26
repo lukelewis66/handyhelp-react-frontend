@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import FeedList from "./FeedList";
 import ReviewList from "./ReviewList";
+import BioList from "./BioList";
 import ContractorEditProfile from "./ContractorEditProfile";
 
 import { Nav } from "react-bootstrap";
@@ -14,6 +15,8 @@ const ContractorProfile = () => {
         switch (active) {
             case "Reviews":
                 return <ReviewList />
+            case "Bio":
+                return <BioList />
             case "Edit":
                 return <ContractorEditProfile />
             default:
@@ -29,6 +32,9 @@ const ContractorProfile = () => {
                 </Nav.Item>
                 <Nav.Item >
                     <Nav.Link eventKey="Reviews">Reviews</Nav.Link>
+                </Nav.Item>
+                <Nav.Item >
+                    <Nav.Link eventKey="Bio">Bio</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link eventKey="Edit">Edit Profile</Nav.Link>

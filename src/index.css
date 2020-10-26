@@ -27,6 +27,16 @@ html {
   height: 100%;
 }
 
+.itemPhoto {
+  height: 200px;
+  width: 200px;
+}
+
+.profilePhoto {
+  height: 300px;
+  width: 300px;
+}
+
 .flex-list {
   display: flex;
   flex-wrap: wrap; 
