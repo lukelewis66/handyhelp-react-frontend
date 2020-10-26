@@ -7,7 +7,7 @@ const ReviewItem = ({ props }) => {
             <ul>
                 <li>{props.rating}</li>
                 <li>{props.comment}</li>
-                <li>{props.reviewImage}</li>
+                <img alt={props.reviewImage} className="itemPhoto" src={props.reviewImage} />
             </ul>
         </div>
     );

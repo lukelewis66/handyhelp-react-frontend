@@ -7,7 +7,7 @@ const ClientListingItem = ({ props }) => {
             <h3>ClientListingItem component</h3>
             <ul>
                 <li>{props.description}</li>
-                <li>{props.image}</li>
+                <img alt="ClientListingItem image" className="itemPhoto" src={props.image}/>
                 <li>{props.skilltags}</li>
             </ul>
         </div>
