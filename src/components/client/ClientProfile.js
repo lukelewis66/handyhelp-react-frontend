@@ -4,6 +4,8 @@ import { Nav } from "react-bootstrap";
 
 import ClientListingList from "./ClientListingList";
 import ClientEditProfile from "./ClientEditProfile";
+import ClientPhoto from "./ClientPhoto"
+import ClientInfo from "./ClientInfo"
 
 
 const ClientProfile = () => {
@@ -20,8 +22,11 @@ const ClientProfile = () => {
         }
     }
     return (
-        <div className="component-border">
-            <h1>ClientProfile component</h1>
+       <div>
+	    <div className = "profileHeader">
+	    	<ClientPhoto />
+	    	<ClientInfo />
+	    </div>
             <Nav variant="tabs" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
                 <Nav.Item >
                     <Nav.Link eventKey="CurrentListings">Current Listings</Nav.Link>
