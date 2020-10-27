@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 
 import FeedList from "./FeedList";
 import ReviewList from "./ReviewList";
+import BioList from "./BioList";
 import ContractorEditProfile from "./ContractorEditProfile";
+import ContractorPhoto from "./ContractorPhoto"
+import ContractorInfo from "./ContractorInfo"
 
 import { Nav } from "react-bootstrap";
 //https://react-bootstrap.netlify.app/components/navs/
@@ -14,6 +17,8 @@ const ContractorProfile = () => {
         switch (active) {
             case "Reviews":
                 return <ReviewList />
+            case "Bio":
+                return <BioList />
             case "Edit":
                 return <ContractorEditProfile />
             default:
@@ -21,14 +26,20 @@ const ContractorProfile = () => {
         }
     }
     return (
-        <div className="component-border">
-            <h1>ContractorProfile component</h1>
+        <div>
+            <div className = "profileHeader">
+	    	<ContractorPhoto />
+	    	<ContractorInfo />
+	    </div>
             <Nav variant="tabs" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
                 <Nav.Item >
                     <Nav.Link eventKey="Feed">Feed</Nav.Link>
                 </Nav.Item>
                 <Nav.Item >
                     <Nav.Link eventKey="Reviews">Reviews</Nav.Link>
+                </Nav.Item>
+                <Nav.Item >
+                    <Nav.Link eventKey="Bio">Bio</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link eventKey="Edit">Edit Profile</Nav.Link>

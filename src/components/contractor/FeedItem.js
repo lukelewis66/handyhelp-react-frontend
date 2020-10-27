@@ -7,7 +7,7 @@ const FeedItem = ({ props }) => {
             <h3>FeedItem component</h3>
             <ul>
                 <li>{props.description}</li>
-                <li>{props.image}</li>
+                <img alt={props.image} className="itemPhoto" src={props.image} />
                 <li>{props.skilltags}</li>
             </ul>
         </div>
