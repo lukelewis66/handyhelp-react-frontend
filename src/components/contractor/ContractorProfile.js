@@ -4,6 +4,8 @@ import FeedList from "./FeedList";
 import ReviewList from "./ReviewList";
 import BioList from "./BioList";
 import ContractorEditProfile from "./ContractorEditProfile";
+import ContractorPhoto from "./ContractorPhoto"
+import ContractorInfo from "./ContractorInfo"
 
 import { Nav } from "react-bootstrap";
 //https://react-bootstrap.netlify.app/components/navs/
@@ -24,8 +26,11 @@ const ContractorProfile = () => {
         }
     }
     return (
-        <div className="component-border">
-            <h1>ContractorProfile component</h1>
+        <div>
+            <div className = "profileHeader">
+	    	<ContractorPhoto />
+	    	<ContractorInfo />
+	    </div>
             <Nav variant="tabs" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
                 <Nav.Item >
                     <Nav.Link eventKey="Feed">Feed</Nav.Link>
