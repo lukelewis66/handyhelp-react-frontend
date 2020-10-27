@@ -5,8 +5,9 @@ import { Modal, Button, Form } from "react-bootstrap";
 
 import { SKILLTAGS } from "../../constants/skilltags";
 
+import Upload from "../../Upload";
+
 //https://codeburst.io/react-image-upload-with-kittens-cc96430eaece
-//https://stackoverflow.com/questions/5802580/html-input-type-file-get-the-image-before-submitting-the-form
 
 const MakeListingModal = () => {
     //https://react-bootstrap.github.io/components/modal/
@@ -78,6 +79,7 @@ const MakeListingModal = () => {
                         //use this ID as reference in S3 images maybe?
                         console.log("response id: ", id);
                     })));
+            Upload(imageFiles);
         }
     }
 
