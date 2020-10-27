@@ -29,8 +29,21 @@ const MakeListingModal = () => {
         ));
     }
 
+    const clearForm = () => {
+        console.log("clear form called");
+        setForm((prevState) => ({
+            ...prevState,
+            title: "",
+            description: "",
+            images: [],
+            skilltags: [],
+        }))
+    }
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+
 
     const handleChange = (e, field) => {
         let val;
@@ -52,7 +65,6 @@ const MakeListingModal = () => {
         else {
             val = e.target.value;
         }
-        console.log("val: ", val);
         //copies previous form state, and updates the changed form field
         setForm((prevState) => ({
             ...prevState,
@@ -76,7 +88,25 @@ const MakeListingModal = () => {
                 .then((response => response.text()
                     .then(id => {
                         console.log("response id: ", id);
-                        Upload(imageFiles);
+
+                        //upload images and update listing document if user has added photos
+                        if (imageFiles.length > 0) {
+                            const imgurls = Upload(imageFiles);
+                            const updateBody = {
+                                listingID: id,
+                                imageUrls: imgurls,
+                            }
+                            const updateUrl = `${server}/updatelistingimages`;
+                            const requestOpts = {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify(updateBody),
+                            }
+                            fetch(updateUrl, requestOpts).then((response => response.text().then(message => console.log(message))));
+                        }
+                        alert("Your listing has been added.");
+                        handleClose();
+                        clearForm();
                     })));
         }
     }
