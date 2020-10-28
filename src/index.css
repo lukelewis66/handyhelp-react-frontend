@@ -35,7 +35,31 @@ html {
 .profilePhoto {
   height: 300px;
   width: 300px;
+  background: #6f7872;
+  border: solid;
+  padding: 5px;
 }
+
+.infoPanel {
+  border: solid;
+  height:300px;
+  width:1600px;
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.profileHeader {
+	display: flex;
+	margin: 20px 10px 20px 10px;
+}
+
+.cardStyle {
+	margin: 10px;
+	width: 300px;
+	
+}
+
+
 
 .flex-list {
   display: flex;
