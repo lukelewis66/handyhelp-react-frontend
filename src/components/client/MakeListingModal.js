@@ -91,7 +91,8 @@ const MakeListingModal = () => {
 
                         //upload images and update listing document if user has added photos
                         if (imageFiles.length > 0) {
-                            const imgurls = Upload(imageFiles);
+                            // Whoever is uploading should pass their UID, but hardcoded it for now
+                            const imgurls = Upload(imageFiles, 'handyhelpimages');
                             const updateBody = {
                                 listingID: id,
                                 imageUrls: imgurls,
