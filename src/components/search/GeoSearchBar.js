@@ -102,7 +102,7 @@ const GeoSearchBar = ({ handleCoordinates }) => {
                 onChange={() => sendEmptyCoordinates()}
             />
 
-            <Form.Check label="Use current location" style={{ paddingTop: "5px" }} type="checkbox" checked={checked} onClick={() => handleCheck()} />
+            <Form.Check label="Use current location" style={{ paddingTop: "5px" }} type="checkbox" checked={checked} onChange={() => handleCheck()} />
         </div>
     )
 }
