@@ -9,6 +9,7 @@ import SearchListingsPage from './components/pages/SearchListingsPage';
 import SearchContractorsPage from './components/pages/SearchContractorsPage';
 import ErrorPage from './components/pages/ErrorPage';
 import FirebasePlayground from './components/pages/FirebasePlayground';
+import AboutPage from './components/pages/AboutPage';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space
@@ -31,6 +32,7 @@ function App() {
                         <Route path="/searchlistings" component={SearchListingsPage} />
                         <Route path="/searchcontractors" component={SearchContractorsPage} />
                         <Route path="/firebaseplayground" component={FirebasePlayground} />
+                        <Route path="/about" component={AboutPage} />
                         <Route component={ErrorPage} />
                     </Switch>
                 </div>
