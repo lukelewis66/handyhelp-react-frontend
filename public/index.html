@@ -28,6 +28,7 @@
 </head>
 
 <body>
+
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
   <!--
@@ -40,6 +41,33 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-analytics.js"></script>
+  <script crossorigin src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyBMyHuPUowgsJ7TKb9WWqdjJU4pyveLgt8",
+      authDomain: "handyhelp-f4192.firebaseapp.com",
+      databaseURL: "https://handyhelp-f4192.firebaseio.com",
+      projectId: "handyhelp-f4192",
+      storageBucket: "handyhelp-f4192.appspot.com",
+      messagingSenderId: "434480313769",
+      appId: "1:434480313769:web:f21fc6a0eaa0cbcf5600b8",
+      measurementId: "G-BSQFJTX9NF"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // console.log("firebase num: ", firebase.apps.length);
+    // console.log("firebase name: ", firebase.name);
+    firebase.analytics();
+    firebase.auth();
+  </script>
 </body>
 
 </html>
