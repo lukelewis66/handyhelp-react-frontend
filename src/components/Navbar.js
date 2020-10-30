@@ -5,18 +5,39 @@ import { Link } from 'react-router-dom';
 import { Navbar as BootNav, Nav } from "react-bootstrap"; //need to rename Bootstrap Navbar since we have our own Navbar component
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
+import SignOut from "./SignOut";
 
 //https://react-bootstrap.netlify.app/components/navbar/#navbars
 
 const Navbar = ({ activepage }) => {
-  // How we declare states in functional components (must import and use useState())
-  //
-  //    syntax is:
-  //    const [someState, setSomeState] = useState(initialValue)
-  //
-  // anytime a setter is called, the component will re-render
+
+  const UID = localStorage.getItem("UID");
+  if (UID) {
+    console.log("someone is logged in w UID: ", UID);
+  }
+  else {
+    console.log("nobody is logged in");
+  }
+
   const [active, setActive] = useState(activepage); //activepage (from url) passed in by App on first render (e.g. on a browser refresh)
 
+  const authButtons = () => {
+    var authBtns;
+    if (UID) {
+      return (
+        <Nav>
+          <SignOut />
+        </Nav>
+      );
+    } else {
+      return (
+        <Nav>
+          <SignUp />
+          <SignIn />
+        </Nav>
+      );
+    }
+  }
   return (
     <div>
       <BootNav
@@ -61,10 +82,9 @@ const Navbar = ({ activepage }) => {
               to="/firebaseplayground"
               eventKey="/firebaseplayground">Firebase Playground</Nav.Link>
           </Nav>
-          <Nav>
-            <SignUp />
-            <SignIn />
-          </Nav>
+          {authButtons()}
+
+
         </BootNav.Collapse>
       </BootNav>
     </div>

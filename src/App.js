@@ -17,7 +17,6 @@ import individualListing from './components/pages/IndividualListing';
 
 function App() {
     const pageOnLoad = window.location.pathname.toString();
-    console.log("pageOnLoad: ", pageOnLoad);
     return (
         <main>
             <div className="box">

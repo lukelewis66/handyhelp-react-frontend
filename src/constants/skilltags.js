@@ -28,5 +28,10 @@ export const SKILLTAGS = [
         key: "masonry",
         label: "Masonry",
         description: "",
+    },
+    {
+        key: "pestcontrol",
+        label: "Pest Control",
+        description: "",
     }
 ]

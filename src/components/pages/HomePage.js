@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import GeoSearchBar from "../search/GeoSearchBar";
 
+
 const HomePage = () => {
     const [coordinates, setCoordinates] = useState([null, null]);
 
