@@ -1,6 +1,9 @@
 import React from "react";
 
 const SearchContractorsItem = ({ props }) => {
+
+    
+
     return (
         <div className="component-border">
             <h3>SearchContractorsItem component</h3>
