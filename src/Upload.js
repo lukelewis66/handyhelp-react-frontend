@@ -1,11 +1,14 @@
-// Pass the upload function a valid array of image file(s) and a UID
-function Upload(images, UID) {
-    if(images && UID) {
+// Pass the upload function a valid array of image file(s), UID, and the type of images being uploaded:
+// if the image being uploaded is for a profile picture, pass "ProfilePic" as the type, 
+// if it's a listing picture, pass the LID as the type.
+function Upload(images, UID, type) {
+    if(images && UID && type) {
         var s3Urls = [];
         var imageUrl = '';
         const files = Array.from(images);
         for (let i = 0 ; i < files.length ; i++) {
             const formData = new FormData();
+            formData.append("type", type);
             formData.append("bucket", UID);
             formData.append("acl", "public-read-write");
             formData.append("key", files[i].name);
@@ -24,7 +27,7 @@ function Upload(images, UID) {
     }
     else {
         return (
-            console.log('Upload failed: please return a valid UID or array of image files.')
+            console.log('Upload failed: please provide a valid UID, array of image files, and type of images being uploaded.')
         )
     }      
 }
