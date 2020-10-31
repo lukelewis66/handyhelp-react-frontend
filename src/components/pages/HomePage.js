@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 import GeoSearchBar from "../search/GeoSearchBar";
+import {getAllListings, getListing} from "../../Users/Client";
+
 
 const HomePage = () => {
     const [coordinates, setCoordinates] = useState([null, null]);
@@ -8,6 +10,9 @@ const HomePage = () => {
     function handleCoordinates(lat, lng) {
         setCoordinates([lat, lng]);
     }
+
+    //getAllListings("qaMLKoRMx9O5MBNlyHklbDeY4gf2");
+    //getListing("QpFUlk3j2R6vroBztNpN");
 
     return (
         <div>

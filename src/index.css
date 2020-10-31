@@ -38,6 +38,15 @@ html {
   background: #6f7872;
   border: solid;
   padding: 5px;
+
+}
+
+.infoPanel {
+  border: solid;
+  height:300px;
+  width:1600px;
+  padding: 5px;
+  margin-left: 10px;
 }
 
 .infoPanel {

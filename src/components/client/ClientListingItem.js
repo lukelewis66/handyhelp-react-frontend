@@ -14,7 +14,7 @@ const ClientListingItem = ({ props }) => {
 	    */}
 	    <Card className = "cardStyle" variant = "outlined">
 	      <Card.Body>
-	    	<Card.Img variant = "top" src = {props.image} alt = "ClientListingImage" />
+	    	<Card.Img className = "itemPhoto" variant = "top" src = {props.images[0]} alt = "ClientListingImage" />
 	        <Card.Title>Card Title</Card.Title>
 	        <Card.Text>
 	    		{props.description}
