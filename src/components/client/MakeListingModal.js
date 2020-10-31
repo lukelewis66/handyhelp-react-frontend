@@ -91,7 +91,9 @@ const MakeListingModal = () => {
 
                         //upload images and update listing document if user has added photos
                         if (imageFiles.length > 0) {
-                            const imgurls = Upload(imageFiles);
+                            // Whoever is uploading should pass their UID and LID (if uploading listing images) or 'ProfilePic' (if uploading profile pictures), but hardcoded it for now
+                            // once bucket initialization on account creation is implemented, use this instead of hardcoded UID: localStorage.getItem("UID")
+                            const imgurls = Upload(imageFiles, 'handyhelpimages', id);
                             const updateBody = {
                                 listingID: id,
                                 imageUrls: imgurls,
