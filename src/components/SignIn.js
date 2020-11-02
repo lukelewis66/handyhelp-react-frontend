@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 
 import { Button, Modal, Form } from "react-bootstrap";
-import { signIn, getUID } from "../firebase/auth";
+import { signIn, getUID } from "../firebase/authFunctions";
 
 
 

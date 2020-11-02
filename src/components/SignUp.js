@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
 
-import { signUp } from "../firebase/auth";
+import { signUp } from "../firebase/authFunctions";
 
 const SignUp = () => {
     //https://react-bootstrap.github.io/components/modal/
@@ -41,7 +41,7 @@ const SignUp = () => {
                 .catch((err) => setFormMessage(err));
         }
     }
-    
+
     return (
         <div>
             <Button className="sign-button" variant="primary" onClick={handleShow}>
