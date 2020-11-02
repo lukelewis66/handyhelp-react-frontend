@@ -4,6 +4,7 @@ import GeoSearchBar from "../search/GeoSearchBar";
 import {getAllListings, getListing} from "../../Users/Client";
 
 
+
 const HomePage = () => {
     const [coordinates, setCoordinates] = useState([null, null]);
 

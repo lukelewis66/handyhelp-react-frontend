@@ -1,15 +1,49 @@
 import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Form } from "react-bootstrap";
+import { signIn, getUID } from "../firebase/auth";
+
 
 
 
 const SignIn = () => {
     //https://react-bootstrap.github.io/components/modal/
+    const [form, setForm] = useState({
+        email: "",
+        password: "",
+    })
+    const [formMessage, setFormMessage] = useState("");
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const handleChange = (e, field) => {
+        const val = e.target.value;
+        setForm((prevState) => ({
+            ...prevState,
+            [field]: val
+        }))
+    }
+
+    const handleSignIn = () => {
+        if (
+            form.email === "" ||
+            form.password === "" ||
+            form.confirm_password === ""
+        ) {
+            setFormMessage("All fields must be filled");
+        }
+        else {
+            signIn(form.email, form.password)
+                .then((msg) => {
+                    //msg would be "success"
+                    window.location.assign("/");
+                })
+                .catch((err) => setFormMessage(err));
+        }
+    }
     return (
         <div>
             <Button className="sign-button" variant="primary" onClick={handleShow}>
@@ -20,12 +54,22 @@ const SignIn = () => {
                 <Modal.Header closeButton>
                     <Modal.Title>SignIn Component</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>SignIn Form</Modal.Body>
+                <Modal.Body><Form>
+                    <Form.Group>
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control type="email" placeholder="Enter email" autoComplete="email" onChange={(e) => handleChange(e, "email")} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="password" placeholder="Enter Password" autoComplete="current-password" onChange={(e) => handleChange(e, "password")} />
+                    </Form.Group>
+                </Form></Modal.Body>
                 <Modal.Footer>
+                    <p style={{ color: "red" }}>{formMessage}</p>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
               </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={handleSignIn}>
                         Sign In
               </Button>
                 </Modal.Footer>
