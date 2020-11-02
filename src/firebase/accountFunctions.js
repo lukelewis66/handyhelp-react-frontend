@@ -14,13 +14,7 @@ export function checkUserExists(UID) {
     });
 }
 
-export function createClientAccount(UID, form) {
-    return new Promise(function (resolve, reject) {
-
-    });
-}
-
-export function createContractorAccount(UID, form) {
+export function createAccount(UID, form) {
     return new Promise(function (resolve, reject) {
 
     });

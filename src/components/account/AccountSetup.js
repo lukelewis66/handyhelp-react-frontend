@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import { Button, Modal, Form } from "react-bootstrap";
 
-import AccountType from "./AccountType";
 import AccountInfo from "./AccountInfo";
+import AccountConfirm from "./AccountConfirm";
 
 const AccountSetup = ({ UID }) => {
     const [body, setBody] = useState({
@@ -13,31 +13,55 @@ const AccountSetup = ({ UID }) => {
     })
     const [current, setCurrent] = useState("start");
     const [form, setForm] = useState({
-        accountType: "",
+        role: "",
         name: "",
         phone: "",
         location: [],
-        skilltags: [],
     });
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const handleAccountTypeSelection = (accountType) => {
+        console.log("account type select: ", accountType);
+        setForm((prevState) => ({
+            ...prevState,
+            role: accountType,
+        }));
+    }
+
+    const handleChange = (e, field) => {
+        let val = e.target.value;
+        console.log("handle change val: ", val);
+        //copies previous form state, and updates the changed form field
+        setForm((prevState) => ({
+            ...prevState,
+            [field]: val
+        }))
+    }
+
+    function handleCoordinates(lat, lng) {
+        setForm((prevState) => ({
+            ...prevState,
+            location: [lat, lng],
+        }))
+    }
 
     useEffect(() => {
         switch (current) {
             case "start":
                 break;
-            case "type":
-                setBody({
-                    buttonText: "Next",
-                    render: <AccountType formData={form} handleChange={handleChange} />,
-                    prev: false,
-                });
-                break;
             case "info":
                 setBody({
-                    buttonText: "Submit",
-                    render: <AccountInfo formData={form} handleChange={handleChange} />,
-                    prev: true,
+                    buttonText: "Next",
+                    render: <AccountInfo formData={form} handleChange={handleChange} handleAccountTypeSelection={handleAccountTypeSelection} handleCoordinates={handleCoordinates} />,
+                    prev: false,
                 })
                 break;
+            case "submit":
+                setBody({
+                    buttonText: "Submit",
+                    render: <AccountConfirm formData={form} />,
+                    prev: true,
+                })
             default:
                 break;
         }
@@ -46,47 +70,41 @@ const AccountSetup = ({ UID }) => {
     const handleNextClick = () => {
         switch (current) {
             case "start":
-                setCurrent("type");
-                break;
-            case "type":
                 setCurrent("info");
                 break;
             case "info":
-                //submit
+                let fieldError = false;
+                for (const [key] of Object.entries(form)) {
+                    if (form[key] === "" || form[key] === []) {
+                        setErrorMessage("All fields need to be filled");
+                        fieldError = true;
+                        break;
+                    }
+                }
+                if (!fieldError) {
+                    setErrorMessage("");
+                    setCurrent("submit");
+                }
+                break;
+            case "submit":
+                //do Submit
                 break;
         }
     }
 
     const handlePrevClick = () => {
-        setCurrent("type");
+        setCurrent("info");
     }
 
-    const handleChange = (e, field) => {
-        let val;
-        if (field === "skilltags") {
-            val = [...form.skilltags];
-            const curTag = e.target.value;
-            if (val.some((tag) => tag === curTag)) {
-                val.splice(val.indexOf(curTag), 1);
-            }
-            else {
-                val.push(e.target.value);
-            }
-        }
-        else {
-            val = e.target.value;
-        }
-        //copies previous form state, and updates the changed form field
-        setForm((prevState) => ({
-            ...prevState,
-            [field]: val
-        }))
-    }
     return (
-        <Modal show={true} backdrop="static" size="lg">
+        <Modal size="lg" show={true} backdrop="static" >
             <Modal.Header><b>Let's get you set up.</b></Modal.Header>
             <Modal.Body>{body.render}</Modal.Body>
-            <Modal.Footer>{body.prev ? <Button onClick={handlePrevClick}>Previous</Button> : null}<Button onClick={handleNextClick}>{body.buttonText}</Button></Modal.Footer>
+            <Modal.Footer>
+                <p style={{ color: "red" }}>{errorMessage}</p>
+                {body.prev ? <Button onClick={handlePrevClick}>Previous</Button> : null}
+                <Button onClick={handleNextClick}>{body.buttonText}</Button>
+            </Modal.Footer>
         </Modal>);
 }
 

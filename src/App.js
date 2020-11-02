@@ -15,11 +15,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import { checkUserExists } from "./firebase/accountFunctions";
 
+import { signOut } from "./firebase/authFunctions";
+
 //https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space
 
 function App() {
     const [accountSetup, setAccountSetup] = useState();
     const pageOnLoad = window.location.pathname.toString();
+    // signOut();
     const renderAccountSetup = () => {
         const UID = localStorage.getItem("UID");
         if (UID) {
