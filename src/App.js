@@ -22,7 +22,7 @@ import { signOut } from "./firebase/authFunctions";
 function App() {
     const [accountSetup, setAccountSetup] = useState();
     const pageOnLoad = window.location.pathname.toString();
-    // signOut();
+    //signOut();
     const renderAccountSetup = () => {
         const UID = localStorage.getItem("UID");
         if (UID) {

@@ -16,6 +16,16 @@ export function checkUserExists(UID) {
 
 export function createAccount(UID, form) {
     return new Promise(function (resolve, reject) {
-
+        const server = "http://localhost:8118";
+        const url = `${server}/createaccount`;
+        form.UID = UID;
+        const requestOptions = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(form)
+        }
+        fetch(url, requestOptions)
+            .then((response) => resolve(response.text()))
+            .catch((err) => reject(err));
     });
 }

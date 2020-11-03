@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { Button, Modal, Form } from "react-bootstrap";
+import { createAccount } from "../../firebase/accountFunctions";
 
 import AccountInfo from "./AccountInfo";
 import AccountConfirm from "./AccountConfirm";
@@ -17,6 +18,7 @@ const AccountSetup = ({ UID }) => {
         name: "",
         phone: "",
         location: [],
+        email: localStorage.getItem("email"),
     });
     const [errorMessage, setErrorMessage] = useState("");
 
@@ -67,6 +69,9 @@ const AccountSetup = ({ UID }) => {
         }
     }, [current]);
 
+    function handleSubmit() {
+        createAccount(UID, form).then(window.location.assign("/"));
+    }
     const handleNextClick = () => {
         switch (current) {
             case "start":
@@ -87,7 +92,7 @@ const AccountSetup = ({ UID }) => {
                 }
                 break;
             case "submit":
-                //do Submit
+                handleSubmit();
                 break;
         }
     }
