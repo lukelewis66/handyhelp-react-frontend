@@ -29,15 +29,13 @@ const GeoSearchBar = ({ handleCoordinates }) => {
     const [checked, setChecked] = useState(false);
 
     useEffect(() => {
-        initAutocomplete();
-    }, [])
-
-
-    function initAutocomplete() {
+        console.log(autocompleteRef);
         autocomplete = new G.places.Autocomplete(autocompleteRef.current, { types: ["geocode"] });
         autocomplete.setFields(["geometry"]);
         autocomplete.addListener("place_changed", getCoordinates);
-    }
+    }, []);
+
+
 
     function getCoordinates() {
         // Get the place details from the autocomplete object.
@@ -53,7 +51,9 @@ const GeoSearchBar = ({ handleCoordinates }) => {
     // Bias the autocomplete object to the user's geographical location,
     // as supplied by the browser's 'navigator.geolocation' object.
     function geolocate() {
+        console.log("before");
         if (autocomplete) {
+            console.log("after");
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition((position) => {
                     const geolocation = {
@@ -70,7 +70,7 @@ const GeoSearchBar = ({ handleCoordinates }) => {
         }
     }
 
-    function handleCheck() {
+    const handleCheck = () => {
         //user selects to use current location
         if (!checked) {
             if (navigator.geolocation) {
@@ -90,12 +90,12 @@ const GeoSearchBar = ({ handleCoordinates }) => {
     }
 
     return (
-        <div id="locationField" style={{ display: "flex", flexDirection: "column", padding: "5px" }}>
+        <div id="locationField" style={{ display: "flex", flexDirection: "column" }}>
             <Form.Label>Enter your location</Form.Label>
             <Form.Control as="input"
                 id="autocomplete"
                 placeholder="Ex: Santa Barbara, CA"
-                onFocus={geolocate()}
+                onFocus={() => geolocate()}
                 type="text"
                 ref={autocompleteRef}
                 disabled={checked}

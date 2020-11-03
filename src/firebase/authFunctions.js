@@ -23,10 +23,12 @@ firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
         UID = user.uid;
         localStorage.setItem("UID", UID);
+        localStorage.setItem("email", user.email);
     }
     //user logged out
     else {
         localStorage.removeItem("UID");
+        localStorage.removeItem("email");
     }
 })
 
