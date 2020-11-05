@@ -4,10 +4,10 @@ import SearchContractorsItem from "./SearchContractorsItem";
 
 const SearchContractorsList = () => {
     const fakeContractorItems = [
-        { name: "name 1", rating: "rating 1", skilltags: "fake skilltags 1" },
-        { name: "name 2", rating: "rating 2", skilltags: "fake skilltags 2" },
-        { name: "name 3", rating: "rating 3", skilltags: "fake skilltags 3" },
-        { name: "name 4", rating: "rating 4", skilltags: "fake skilltags 4" },
+        { name: "name 1", rating: "rating 1", skilltags: "fake skilltags 1", UID: "WpCIGOyNIdFNbqlRtCKQ"},
+        { name: "name 2", rating: "rating 2", skilltags: "fake skilltags 2", UID: "WpCIGOyNIdFNbqlRtCKQ" },
+        { name: "name 3", rating: "rating 3", skilltags: "fake skilltags 3", UID: "WpCIGOyNIdFNbqlRtCKQ" },
+        { name: "name 4", rating: "rating 4", skilltags: "fake skilltags 4", UID: "WpCIGOyNIdFNbqlRtCKQ" },
     ];
     return (
         <div className="component-border">

@@ -10,10 +10,12 @@ import SignOut from "./SignOut";
 //https://react-bootstrap.netlify.app/components/navbar/#navbars
 
 const Navbar = ({ activepage }) => {
-
+  
+  var isClient = 0;
   const UID = localStorage.getItem("UID");
   if (UID) {
     console.log("someone is logged in w UID: ", UID);
+    
   }
   else {
     console.log("nobody is logged in");
@@ -38,6 +40,7 @@ const Navbar = ({ activepage }) => {
       );
     }
   }
+  if(isClient === 1){
   return (
     <div>
       <BootNav
@@ -58,15 +61,105 @@ const Navbar = ({ activepage }) => {
             //onClick={() => setActive("Home")}
             >Home</Nav.Link>
             <Nav.Link
-              as={Link}
-              to="/client"
-              eventKey="/client"
+            as={Link}
+            to="/client"
+            eventKey="/client"
             >Client</Nav.Link>
+            
             <Nav.Link
               as={Link}
-              to="/contractor"
-              eventKey="/contractor"
+              to="/searchcontractors"
+              eventKey="/searchcontractors"
+            >Search Contractors</Nav.Link>
+            
+          </Nav>
+          {authButtons()}
+
+
+        </BootNav.Collapse>
+      </BootNav>
+    </div>
+
+  );
+}
+
+else if(isClient === 0){
+  return (
+    <div>
+      <BootNav
+        expand="md"
+        bg="dark"
+        variant="dark"
+      >
+        <BootNav.Toggle aria-controls="basic-navbar-nav" />
+        <BootNav.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto" activeKey={active} onSelect={activeKey => setActive(activeKey)}>
+            <Nav.Link
+              as={Link}
+              to="/"
+              //checks after every render
+              //active={active === "Home"}
+              // Re-renders the component
+              eventKey="/"
+            //onClick={() => setActive("Home")}
+            >Home</Nav.Link>
+            
+            <Nav.Link
+            as={Link}
+            to="/contractor"
+            eventKey="/contractor"
             >Contractor</Nav.Link>
+            
+            <Nav.Link
+              as={Link}
+              to="/searchlistings"
+              eventKey="/searchlistings"
+            >Search Listings</Nav.Link>
+            
+          </Nav>
+          {authButtons()}
+
+
+        </BootNav.Collapse>
+      </BootNav>
+    </div>
+
+  )
+}
+else if(isClient === 2){
+  return (
+    <div>
+      <BootNav
+        expand="md"
+        bg="dark"
+        variant="dark"
+      >
+        <BootNav.Toggle aria-controls="basic-navbar-nav" />
+        <BootNav.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto" activeKey={active} onSelect={activeKey => setActive(activeKey)}>
+            <Nav.Link
+              as={Link}
+              to="/"
+              //checks after every render
+              //active={active === "Home"}
+              // Re-renders the component
+              eventKey="/"
+            //onClick={() => setActive("Home")}
+            >Home</Nav.Link>
+            <Nav.Link
+            as={Link}
+            to="/client"
+            eventKey="/client"
+            >Client</Nav.Link>
+            
+            <Nav.Link
+            as={Link}
+            to="/contractor"
+            eventKey="/contractor"
+            >Contractor</Nav.Link>
+            
+            
+            
             <Nav.Link
               as={Link}
               to="/searchlistings"
@@ -90,5 +183,28 @@ const Navbar = ({ activepage }) => {
     </div>
 
   );
-};
+}
+else if(isClient === 3){
+  return (
+    <div>
+      <BootNav
+        expand="md"
+        bg="dark"
+        variant="dark"
+      >
+        <BootNav.Toggle aria-controls="basic-navbar-nav" />
+        <BootNav.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto" activeKey={active} onSelect={activeKey => setActive(activeKey)}>
+            <Nav.Link as={Link} to="/" eventKey="/">Home</Nav.Link>
+          </Nav>
+          {authButtons()}
+
+
+        </BootNav.Collapse>
+      </BootNav>
+    </div>
+
+  );
+}
+}
 export default Navbar;

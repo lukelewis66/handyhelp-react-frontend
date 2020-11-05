@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
+/// for BucketInit(UID) function
+import BucketInit from '../BucketInit';
 
 import { signUp } from "../firebase/authFunctions";
 
@@ -38,6 +40,9 @@ const SignUp = () => {
         } else {
             signUp(form.email, form.password)
                 .then(() => window.location.assign("/"))
+                /// calling test version of bucket initialization here
+                .then(() => BucketInit(localStorage.getItem("UID")))
+                /// end test
                 .catch((err) => setFormMessage(err));
         }
     }

@@ -12,6 +12,8 @@ import FirebasePlayground from './components/pages/FirebasePlayground';
 import AboutPage from './components/pages/AboutPage';
 import AccountSetup from './components/account/AccountSetup';
 import "bootstrap/dist/css/bootstrap.min.css";
+import IndividualListing from './components/pages/IndividualListing';
+import IndividualContractor from './components/pages/IndividualContractor.js';
 
 import { checkUserExists } from "./firebase/accountFunctions";
 
@@ -22,6 +24,8 @@ import { signOut } from "./firebase/authFunctions";
 function App() {
     const [accountSetup, setAccountSetup] = useState();
     const pageOnLoad = window.location.pathname.toString();
+    console.log("pageOnLoad: ", pageOnLoad);
+
     //signOut();
     const renderAccountSetup = () => {
         const UID = localStorage.getItem("UID");
@@ -39,6 +43,7 @@ function App() {
     useEffect(() => {
         renderAccountSetup();
     }, [])
+    
     return (
         <main>
             <div className="box">
@@ -56,6 +61,8 @@ function App() {
                         <Route path="/searchcontractors" component={SearchContractorsPage} />
                         <Route path="/firebaseplayground" component={FirebasePlayground} />
                         <Route path="/about" component={AboutPage} />
+                        <Route path="/listing/:LID" children={<IndividualListing/>} />
+                        <Route path="/contractors/:UID" children={<IndividualContractor/>} />
                         <Route component={ErrorPage} />
                     </Switch>
                 </div>
