@@ -2,39 +2,40 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 
-const IndividualListing = () => {
+const IndividualContractor = () => {
 
-    const [listing, setListing] = useState({
-        description: "Default",
+    const [contractor, setContractor] = useState({
+        description: "No description",
+        email: "No Email",
         image: "",
         skilltags: [],
-        title: "Name",
+        name: "Anonymous",
     });
-    let { LID } = useParams();
+    let { UID } = useParams();
     useEffect(() => {
             var url;
             const server = "http://localhost:8118";
-            url = new URL(`${server}/getlisting`);
+            url = new URL(`${server}/getcontractor`);
             const params = new URLSearchParams();
-            params.append("LID", LID);
+            params.append("UID", UID);
             url.search = params.toString();
             console.log(url.toString());
                 fetch(url)
                     .then(response => response.json())
                     .then(data => {
                         console.log(data);
-                        setListing(data);
+                        setContractor(data);
                     }
                 )
-                .catch((err) => console.log("rejected in IndividLisiting"));
+                .catch((err) => console.log("rejected in IndividContractor"));
             }, [])
 
     return (
         <div>
-            <h1>Project: {listing.title}</h1>
-            <h2>Description: {listing.description}</h2>
+            <h1>Contractor: {contractor.name}</h1>
+            <h2>Description: {contractor.description}</h2>
         </div>
     );
 }
 
-export default IndividualListing;
+export default IndividualContractor;

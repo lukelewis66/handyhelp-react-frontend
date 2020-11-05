@@ -11,12 +11,14 @@ import ErrorPage from './components/pages/ErrorPage';
 import FirebasePlayground from './components/pages/FirebasePlayground';
 import AboutPage from './components/pages/AboutPage';
 import "bootstrap/dist/css/bootstrap.min.css";
-import individualListing from './components/pages/IndividualListing';
+import IndividualListing from './components/pages/IndividualListing';
+import IndividualContractor from './components/pages/IndividualContractor.js';
 
 //https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space
 
 function App() {
     const pageOnLoad = window.location.pathname.toString();
+    console.log("pageOnLoad: ", pageOnLoad);
     return (
         <main>
             <div className="box">
@@ -33,7 +35,8 @@ function App() {
                         <Route path="/searchcontractors" component={SearchContractorsPage} />
                         <Route path="/firebaseplayground" component={FirebasePlayground} />
                         <Route path="/about" component={AboutPage} />
-                        <Route path="/Listing" component={individualListing} />
+                        <Route path="/listing/:LID" children={<IndividualListing/>} />
+                        <Route path="/contractors/:UID" children={<IndividualContractor/>} />
                         <Route component={ErrorPage} />
                     </Switch>
                 </div>

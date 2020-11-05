@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from 'react-router-dom';
 const SearchListingsItem = ({ props }) => {
 
-    var fullLink = "listing/?UID=";
-    fullLink += props.UID;
+    var fullLink = "listing/LID=";
+    fullLink += props.LID;
     return (
         <div className="component-border">
             <h3>SearchListingsItem component</h3>
