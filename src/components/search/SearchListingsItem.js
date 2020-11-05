@@ -1,6 +1,9 @@
 import React from "react";
-
+import { Link } from 'react-router-dom';
 const SearchListingsItem = ({ props }) => {
+
+    var fullLink = "listing/LID=";
+    fullLink += props.LID;
     return (
         <div className="component-border">
             <h3>SearchListingsItem component</h3>
@@ -9,6 +12,9 @@ const SearchListingsItem = ({ props }) => {
                 <li>{props.image}</li>
                 <li>{props.skilltags}</li>
             </ul>
+            <Link to={fullLink}>
+                <button type="button" class="btn btn-primary">Learn More</button>
+            </Link>
         </div>
     );
 }
