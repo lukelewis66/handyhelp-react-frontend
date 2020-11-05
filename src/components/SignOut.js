@@ -2,7 +2,7 @@ import React from "react";
 
 import { Button } from "react-bootstrap";
 
-import { signOut, getUID } from "../firebase/auth";
+import { signOut, getUID } from "../firebase/authFunctions";
 
 const SignOut = () => {
     const handleSignOut = () => {

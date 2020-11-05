@@ -3,12 +3,26 @@ import React, { useState } from "react";
 import { Nav } from "react-bootstrap";
 
 import ClientListingList from "./ClientListingList";
+import ClientInactiveListingList from "./ClientInactiveListing";
 import ClientEditProfile from "./ClientEditProfile";
 import ClientPhoto from "./ClientPhoto"
 import ClientInfo from "./ClientInfo"
 
 
 const ClientProfile = () => {
+    const [active, setActive] = useState("CurrentListings");
+
+    const showActive = () => {
+        switch (active) {
+            case "PastListings":
+                return <ClientInactiveListingList active={false} />;
+            case "Edit":
+                return <ClientEditProfile />;
+            default:
+                return <ClientListingList active={true} />;
+        }
+    }
+    /*
     const [active, setActive] = useState("CurrentListings");
 
     const showActive = () => {
@@ -21,6 +35,8 @@ const ClientProfile = () => {
                 return <ClientListingList active={true} />;
         }
     }
+    */
+
     return (
        <div>
 	    <div className = "profileHeader">
