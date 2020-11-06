@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ClientPage from './components/pages/ClientPage';
@@ -23,6 +23,8 @@ import { signOut } from "./firebase/authFunctions";
 
 function App() {
     const [accountSetup, setAccountSetup] = useState();
+    const UID = localStorage.getItem("UID");
+    const [userExists, setUserExists] = useState(true);
     const pageOnLoad = window.location.pathname.toString();
     console.log("pageOnLoad: ", pageOnLoad);
 
@@ -41,9 +43,20 @@ function App() {
         }
     }
     useEffect(() => {
-        renderAccountSetup();
+        //renderAccountSetup();
+        console.log("UID: ", UID);
+        if (UID) {
+            checkUserExists(UID)
+                .then(data => {
+                    if (data.exists === false) {
+                        console.log("yo");
+                        setUserExists(false);
+                    }
+                })
+                .catch(err => console.log(err));
+        }
     }, [])
-    
+
     return (
         <main>
             <div className="box">
@@ -52,17 +65,19 @@ function App() {
                 </div>
                 {/* box-body div will stretch to fill out the screen until footer (if its smaller than the screen) */}
                 <div className="box-body">
-                    {accountSetup}
                     <Switch>
-                        <Route path="/" component={HomePage} exact />
+                        <Route path="/" exact>
+                            {userExists ? <HomePage /> : <Redirect to="/accountsetup" />}
+                        </Route>
                         <Route path="/client" component={ClientPage} />
                         <Route path="/contractor" component={ContractorPage} />
                         <Route path="/searchlistings" component={SearchListingsPage} />
                         <Route path="/searchcontractors" component={SearchContractorsPage} />
                         <Route path="/firebaseplayground" component={FirebasePlayground} />
                         <Route path="/about" component={AboutPage} />
-                        <Route path="/listing/:LID" children={<IndividualListing/>} />
-                        <Route path="/contractors/:UID" children={<IndividualContractor/>} />
+                        <Route path="/listing/:LID" children={<IndividualListing />} />
+                        <Route path="/contractors/:UID" children={<IndividualContractor />} />
+                        <Route path="/accountsetup" children={<AccountSetup UID={UID} />} />
                         <Route component={ErrorPage} />
                     </Switch>
                 </div>

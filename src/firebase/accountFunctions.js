@@ -17,6 +17,7 @@ export function checkUserExists(UID) {
 export function createAccount(UID, form) {
     return new Promise(function (resolve, reject) {
         const server = "http://localhost:8118";
+        //if production server = "sldkfalskdj"
         const url = `${server}/createaccount`;
         form.UID = UID;
         const requestOptions = {
