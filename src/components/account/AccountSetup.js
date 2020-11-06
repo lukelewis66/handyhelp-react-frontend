@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import { Button, Modal, Form } from "react-bootstrap";
-import { createAccount } from "../../firebase/accountFunctions";
+import { Button, Modal, Form, Container } from "react-bootstrap";
+import { createAccount, checkUserExists } from "../../firebase/accountFunctions";
 
 import AccountInfo from "./AccountInfo";
 import AccountConfirm from "./AccountConfirm";
@@ -46,6 +46,17 @@ const AccountSetup = ({ UID }) => {
             location: [lat, lng],
         }))
     }
+
+    //in case someone tries route /setupaccount even though they already have an account set up.
+    //this will redirect them to the home page. 
+    useEffect(() => {
+        checkUserExists(UID)
+            .then(data => {
+                if (data.exists) {
+                    window.location.assign("/");
+                }
+            })
+    }, [])
 
     useEffect(() => {
         switch (current) {
@@ -102,15 +113,18 @@ const AccountSetup = ({ UID }) => {
     }
 
     return (
-        <Modal size="lg" show={true} backdrop="static" >
-            <Modal.Header><b>Let's get you set up.</b></Modal.Header>
-            <Modal.Body>{body.render}</Modal.Body>
-            <Modal.Footer>
-                <p style={{ color: "red" }}>{errorMessage}</p>
-                {body.prev ? <Button onClick={handlePrevClick}>Previous</Button> : null}
-                <Button onClick={handleNextClick}>{body.buttonText}</Button>
-            </Modal.Footer>
-        </Modal>);
+        <div >
+            <Container style={{ display: "flex", flexDirection: "column" }}>
+                <div>
+                    {body.render}
+                </div>
+                <div style={{ display: "flex" }}>
+                    <p style={{ color: "red" }}>{errorMessage}</p>
+                    {body.prev ? <Button onClick={handlePrevClick}>Previous</Button> : null}
+                    <Button onClick={handleNextClick}>{body.buttonText}</Button>
+                </div>
+            </Container>
+        </div>);
 }
 
 export default AccountSetup;
