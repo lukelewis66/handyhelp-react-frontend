@@ -7,7 +7,7 @@ import {getAllListings, getAllInactiveListings} from "../../Users/Client";
 const ClientInactiveListingList = ({ active }) => {
     const [listingItems, setListingItems] = useState([]);
     useEffect(() => {
-        getAllInactiveListings("qaMLKoRMx9O5MBNlyHklbDeY4gf2").then((list) => {
+        getAllInactiveListings(localStorage.getItem("UID")).then((list) => {
             setListingItems(list);
             
         })

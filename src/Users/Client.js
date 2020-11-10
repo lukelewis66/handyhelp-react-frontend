@@ -62,3 +62,23 @@ export function getListing(LID) {
                 console.log(listing.images);
             });
 }
+
+export function getUserInfo(UID) {
+    const url = "http://localhost:8118/getusers";
+    const req = {
+        method: "GET",
+        headers: {
+            'Accept': 'application/json',
+        }    
+    };
+    return new Promise(function (resolve, reject) {
+        fetch(url, req) 
+                .then(response => response.json())
+                .then(data => {
+                    //changing {objects} to [objects] so we can map then when showing.
+                    const test = Object.keys(data).map(key => data[key]);
+                    const user = test.find((info) => info.id === UID);
+                    resolve(user);
+                });
+        }) 
+}

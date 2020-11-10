@@ -83,3 +83,20 @@ export function reactivateAccount(UID) {
         .catch((err) => reject(err));
     });
 }
+
+
+export function editInfo(name, phone, email, UID) {
+    return new Promise(function (resolve, reject) {
+        const formData = new FormData();
+        formData.append("name", name)
+        formData.append("phone", phone)
+        formData.append("email", email)
+        formData.append("UID", UID)
+        fetch('http://localhost:8118/editInfo', {
+            method: 'POST',
+            body: formData,
+        })
+        .then((response) => resolve(response.text()))
+        .catch((err) => reject(err));
+    });
+}
