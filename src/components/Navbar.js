@@ -9,9 +9,10 @@ import SignOut from "./SignOut";
 
 //https://react-bootstrap.netlify.app/components/navbar/#navbars
 
-const Navbar = ({ activepage }) => {
+const Navbar = ({ activepage, isClient }) => {
   
-  var isClient = 0;
+  console.log("isClient: " + isClient)
+
   const UID = localStorage.getItem("UID");
   if (UID) {
     console.log("someone is logged in w UID: ", UID);
@@ -20,6 +21,8 @@ const Navbar = ({ activepage }) => {
   else {
     console.log("nobody is logged in");
   }
+
+
 
   const [active, setActive] = useState(activepage); //activepage (from url) passed in by App on first render (e.g. on a browser refresh)
 
@@ -40,6 +43,7 @@ const Navbar = ({ activepage }) => {
       );
     }
   }
+  
   if(isClient === 1){
   return (
     <div>
@@ -184,7 +188,7 @@ else if(isClient === 2){
 
   );
 }
-else if(isClient === 3){
+else{
   return (
     <div>
       <BootNav

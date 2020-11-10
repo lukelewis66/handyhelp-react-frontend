@@ -35,7 +35,7 @@ const FirebasePlayground = () => {
 
     //should realistically return ClientListItem components. Dont forget ID props. 
     function showClients() {
-        console.log("allclients: ", allClients);
+        //console.log("allclients: ", allClients);
         return (allClients.map(client => (
             <div>
                 <hr />
@@ -48,7 +48,8 @@ const FirebasePlayground = () => {
 
     //should realistically return ContractorListItem components. Dont forget ID props. 
     function showContractors() {
-        console.log("allcontractors: ", allContractors);
+        
+        //console.log("allcontractors: ", allContractors);
         return (allContractors.map(contractor => (
             <div>
                 <hr />
@@ -56,11 +57,33 @@ const FirebasePlayground = () => {
                 <p>Rating: {contractor.rating}</p>
                 <p>Email: {contractor.email}</p>
                 <p>Phone: {contractor.phone}</p>
+                <p>Distance: {getDistance(contractor.id)}</p>
                 <p>Location: {contractor.phone}</p>
                 <p>Picture Url: {contractor.picture}</p>
                 <p>Skilltags: {contractor.skilltags}</p>
             </div>
         )))
+    }
+
+    function getDistance(UID2) {
+        url = new URL(`${server}/getdistance`);
+        const params = new URLSearchParams();
+        var UID1 = localStorage.getItem("UID");
+        params.append("UID1", UID1);
+        params.append("UID2", UID2);
+        url.search = params.toString();
+        const req = {
+            method: "GET",
+            headers: {
+                'Accept': 'application/json',
+            },
+        };
+        fetch(url, req)
+            .then(response => response.json())
+            .then(data => {
+                console.log("\nDistance: "+ data)
+                return data;
+            });
     }
 
 
@@ -80,16 +103,21 @@ const FirebasePlayground = () => {
         fetch(url, req)
             .then(response => response.json())
             .then(data => {
+                
                 //changing {objects} to [objects] so we can map then when showing.
                 const listData = Object.keys(data).map(key => data[key])
                 if (type === "clients") {
+                    
                     setAllClients(listData);
+                    
                 }
                 else if (type === "contractors") {
                     setAllContractors(listData);
                 }
             });
     }
+
+    
 
     return (
         <div>
