@@ -24,7 +24,7 @@ function CredsForm(props) {
     evt.preventDefault();
     alert(`Submitting ${state.acckey} and ${state.seckey}`)
 
-    let server = "http://localhost:8118/api"
+    let server = `${process.env.REACT_APP_SERVER_URL}/api`
     if (process.env.REACT_APP_REMOTE) { //set this in .env file: REACT_APP_REMOTE=1
       server = "https://handyhelp-flask-backend.herokuapp.com/api"
     }
