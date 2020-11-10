@@ -7,7 +7,7 @@ import {getAllListings} from "../../Users/Client";
 const ClientListingList = ({ active }) => {
     const [listingItems, setListingItems] = useState([]);
     useEffect(() => {
-        getAllListings("qaMLKoRMx9O5MBNlyHklbDeY4gf2").then((list) => {
+        getAllListings(localStorage.getItem("UID")).then((list) => {
             setListingItems(list);
             
         })

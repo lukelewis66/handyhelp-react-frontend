@@ -27,7 +27,7 @@ const AccountReactivate = () => {
     }
 
     return (
-        <div className="component-border">
+        <div className="formStyle">
             <Button className="active-button" variant="primary" onClick={handleShow}>
                 Reactivate Account
             </Button>

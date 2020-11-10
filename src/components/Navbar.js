@@ -206,5 +206,6 @@ else if(isClient === 3){
 
   );
 }
+console.log(isClient);
 }
 export default Navbar;
