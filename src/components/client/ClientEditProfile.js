@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+import { checkUserActive } from "../../firebase/accountFunctions";
+
+import AccountDeactivate from "../account/AccountDeactivate";
+
+import AccountReactivate from "../account/AccountReactivate"
 
 const ClientEditProfile = () => {
-    return (
-        <div className="component-border">
-            <h1>ClientEditProfile component</h1>
-        </div>);
+    const [active, setActive] = useState();
+    useEffect(() => {
+        checkUserActive(localStorage.getItem("UID"))
+            .then((data) => {
+                if(data.active) {
+                    setActive(<AccountDeactivate />);
+                }
+                else {
+                    setActive(<AccountReactivate />);
+                }
+            })
+    }, [])
+    
+    return(
+        <div>
+            {active}
+        </div>
+    )   
 }
 
 export default ClientEditProfile;

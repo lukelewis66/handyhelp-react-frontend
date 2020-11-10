@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 
 
 const FirebasePlayground = () => {
-
     const [allClients, setAllClients] = useState([{}]);
     const [allContractors, setAllContractors] = useState([{}]);
+
     var url;
 
     // component loads
