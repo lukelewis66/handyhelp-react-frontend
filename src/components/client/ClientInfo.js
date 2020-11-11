@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import {getUserInfo} from "../../Users/Client";
+import { getUserInfo } from "../../firebase/Client";
 
 const ClientInfo = () => {
 	const [userInfo, setUserinfo] = useState([]);
-    useEffect(() => {
-        getUserInfo(localStorage.getItem("UID")).then((data) => {
-            setUserinfo(data);
-            
-        })
-	},[]);
-	
+	useEffect(() => {
+		getUserInfo(localStorage.getItem("UID")).then((data) => {
+			setUserinfo(data);
+
+		})
+	}, []);
+
 	return (
-		<div className = "infoPanel">
+		<div className="infoPanel">
 			<h2>Name: {userInfo.name}</h2>
 			<h3>Location: {userInfo.location}</h3>
 		</div>)

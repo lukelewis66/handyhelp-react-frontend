@@ -17,44 +17,28 @@ import IndividualContractor from './components/pages/IndividualContractor.js';
 
 import { checkUserExists, getUserRole } from "./firebase/accountFunctions";
 
-import { signOut } from "./firebase/authFunctions";
-
 //https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space
 
 function App() {
+    const [apiCalls, setApiCalls] = useState(0);
     const [isClient, setClient] = useState(4);
-    const [accountSetup, setAccountSetup] = useState();
     const UID = localStorage.getItem("UID");
     const [userExists, setUserExists] = useState(true);
     const pageOnLoad = window.location.pathname.toString();
     console.log("pageOnLoad: ", pageOnLoad);
 
-    //signOut();
-    // const renderAccountSetup = () => {
-    //     const UID = localStorage.getItem("UID");
-    //     if (UID) {
-    //         checkUserExists(UID)
-    //             .then(data => {
-    //                 if (data.exists === false) {
-    //                     setAccountSetup(<AccountSetup UID={UID} />)
-    //                 }
-    //                 console.log(data)
-    //             })
-    //             .catch(err => console.log(err));
-    //     }
-    // }
     useEffect(() => {
-        //renderAccountSetup();
+        console.log("in use effect with apicalls: ", apiCalls);
         console.log("UID: ", UID);
         if (UID) {
             checkUserExists(UID)
                 .then(data => {
                     if (data.exists === false) {
-                        console.log("yo");
                         setUserExists(false);
                     } else {
                         getUserRole(UID)
                             .then((response) => {
+                                setApiCalls(apiCalls + 1);
                                 if (response.role === "client") {
                                     console.log("isClient = 1");
                                     setClient(1);
@@ -63,7 +47,7 @@ function App() {
                                     console.log("isClient = 0");
                                     setClient(0);
                                 }
-                                else if (response.role === "chill") {
+                                else if (response.role === "Admin") {
                                     console.log("User is chill");
                                     setClient(2);
                                 }
@@ -77,6 +61,7 @@ function App() {
                 .catch(err => console.log(err));
         }
     }, [])
+
 
     return (
         <main>
