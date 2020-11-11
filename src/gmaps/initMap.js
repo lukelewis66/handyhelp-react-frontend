@@ -32,54 +32,7 @@ function initMap() {
         if (status !== "OK") {
           alert("Error was: " + status);
         } else {
-          const originList = response.originAddresses;
-          const destinationList = response.destinationAddresses;
-          const outputDiv = document.getElementById("output");
-          outputDiv.innerHTML = "";
-          deleteMarkers(markersArray);
-  
-          const showGeocodedAddressOnMap = function (asDestination) {
-            const icon = asDestination ? destinationIcon : originIcon;
-  
-            return function (results, status) {
-              if (status === "OK") {
-                map.fitBounds(bounds.extend(results[0].geometry.location));
-                markersArray.push(
-                  new google.maps.Marker({
-                    map,
-                    position: results[0].geometry.location,
-                    icon: icon,
-                  })
-                );
-              } else {
-                alert("Geocode was not successful due to: " + status);
-              }
-            };
-          };
-  
-          for (let i = 0; i < originList.length; i++) {
-            const results = response.rows[i].elements;
-            geocoder.geocode(
-              { address: originList[i] },
-              showGeocodedAddressOnMap(false)
-            );
-  
-            for (let j = 0; j < results.length; j++) {
-              geocoder.geocode(
-                { address: destinationList[j] },
-                showGeocodedAddressOnMap(true)
-              );
-              outputDiv.innerHTML +=
-                originList[i] +
-                " to " +
-                destinationList[j] +
-                ": " +
-                results[j].distance.text +
-                " in " +
-                results[j].duration.text +
-                "<br>";
-            }
-          }
+          console.log("response = " + response);
         }
       }
     );

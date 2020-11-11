@@ -81,7 +81,7 @@ function App() {
                       console.log("isClient = 0");
                       setClient(0);
                     }
-                    else if(data.role === "chill"){
+                    else if(data.role === "admin"){
                         console.log("User is chill");
                         setClient(2);
                     }
