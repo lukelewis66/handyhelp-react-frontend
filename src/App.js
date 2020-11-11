@@ -63,7 +63,7 @@ function App() {
     useEffect(() => {
         const UID = localStorage.getItem("UID");
         var url;
-        const server = "http://localhost:8118";
+        const server = process.env.REACT_APP_SERVER_URL;
         url = new URL(`${server}/getrole`);
         const params = new URLSearchParams();
         params.append("UID", UID);
