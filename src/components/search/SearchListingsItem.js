@@ -1,21 +1,23 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { Card, Button } from "react-bootstrap";
+
 const SearchListingsItem = ({ props }) => {
 
     var fullLink = "listing/LID=";
-    fullLink += props.LID;
+    fullLink += props.id;
     return (
-        <div className="component-border">
-            <h3>SearchListingsItem component</h3>
-            <ul>
-                <li>{props.description}</li>
-                <li>{props.image}</li>
-                <li>{props.skilltags}</li>
-            </ul>
-            <Link to={fullLink}>
-                <button type="button" class="btn btn-primary">Learn More</button>
-            </Link>
-        </div>
+        < Card className="cardStyle" variant="outlined" >
+            <Card.Body>
+                <Card.Img className="itemPhoto" variant="top" src={props.images[0] ? props.images[0] : "/hammer-icon.jpg"} alt="ClientListingImage" />
+                <Card.Title>{props.title}</Card.Title>
+                <Card.Text>
+                    {props.description}
+                    {props.skilltags}
+                </Card.Text>
+                <Button as={Link} to={fullLink}>Learn More</Button>
+            </Card.Body>
+        </Card >
     );
 }
 

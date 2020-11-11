@@ -17,35 +17,17 @@ import IndividualContractor from './components/pages/IndividualContractor.js';
 
 import { checkUserExists, getUserRole } from "./firebase/accountFunctions";
 
-import { signOut } from "./firebase/authFunctions";
-
 //https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space
 
 function App() {
     const [apiCalls, setApiCalls] = useState(0);
-    const [isClient, setClient] = useState(2);
-    const [accountSetup, setAccountSetup] = useState();
+    const [isClient, setClient] = useState(4);
     const UID = localStorage.getItem("UID");
     const [userExists, setUserExists] = useState(true);
     const pageOnLoad = window.location.pathname.toString();
     console.log("pageOnLoad: ", pageOnLoad);
 
-    // //signOut();
-    // const renderAccountSetup = () => {
-    //     const UID = localStorage.getItem("UID");
-    //     if (UID) {
-    //         checkUserExists(UID)
-    //             .then(data => {
-    //                 if (data.exists === false) {
-    //                     setAccountSetup(<AccountSetup UID={UID} />)
-    //                 }
-    //                 console.log(data)
-    //             })
-    //             .catch(err => console.log(err));
-    //     }
-    // }
     useEffect(() => {
-        //renderAccountSetup();
         console.log("in use effect with apicalls: ", apiCalls);
         console.log("UID: ", UID);
         if (UID) {
@@ -78,41 +60,6 @@ function App() {
                 })
                 .catch(err => console.log(err));
         }
-    }, [])
-
-
-    useEffect(() => {
-        const UID = localStorage.getItem("UID");
-        var url;
-        const server = "https://localhost:8118"; //process.env.REACT_APP_SERVER_URL
-        url = new URL(`${server}/getrole`);
-        const params = new URLSearchParams();
-        params.append("UID", UID);
-        url.search = params.toString();
-        console.log(url.toString());
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.role);
-                if (data.role === "client") {
-                    console.log("isClient = 1");
-                    setClient(1);
-                }
-                else if (data.role === "contractor") {
-                    console.log("isClient = 0");
-                    setClient(0);
-                }
-                else if (data.role === "admin") {
-                    console.log("User is chill");
-                    setClient(2);
-                }
-                else {
-                    console.log("isClient = 3");
-                    setClient(3);
-                }
-            }
-            )
-            .catch((err) => console.log("rejected in App.js on: line 76"));
     }, [])
 
 

@@ -52,7 +52,7 @@ const IndividualListing = () => {
             <h1>Project: {listing.title}</h1>
             <h2>Description: {listing.description}</h2>
             <h2>client UID: {listing.client}</h2>
-            <h2>data: {userInfo.location}</h2>
+            {/* <h2>data: {userInfo.location}</h2> still buggy*/}
             <h2>Api calls: {apiCalls}</h2>
         </div>
     );

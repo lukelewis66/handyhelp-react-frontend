@@ -7,7 +7,7 @@ import { getAllListings, getAllInactiveListings } from "../../firebase/Client";
 const ClientInactiveListingList = ({ active }) => {
     const [listingItems, setListingItems] = useState([]);
     useEffect(() => {
-        getAllInactiveListings(localStorage.getItem("UID")).then((list) => {
+        getAllListings(localStorage.getItem("UID"), active).then((list) => {
             setListingItems(list);
 
         })
