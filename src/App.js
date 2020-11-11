@@ -1,6 +1,5 @@
-import React, { useState, useEffect, Redirect } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { useParams } from "react-router";
+import React, { useState, useEffect } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ClientPage from './components/pages/ClientPage';
@@ -16,13 +15,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import IndividualListing from './components/pages/IndividualListing';
 import IndividualContractor from './components/pages/IndividualContractor.js';
 
-import { checkUserExists } from "./firebase/accountFunctions";
+import { checkUserExists, getUserRole } from "./firebase/accountFunctions";
 
 import { signOut } from "./firebase/authFunctions";
 
 //https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space
 
 function App() {
+    const [isClient, setClient] = useState(4);
     const [accountSetup, setAccountSetup] = useState();
     const UID = localStorage.getItem("UID");
     const [userExists, setUserExists] = useState(true);
@@ -52,6 +52,26 @@ function App() {
                     if (data.exists === false) {
                         console.log("yo");
                         setUserExists(false);
+                    } else {
+                        getUserRole(UID)
+                            .then((response) => {
+                                if (response.role === "client") {
+                                    console.log("isClient = 1");
+                                    setClient(1);
+                                }
+                                else if (response.role === "contractor") {
+                                    console.log("isClient = 0");
+                                    setClient(0);
+                                }
+                                else if (response.role === "chill") {
+                                    console.log("User is chill");
+                                    setClient(2);
+                                }
+                                else {
+                                    console.log("isClient = 3");
+                                    setClient(3);
+                                }
+                            })
                     }
                 })
                 .catch(err => console.log(err));
@@ -99,7 +119,7 @@ function App() {
         <main>
             <div className="box">
                 <div className="box-header">
-                    <Navbar activepage={pageOnLoad} isClient = {isClient}/>
+                    <Navbar activepage={pageOnLoad} isClient={isClient} />
                 </div>
                 {/* box-body div will stretch to fill out the screen until footer (if its smaller than the screen) */}
                 <div className="box-body">
