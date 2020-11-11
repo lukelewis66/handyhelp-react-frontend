@@ -8,6 +8,7 @@ const ClientListingList = ({ active }) => {
     const [listingItems, setListingItems] = useState([]);
     useEffect(() => {
         getAllListings(localStorage.getItem("UID"), active).then((list) => {
+            console.log("listings retrieved on clientlistinglist: ", list);
             setListingItems(list);
         })
     }, []);

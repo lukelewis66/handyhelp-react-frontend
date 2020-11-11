@@ -14,7 +14,7 @@ const MakeListingModal = () => {
     const [show, setShow] = useState(false);
     const [form, setForm] = useState({
         active: true,
-        client: "po1X8blsdRaEdsSMXpRf", //fake@google.com
+        client: localStorage.getItem("UID"), //fake@google.com
         title: "",
         description: "",
         images: [],

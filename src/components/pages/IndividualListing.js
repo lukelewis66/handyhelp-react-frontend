@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { initMap } from "../../gmaps/initMap.js"
-import { getUserInfo } from "../../firebase/Client";
+import { getUserInfo, getListing } from "../../firebase/Client";
 
 
 const IndividualListing = () => {
@@ -14,21 +14,14 @@ const IndividualListing = () => {
     });
     const [userInfo, setUserinfo] = useState({});
     let { LID } = useParams();
+    LID = LID.substring(4, LID.length);
     useEffect(() => {
         console.log("individual listing useEffect");
         if (apiCalls >= 5) {
             console.log("api call limit (5) reached!");
         }
         else {
-            var url;
-            const server = process.env.REACT_APP_SERVER_URL;
-            url = new URL(`${server}/getlisting`);
-            var params = new URLSearchParams();
-            params.append("LID", LID);
-            url.search = params.toString();
-            console.log(url.toString());
-            fetch(url)
-                .then(response => response.json())
+            getListing(LID)
                 .then(data => {
                     console.log("individual listing data: " + data + " | data[client]: " + data["client"]);
                     setListing(data);
