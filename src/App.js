@@ -1,6 +1,5 @@
-import React, { useState, useEffect, Redirect } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { useParams } from "react-router";
+import React, { useState, useEffect } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ClientPage from './components/pages/ClientPage';
@@ -23,7 +22,7 @@ import { signOut } from "./firebase/authFunctions";
 //https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space
 
 function App() {
-    const [isClient, setClient] = useState(2);
+    const [isClient, setClient] = useState(4);
     const [accountSetup, setAccountSetup] = useState();
     const UID = localStorage.getItem("UID");
     const [userExists, setUserExists] = useState(true);
@@ -78,43 +77,6 @@ function App() {
                 .catch(err => console.log(err));
         }
     }, [])
-
-
-
-    useEffect(() => {
-        const UID = localStorage.getItem("UID");
-        var url;
-        const server = process.env.REACT_APP_SERVER_URL;
-        var url = new URL(`${server}/getrole`);
-        const params = new URLSearchParams();
-        params.append("UID", UID);
-        url.search = params.toString();
-        console.log(url.toString());
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.role);
-                if (data.role === "client") {
-                    console.log("isClient = 1");
-                    setClient(1);
-                }
-                else if (data.role === "contractor") {
-                    console.log("isClient = 0");
-                    setClient(0);
-                }
-                else if (data.role === "chill") {
-                    console.log("User is chill");
-                    setClient(2);
-                }
-                else {
-                    console.log("isClient = 3");
-                    setClient(3);
-                }
-            }
-            )
-            .catch((err) => console.log("rejected in App.js on: line 76"));
-    }, [])
-
 
     return (
         <main>

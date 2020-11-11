@@ -121,6 +121,6 @@ export function getUserRole(UID) {
 
             }
             )
-            .catch((err) => console.log("rejected in App.js on: line 76"));
-    })
+            .catch((err) => reject(err));
+    });
 }
