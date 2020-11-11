@@ -28,7 +28,7 @@ const FirebasePlayground = () => {
     }, [])
 
     //testing
-    const server = "http://localhost:8118"
+    const server = process.env.REACT_APP_SERVER_URL;
 
     //production
     //const server = "https://handyhelp-flask-backend.herokuapp.com"

@@ -27,8 +27,8 @@ const AccountDeactivate = () => {
     }
 
     return (
-        <div className="component-border">
-            <Button className="activate-button" variant="primary" onClick={handleShow}>
+        <div className="formStyle">
+            <Button className="active-button" variant="primary" onClick={handleShow}>
                 Deactivate Account
             </Button>
 

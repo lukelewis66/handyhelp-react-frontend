@@ -13,22 +13,22 @@ const IndividualContractor = () => {
     });
     let { UID } = useParams();
     useEffect(() => {
-            var url;
-            const server = "http://localhost:8118";
-            url = new URL(`${server}/getcontractor`);
-            const params = new URLSearchParams();
-            params.append("UID", UID);
-            url.search = params.toString();
-            console.log(url.toString());
-                fetch(url)
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
-                        setContractor(data);
-                    }
-                )
-                .catch((err) => console.log("rejected in IndividContractor"));
-            }, [])
+        var url;
+        const server = process.env.REACT_APP_SERVER_URL;
+        url = new URL(`${server}/getcontractor`);
+        const params = new URLSearchParams();
+        params.append("UID", UID);
+        url.search = params.toString();
+        console.log(url.toString());
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setContractor(data);
+            }
+            )
+            .catch((err) => console.log("rejected in IndividContractor"));
+    }, [])
 
     return (
         <div>

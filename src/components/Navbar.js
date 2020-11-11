@@ -210,5 +210,6 @@ else{
 
   );
 }
+console.log(isClient);
 }
 export default Navbar;

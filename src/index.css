@@ -69,6 +69,15 @@ html {
 	
 }
 
+.formStyle {
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+#submitButton{
+  width: auto;
+}
+
 .flex-list {
   display: flex;
   flex-wrap: wrap; 
@@ -106,7 +115,7 @@ html {
 }
 
 .active-button{
-  margin: 3px 3px;
+  
 }
 
 

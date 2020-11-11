@@ -77,7 +77,7 @@ const MakeListingModal = () => {
             alert("Listing title and description must be filled out");
         }
         else {
-            const server = "http://localhost:8118";
+            const server = process.env.REACT_APP_SERVER_URL;
             const url = `${server}/addlisting/`;
             const requestOptions = {
                 method: "POST",

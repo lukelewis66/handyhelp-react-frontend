@@ -12,22 +12,22 @@ const IndividualListing = () => {
     });
     let { LID } = useParams();
     useEffect(() => {
-            var url;
-            const server = "http://localhost:8118";
-            url = new URL(`${server}/getlisting`);
-            const params = new URLSearchParams();
-            params.append("LID", LID);
-            url.search = params.toString();
-            console.log(url.toString());
-                fetch(url)
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
-                        setListing(data);
-                    }
-                )
-                .catch((err) => console.log("rejected in IndividLisiting"));
-            }, [])
+        var url;
+        const server = process.env.REACT_APP_SERVER_URL;
+        url = new URL(`${server}/getlisting`);
+        const params = new URLSearchParams();
+        params.append("LID", LID);
+        url.search = params.toString();
+        console.log(url.toString());
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setListing(data);
+            }
+            )
+            .catch((err) => console.log("rejected in IndividLisiting"));
+    }, [])
 
     return (
         <div>
