@@ -91,4 +91,4 @@ function initMap() {
     }
     markersArray = [];
   }
-  
+export default initMap;
