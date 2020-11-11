@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { initMap } from "../../gmaps/initMap.js"
-import { getClientInfo } from "../../firebase/Client";
+import { getUserInfo } from "../../firebase/Client";
 
 
 const IndividualListing = () => {
@@ -33,7 +33,7 @@ const IndividualListing = () => {
                     console.log("individual listing data: " + data + " | data[client]: " + data["client"]);
                     setListing(data);
                     setApiCalls(apiCalls + 1);
-                    getClientInfo(data['client'])
+                    getUserInfo(data['client'])
                         .then((data) => {
                             setApiCalls(apiCalls + 1);
                             setUserinfo(data);

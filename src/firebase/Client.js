@@ -6,6 +6,7 @@ export function getAllListings(UID, active) {
             'Accept': 'application/json',
         }
     };
+    console.log("get all listings called with UID: ", UID, " \nactive: ", active);
     return new Promise(function (resolve, reject) {
         fetch(url, req)
             .then(response => response.json())
@@ -20,7 +21,7 @@ export function getAllListings(UID, active) {
                 else {
                     listings = listData.filter((listing) => listing.active === active);
                 }
-                //console.log(userListings);
+                console.log("resolving with listings: ", listings);
                 resolve(listings);
             })
             .catch(err => reject(err));
@@ -71,63 +72,17 @@ export function getListing(LID) {
 }
 
 export function getUserInfo(UID) {
-    const url = `${process.env.REACT_APP_SERVER_URL}/getusers`;
-    const req = {
-        method: "GET",
-        headers: {
-            'Accept': 'application/json',
-        }
-    };
+    const server = process.env.REACT_APP_SERVER_URL;
+    var url = new URL(`${server}/getuser`);
+    const params = new URLSearchParams();
+    params.append("UID", UID);
+    url.search = params.toString();
     return new Promise(function (resolve, reject) {
-        fetch(url, req)
+        fetch(url)
             .then(response => response.json())
             .then(data => {
-                //changing {objects} to [objects] so we can map then when showing.
-                const test = Object.keys(data).map(key => data[key]);
-                const user = test.find((info) => info.id === UID);
-                resolve(user);
-            });
-    })
-}
-
-export function getClientInfo(UID) {
-    console.log("getClientInfo called");
-    const url = `${process.env.REACT_APP_SERVER_URL}/getclients`;
-    const req = {
-        method: "GET",
-        headers: {
-            'Accept': 'application/json',
-        }
-    };
-    return new Promise(function (resolve, reject) {
-        fetch(url, req)
-            .then(response => response.json())
-            .then(data => {
-                //changing {objects} to [objects] so we can map then when showing.
-                const test = Object.keys(data).map(key => data[key]);
-                const user = test.find((info) => info.id === UID);
-                resolve(user);
-            });
-    })
-}
-
-export function getContractorInfo(UID) {
-    console.log("getContractorInfo called");
-    const url = `${process.env.REACT_APP_SERVER_URL}/getcontractors`;
-    const req = {
-        method: "GET",
-        headers: {
-            'Accept': 'application/json',
-        }
-    };
-    return new Promise(function (resolve, reject) {
-        fetch(url, req)
-            .then(response => response.json())
-            .then(data => {
-                //changing {objects} to [objects] so we can map then when showing.
-                const test = Object.keys(data).map(key => data[key]);
-                const user = test.find((info) => info.id === UID);
-                resolve(user);
+                console.log("user retrieved: ", data);
+                resolve(data);
             });
     })
 }

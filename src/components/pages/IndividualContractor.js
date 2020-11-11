@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { getContractorInfo } from "../../firebase/Client";
+import { getContractor } from "../../firebase/Contractor";
 
 
 const IndividualContractor = () => {
@@ -14,15 +14,12 @@ const IndividualContractor = () => {
     });
     let { UID } = useParams();
     useEffect(() => {
-        console.log("individual contracor useEffect");
-        console.log("UID: " + UID);
-        getContractorInfo(UID)
-            .then((data) => {
-                setApiCalls(apiCalls + 1);
-                setContractor(data);
-                console.log(data);
-            })
-            .catch((err) => { console.log(err) });
+        console.log("individual contractor useeffect");
+        console.log("UID: ", UID);
+        getContractor(UID).then((contractor) => {
+            setApiCalls(apiCalls + 1);
+            setContractor(contractor);
+        })
     }, [])
 
     return (
