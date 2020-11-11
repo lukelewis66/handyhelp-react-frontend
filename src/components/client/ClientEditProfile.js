@@ -41,7 +41,7 @@ const ClientEditProfile = () => {
         var phone = phoneRef.current.value ? phoneRef.current.value : userInfo.phone;
         var email = emailRef.current.value ? emailRef.current.value : userInfo.email;
         console.log(name, phone, email);
-        editInfo(name,phone,email,localStorage.getItem("UID")).then(window.location.reload());
+        editInfo(name,phone,email,localStorage.getItem("UID")).then(() => window.location.reload());
         e.preventDefault();
     }
 

@@ -95,12 +95,15 @@ export function editInfo(name, phone, email, UID) {
         formData.append("phone", phone);
         formData.append("email", email);
         formData.append("UID", UID);
+        console.log(name,phone,email);
         const server = process.env.REACT_APP_SERVER_URL;
         fetch(`${server}/editInfo`, {
             method: 'POST',
             body: formData,
         })
             .then((response) => resolve(response.text()))
-            .catch((err) => reject(err));
+            .catch((err) => reject(err))
+            ;
     });
+    
 }
