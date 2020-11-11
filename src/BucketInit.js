@@ -2,6 +2,7 @@
 // If given a null or non-alphanumeric UID the function will console log an error
 
 function BucketInit(UID) {
+    console.log("in BucketInit");
     var stringUID = UID.toString();
     var result = 'Bucket initialized under: ' + UID;
     var alphanumeric = /^[0-9a-zA-Z]+$/;
