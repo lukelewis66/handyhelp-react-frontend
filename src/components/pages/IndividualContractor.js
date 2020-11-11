@@ -13,6 +13,7 @@ const IndividualContractor = () => {
         name: "Anonymous",
     });
     let { UID } = useParams();
+    UID = UID.substring(4, UID.length);
     useEffect(() => {
         console.log("individual contractor useeffect");
         console.log("UID: ", UID);
