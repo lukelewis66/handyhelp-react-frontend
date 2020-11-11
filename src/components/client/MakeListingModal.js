@@ -73,6 +73,7 @@ const MakeListingModal = () => {
     }
 
     const handleSubmit = () => {
+        console.log("Form: ", form);
         if (form.title === "" || form.description === "") {
             alert("Listing title and description must be filled out");
         }
