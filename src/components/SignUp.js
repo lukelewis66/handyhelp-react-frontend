@@ -38,10 +38,11 @@ const SignUp = () => {
         } else if (form.password !== form.confirm_password) {
             setFormMessage("Passwords do not match");
         } else {
+            console.log("calling signup....");
             signUp(form.email, form.password)
+                .then(() => BucketInit(localStorage.getItem("UID")))
                 .then(() => window.location.assign("/"))
                 /// calling test version of bucket initialization here
-                .then(() => BucketInit(localStorage.getItem("UID")))
                 /// end test
                 .catch((err) => setFormMessage(err));
         }
