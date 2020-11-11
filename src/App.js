@@ -29,20 +29,20 @@ function App() {
     const pageOnLoad = window.location.pathname.toString();
     console.log("pageOnLoad: ", pageOnLoad);
 
-    //signOut();
-    const renderAccountSetup = () => {
-        const UID = localStorage.getItem("UID");
-        if (UID) {
-            checkUserExists(UID)
-                .then(data => {
-                    if (data.exists === false) {
-                        setAccountSetup(<AccountSetup UID={UID} />)
-                    }
-                    console.log(data)
-                })
-                .catch(err => console.log(err));
-        }
-    }
+    // //signOut();
+    // const renderAccountSetup = () => {
+    //     const UID = localStorage.getItem("UID");
+    //     if (UID) {
+    //         checkUserExists(UID)
+    //             .then(data => {
+    //                 if (data.exists === false) {
+    //                     setAccountSetup(<AccountSetup UID={UID} />)
+    //                 }
+    //                 console.log(data)
+    //             })
+    //             .catch(err => console.log(err));
+    //     }
+    // }
     useEffect(() => {
         //renderAccountSetup();
         console.log("UID: ", UID);
@@ -63,7 +63,7 @@ function App() {
     useEffect(() => {
         const UID = localStorage.getItem("UID");
         var url;
-        const server = process.env.REACT_APP_SERVER_URL;
+        const server = "https://localhost:8118"; //process.env.REACT_APP_SERVER_URL
         url = new URL(`${server}/getrole`);
         const params = new URLSearchParams();
         params.append("UID", UID);

@@ -1,8 +1,7 @@
 
 
 function initMap() {
-    const bounds = new google.maps.LatLngBounds();
-    const markersArray = [];
+  
     const origin1 = { lat: 55.93, lng: -3.118 };
     const origin2 = "Greenwich, England";
     const destinationA = "Stockholm, Sweden";
