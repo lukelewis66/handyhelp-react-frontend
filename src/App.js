@@ -22,6 +22,7 @@ import { signOut } from "./firebase/authFunctions";
 //https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space
 
 function App() {
+    const [apiCalls, setApiCalls] = useState(0);
     const [isClient, setClient] = useState(2);
     const [accountSetup, setAccountSetup] = useState();
     const UID = localStorage.getItem("UID");
@@ -45,16 +46,17 @@ function App() {
     // }
     useEffect(() => {
         //renderAccountSetup();
+        console.log("in use effect with apicalls: ", apiCalls);
         console.log("UID: ", UID);
         if (UID) {
             checkUserExists(UID)
                 .then(data => {
                     if (data.exists === false) {
-                        console.log("yo");
                         setUserExists(false);
                     } else {
                         getUserRole(UID)
                             .then((response) => {
+                                setApiCalls(apiCalls + 1);
                                 if (response.role === "client") {
                                     console.log("isClient = 1");
                                     setClient(1);
@@ -78,7 +80,7 @@ function App() {
         }
     }, [])
 
-    
+
     useEffect(() => {
         const UID = localStorage.getItem("UID");
         var url;
@@ -88,32 +90,32 @@ function App() {
         params.append("UID", UID);
         url.search = params.toString();
         console.log(url.toString());
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data.role);
-                    if(data.role === "client"){
-                      console.log("isClient = 1");
-                      setClient(1);
-                    }
-                    else if(data.role === "contractor"){
-                      console.log("isClient = 0");
-                      setClient(0);
-                    }
-                    else if(data.role === "admin"){
-                        console.log("User is chill");
-                        setClient(2);
-                    }
-                    else{
-                      console.log("isClient = 3");
-                      setClient(3);
-                    }
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.role);
+                if (data.role === "client") {
+                    console.log("isClient = 1");
+                    setClient(1);
                 }
+                else if (data.role === "contractor") {
+                    console.log("isClient = 0");
+                    setClient(0);
+                }
+                else if (data.role === "admin") {
+                    console.log("User is chill");
+                    setClient(2);
+                }
+                else {
+                    console.log("isClient = 3");
+                    setClient(3);
+                }
+            }
             )
             .catch((err) => console.log("rejected in App.js on: line 76"));
     }, [])
-  
-    
+
+
     return (
         <main>
             <div className="box">

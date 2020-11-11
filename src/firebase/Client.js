@@ -1,4 +1,4 @@
-export function getAllListings(UID) {
+export function getAllListings(UID, active) {
     const url = `${process.env.REACT_APP_SERVER_URL}/getlistings`;
     const req = {
         method: "GET",
@@ -10,13 +10,20 @@ export function getAllListings(UID) {
         fetch(url, req)
             .then(response => response.json())
             .then(data => {
-                //changing {objects} to [objects] so we can map then when showing.
+                //changing {objects} to [objects] so we can map them when showing.
                 const listData = Object.keys(data).map(key => data[key]);
                 //console.log(listData);
-                const userListings = listData.filter((listing) => listing.client === UID && listing.active === true);
+                var listings;
+                if (UID) {
+                    listings = listData.filter((listing) => listing.client === UID && listing.active === active);
+                }
+                else {
+                    listings = listData.filter((listing) => listing.active === active);
+                }
                 //console.log(userListings);
-                resolve(userListings);
-            });
+                resolve(listings);
+            })
+            .catch(err => reject(err));
     })
 }
 
@@ -84,6 +91,7 @@ export function getUserInfo(UID) {
 }
 
 export function getClientInfo(UID) {
+    console.log("getClientInfo called");
     const url = `${process.env.REACT_APP_SERVER_URL}/getclients`;
     const req = {
         method: "GET",
@@ -104,6 +112,7 @@ export function getClientInfo(UID) {
 }
 
 export function getContractorInfo(UID) {
+    console.log("getContractorInfo called");
     const url = `${process.env.REACT_APP_SERVER_URL}/getcontractors`;
     const req = {
         method: "GET",
