@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import {getContractorInfo} from "../../Users/Client";
 
 
 const IndividualContractor = () => {
@@ -13,27 +14,17 @@ const IndividualContractor = () => {
     });
     let { UID } = useParams();
     useEffect(() => {
-        var url;
-        const server = process.env.REACT_APP_SERVER_URL;
-        url = new URL(`${server}/getcontractor`);
-        const params = new URLSearchParams();
-        params.append("UID", UID);
-        url.search = params.toString();
-        console.log(url.toString());
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                setContractor(data);
-            }
-            )
-            .catch((err) => console.log("rejected in IndividContractor"));
+        console.log("UID: " + UID);
+        getContractorInfo(UID.substring(4))
+        .then((data) => {setContractor(data); console.log(data)})
+        .catch((err) => {console.log(err)});  
     }, [])
 
     return (
         <div>
             <h1>Contractor: {contractor.name}</h1>
             <h2>Description: {contractor.description}</h2>
+    <h2>Location: {contractor.location}</h2>
         </div>
     );
 }

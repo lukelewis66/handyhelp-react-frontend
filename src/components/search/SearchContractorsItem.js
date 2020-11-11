@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const SearchContractorsItem = ({ props }) => {
 
-    var fullLink = "contractors/UID=";
+    var fullLink = "contractors/";
     fullLink += props.UID;
 
     return (

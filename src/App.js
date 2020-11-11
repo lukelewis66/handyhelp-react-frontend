@@ -22,7 +22,7 @@ import { signOut } from "./firebase/authFunctions";
 //https://stackoverflow.com/questions/90178/make-a-div-fill-the-height-of-the-remaining-screen-space
 
 function App() {
-    const [isClient, setClient] = useState(4);
+    const [isClient, setClient] = useState(2);
     const [accountSetup, setAccountSetup] = useState();
     const UID = localStorage.getItem("UID");
     const [userExists, setUserExists] = useState(true);
@@ -63,7 +63,7 @@ function App() {
                                     console.log("isClient = 0");
                                     setClient(0);
                                 }
-                                else if (response.role === "chill") {
+                                else if (response.role === "Admin") {
                                     console.log("User is chill");
                                     setClient(2);
                                 }
@@ -78,7 +78,6 @@ function App() {
         }
     }, [])
 
-    const [isClient, setClient] = useState(2);
     
     useEffect(() => {
         const UID = localStorage.getItem("UID");
