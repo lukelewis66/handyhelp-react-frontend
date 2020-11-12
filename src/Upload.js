@@ -6,12 +6,6 @@ function Upload(images, UID, type) {
         var s3Urls = [];
         var imageUrl = '';
         const files = Array.from(images);
-        if (type == 'ProfilePic') {
-            imageUrl = 'http://' + UID.toLowerCase() + '.s3-us-west-1.amazonaws.com/ProfilePic/';
-        }
-        else {
-            imageUrl = 'http://' + UID.toLowerCase() + '.s3-us-west-1.amazonaws.com/Listings/' + type + '/';
-        }
         for (let i = 0; i < files.length; i++) {
             const formData = new FormData();
             formData.append("type", type);
@@ -23,7 +17,13 @@ function Upload(images, UID, type) {
                 method: 'POST',
                 body: formData,
             });
-            imageUrl += files[i].name;
+            if (type == 'ProfilePic') {
+                imageUrl = 'http://' + UID.toLowerCase() + '.s3-us-west-1.amazonaws.com/ProfilePic.png';
+            }
+            else {
+                imageUrl = 'http://' + UID.toLowerCase() + '.s3-us-west-1.amazonaws.com/Listings/' + type + '/';
+                imageUrl += files[i].name;
+            }
             s3Urls.push(imageUrl);
         }
 

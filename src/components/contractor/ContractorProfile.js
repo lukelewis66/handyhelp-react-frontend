@@ -28,8 +28,10 @@ const ContractorProfile = () => {
     return (
         <div>
             <div className = "profileHeader">
-	    	<ContractorPhoto />
-	    	<ContractorInfo />
+            <div style={{display: "flex"}}>
+	    	    <ContractorPhoto />
+	    	    <ContractorInfo />
+            </div>
 	    </div>
             <Nav variant="tabs" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
                 <Nav.Item >
