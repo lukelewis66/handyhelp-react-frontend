@@ -1,17 +1,17 @@
-import React, {useState, useEffect} from "react";
-import {Button} from "react-bootstrap"
+import React, { useState, useEffect } from "react";
+import { Button } from "react-bootstrap"
 import ClientListingItem from "./ClientListingItem";
 import MakeListingModal from "./MakeListingModal";
-import {getAllListings, getAllInactiveListings} from "../../Users/Client";
+import { getAllListings, getAllInactiveListings } from "../../firebase/Client";
 
 const ClientInactiveListingList = ({ active }) => {
     const [listingItems, setListingItems] = useState([]);
     useEffect(() => {
-        getAllInactiveListings(localStorage.getItem("UID")).then((list) => {
+        getAllListings(localStorage.getItem("UID"), active).then((list) => {
             setListingItems(list);
-            
+
         })
-    },[]);
+    }, []);
 
     /*
     const fakeClientListingItems = [
@@ -28,13 +28,13 @@ const ClientInactiveListingList = ({ active }) => {
     */
     return (
         <div>
-	    {/* <h4>({active ? "Query Active Listings" : "Query Inactive Listings"})</h4> */}
+            {/* <h4>({active ? "Query Active Listings" : "Query Inactive Listings"})</h4> */}
 
             <div className="flex-list">
                 {listingItems.map((item) => (
                     <ClientListingItem key={item.id} props={item} />
                 ))}
-                
+
             </div>
             <MakeListingModal />
         </div>

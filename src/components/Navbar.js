@@ -11,7 +11,7 @@ import SignOut from "./SignOut";
 
 const Navbar = ({ activepage, isClient }) => {
   
-  console.log("isClient: " + isClient)
+  console.log("isClient: " + isClient);
 
   const UID = localStorage.getItem("UID");
   if (UID) {

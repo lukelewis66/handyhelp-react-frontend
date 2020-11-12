@@ -14,7 +14,7 @@ const MakeListingModal = () => {
     const [show, setShow] = useState(false);
     const [form, setForm] = useState({
         active: true,
-        client: "clients/po1X8blsdRaEdsSMXpRf", //fake@google.com
+        client: localStorage.getItem("UID"),
         title: "",
         description: "",
         images: [],
@@ -73,6 +73,7 @@ const MakeListingModal = () => {
     }
 
     const handleSubmit = () => {
+        console.log("Form: ", form);
         if (form.title === "" || form.description === "") {
             alert("Listing title and description must be filled out");
         }
