@@ -1,8 +1,34 @@
-import React from "react";
-import DeactivateContractor from "./DeactivateContractor.js"
-import { Modal } from "react-bootstrap";
+import React, { useState } from "react";
+import DeactivateContractor from "./DeactivateContractor.js";
+import { Modal, Button } from "react-bootstrap";
+import Upload from "../../Upload";
 
 const ContractorEditProfile = () => {
+    const [imageFiles, setImageFiles] = useState([])
+
+    const handleChange = (e, field) => {
+        const files = Array.from(e.target.files);
+        setImageFiles(files)
+    }
+
+    const handleSubmit = () => {
+        if (imageFiles.length > 0) {
+            const server = process.env.REACT_APP_SERVER_URL;
+            const imgurls = Upload(imageFiles, localStorage.getItem("UID"), "ProfilePic");
+            const updateBody = {
+                UID: localStorage.getItem("UID"),
+                imageUrls: imgurls,
+            }
+            const updateUrl = `${server}/updateprofilepicture`;
+            const requestOpts = {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(updateBody),
+            }
+            fetch(updateUrl, requestOpts).then((response => response.text().then(message => console.log(message))));
+        }
+    }
+
     return (
         <div className="component-border">
             <h1>ContractorEditProfile component</h1>
@@ -15,7 +41,10 @@ const ContractorEditProfile = () => {
           <h4 class="modal-title">Modal Header</h4>
         </div>
         <div class="modal-body">
-          <p>Some text in the modal.</p>
+          <p>Upload a new profile picture:</p>
+          <input type="file" accept="image/*" onChange={(e) => handleChange(e)} />
+          <Button variant="primary" onClick={handleSubmit}>Upload selected files</Button>
+          <p>Note: this will override your current profile picture!</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
