@@ -32,38 +32,42 @@ const ClientEditProfile = () => {
         })
     }, []);
 
+    const [formMessage, setFormMessage] = useState("");
+
     const nameRef = useRef();
     const phoneRef = useRef();
-    const emailRef = useRef();
 
     const handleClick = (e) => {
-        var name = nameRef.current.value ? nameRef.current.value : userInfo.name;
-        var phone = phoneRef.current.value ? phoneRef.current.value : userInfo.phone;
-        var email = emailRef.current.value ? emailRef.current.value : userInfo.email;
-        console.log(name, phone, email);
-        editInfo(name, phone, email, localStorage.getItem("UID")).then(() => window.location.reload());
+        var name = nameRef.current.value;
+        var phone = phoneRef.current.value;
+        if(name === "" || phone === "") {
+            setFormMessage("All fields must be filled");
+        }
+        else {
+            editInfo(name, phone, localStorage.getItem("UID")).then(() => window.location.reload());
+        }      
         e.preventDefault();
     }
 
     return (
         <div>
             <Form className="formStyle">
-                <Form.Label>Blank Fields Will Be Unchanged</Form.Label>
+                <Form.Group>
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control value = {userInfo.email} disabled/>
+                </Form.Group>
                 <Form.Group>
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Name" autoComplete="name" id="name" ref={nameRef} />
+                    <Form.Control type="text" defaultValue = {userInfo.name} placeholder="Enter Name" autoComplete="name" id="name" ref={nameRef} />
                 </Form.Group>
                 <Form.Group>
                     <Form.Label>Phone</Form.Label>
-                    <Form.Control type="text" placeholder="Enter Phone Number" autoComplete="tel" id="phone" ref={phoneRef} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Enter Email" autoComplete="email" id="email" ref={emailRef} />
+                    <Form.Control type="text" defaultValue = {userInfo.phone} placeholder="Enter Phone Number" autoComplete="tel" id="phone" ref={phoneRef} />
                 </Form.Group>
                 <Button variant="primary" type="submit" id="submitButton" onClick={handleClick}>
                     Submit
                 </Button>
+                <p style={{ color: "red" }}>{formMessage}</p>
                 {active}
             </Form>
 

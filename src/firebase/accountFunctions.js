@@ -88,24 +88,40 @@ export function reactivateAccount(UID) {
 }
 
 
-export function editInfo(name, phone, email, UID) {
+export function editInfo(name, phone, UID) {
     return new Promise(function (resolve, reject) {
         const formData = new FormData();
         formData.append("name", name);
         formData.append("phone", phone);
-        formData.append("email", email);
         formData.append("UID", UID);
-        console.log(name,phone,email);
         const server = process.env.REACT_APP_SERVER_URL;
-        fetch(`${server}/editInfo`, {
+        fetch(`${server}/editInfo/`, {
             method: 'POST',
             body: formData,
         })
             .then((response) => resolve(response.text()))
-            .catch((err) => reject(err))
-            ;
+            .catch((err) => reject(err));
     });
-    
+}
+
+export function editContractor(name, phone, bio, skilltags, UID) {
+
+    return new Promise(function (resolve, reject) {        
+        const forms = {
+            name: name,
+            phone: phone,
+            bio: bio,
+            skilltags: skilltags,
+            UID: UID,
+        }
+        const server = process.env.REACT_APP_SERVER_URL;
+        fetch(`${server}/editContractor/`, {
+            method: 'POST',
+            body: JSON.stringify(forms),
+        })
+            .then((response) => resolve(response.text()))
+            .catch((err) => reject(err));
+    });
 }
 
 export function getUserRole(UID) {
