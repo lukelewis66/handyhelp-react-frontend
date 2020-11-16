@@ -8,7 +8,6 @@ import HomePage from './components/pages/HomePage';
 import SearchListingsPage from './components/pages/SearchListingsPage';
 import SearchContractorsPage from './components/pages/SearchContractorsPage';
 import ErrorPage from './components/pages/ErrorPage';
-import FirebasePlayground from './components/pages/FirebasePlayground';
 import AboutPage from './components/pages/AboutPage';
 import AccountSetup from './components/account/AccountSetup';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -79,7 +78,6 @@ function App() {
                         <Route path="/contractor" component={ContractorPage} />
                         <Route path="/searchlistings" component={SearchListingsPage} />
                         <Route path="/searchcontractors" component={SearchContractorsPage} />
-                        <Route path="/firebaseplayground" component={FirebasePlayground} />
                         <Route path="/about" component={AboutPage} />
                         <Route path="/listing/:LID" children={<IndividualListing />} />
                         <Route path="/contractors/:UID" children={<IndividualContractor />} />

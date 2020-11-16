@@ -6,11 +6,13 @@ function Upload(images, UID, type) {
         var s3Urls = [];
         var imageUrl = '';
         const files = Array.from(images);
-        if (type == 'ProfilePic') {
-            imageUrl = 'http://' + UID.toLowerCase() + '.s3-us-west-1.amazonaws.com/ProfilePic/';
-        }
-        else {
-            imageUrl = 'http://' + UID.toLowerCase() + '.s3-us-west-1.amazonaws.com/Listings/' + type + '/';
+        for (let j = 0; j < files.length; j++) {
+            if (!files[j].type.match('image.*')) {
+                alert("Your images were not uploaded: please only upload files that ends in .jpg, .jpeg, .png or .html");
+                return (
+                    console.log('Upload failed: one or more of your file(s) was not an image file.')
+                )
+            }
         }
         for (let i = 0; i < files.length; i++) {
             const formData = new FormData();
@@ -23,17 +25,23 @@ function Upload(images, UID, type) {
                 method: 'POST',
                 body: formData,
             });
-            imageUrl += files[i].name;
+            if (type == 'ProfilePic') {
+                imageUrl = 'http://' + UID.toLowerCase() + '.s3-us-west-1.amazonaws.com/ProfilePic.png';
+            }
+            else {
+                imageUrl = 'http://' + UID.toLowerCase() + '.s3-us-west-1.amazonaws.com/Listings/' + type + '/';
+                imageUrl += files[i].name;
+            }
             s3Urls.push(imageUrl);
         }
 
-        console.log('Upload succesful: image files uploaded to bucket designated by UID.');
+        console.log('Upload succesful: image file(s) uploaded to bucket designated by UID.');
         console.log(s3Urls);
         return s3Urls;
     }
     else {
         return (
-            console.log('Upload failed: please provide a valid UID, array of image files, and type of images being uploaded.')
+            console.log('Upload failed: something wrong occurred and your file(s) were not uploaded.')
         )
     }
 }

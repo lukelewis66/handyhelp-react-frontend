@@ -90,9 +90,9 @@ const MakeListingModal = () => {
                     .then(id => {
                         console.log("response id: ", id);
 
-                        //upload images and update listing document if user has added photos
+                        // Whoever is uploading should pass their UID and LID (if uploading listing images) or 'ProfilePic' (if uploading profile pictures)
+                        // upload images and update listing document if user has added photos
                         if (imageFiles.length > 0) {
-                            // Whoever is uploading should pass their UID and LID (if uploading listing images) or 'ProfilePic' (if uploading profile pictures), but hardcoded it for now
                             const imgurls = Upload(imageFiles, localStorage.getItem("UID"), id);
                             const updateBody = {
                                 listingID: id,
