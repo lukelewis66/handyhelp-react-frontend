@@ -143,3 +143,24 @@ export function getUserRole(UID) {
             .catch((err) => reject(err));
     });
 }
+
+export function getUserLocation(UID) {
+    return new Promise(function (resolve, reject) {
+        const server = process.env.REACT_APP_SERVER_URL;
+        var url = new URL(`${server}/getrole`);
+        const params = new URLSearchParams();
+        params.append("UID", UID);
+        url.search = params.toString();
+        console.log(url.toString());
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                resolve(data)
+                console.log(data.location);
+
+            }
+            )
+            .catch((err) => reject(err));
+    });
+}
+

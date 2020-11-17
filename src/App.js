@@ -25,6 +25,7 @@ function App() {
     const [userExists, setUserExists] = useState(true);
     const pageOnLoad = window.location.pathname.toString();
     console.log("pageOnLoad: ", pageOnLoad);
+    var aswitch = false;
 
     useEffect(() => {
         console.log("in use effect with apicalls: ", apiCalls);
@@ -59,8 +60,9 @@ function App() {
                 })
                 .catch(err => console.log(err));
         }
-    }, [])
+    }, []);
 
+    
 
     return (
         <main>
@@ -74,10 +76,10 @@ function App() {
                         <Route path="/" exact>
                             {userExists ? <HomePage /> : <Redirect to="/accountsetup" />}
                         </Route>
-                        <Route path="/client" component={ClientPage} />
-                        <Route path="/contractor" component={ContractorPage} />
-                        <Route path="/searchlistings" component={SearchListingsPage} />
-                        <Route path="/searchcontractors" component={SearchContractorsPage} />
+                        <Route path="/client" component={isClient ? ClientPage : HomePage} />
+                        <Route path="/contractor" component={(!isClient || isClient === 2) ? ContractorPage : HomePage} />
+                        <Route path="/searchlistings" component={(!isClient || isClient === 2) ? SearchListingsPage : HomePage } />
+                        <Route path="/searchcontractors" component={isClient ? SearchContractorsPage : HomePage} />
                         <Route path="/about" component={AboutPage} />
                         <Route path="/listing/:LID" children={<IndividualListing />} />
                         <Route path="/contractors/:UID" children={<IndividualContractor />} />
