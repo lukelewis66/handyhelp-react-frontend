@@ -20,7 +20,6 @@ const AccountInfo = ({ formData, handleChange, handleAccountTypeSelection, handl
         else if (formData.role === "contractor") {
             contractorRef.current.checked = true;
         }
-
     }, []);
 
     return (

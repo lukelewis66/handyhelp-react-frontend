@@ -12,7 +12,11 @@ export function getCityName(latitude, longitude) {
                 if (results[0]) {
                     //console.log("results: ", results);
                     var city = results[0].address_components.filter(ac => ~ac.types.indexOf('locality'))[0].long_name;
-                    resolve(city);
+                    var state = results[0].address_components.filter(ac => ~ac.types.indexOf('administrative_area_level_1'))[0].short_name;
+                    resolve(`${city}, ${state}`);
+                }
+                else {
+                    resolve("");
                 }
             }
             else {
