@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { getContractor } from "../../firebase/Contractor";
+import { getCityName } from "../../gmaps/geocode";
 
 const ContractorInfo = () => {
 	const [contractor, setContractor] = useState({
@@ -11,11 +12,12 @@ const ContractorInfo = () => {
 		email: "",
 		phone: "",
 	});
-	const [apiCalls, setApiCalls] = useState(0);
+
+	const [userCity, setUserCity] = useState("");
 
 	useEffect(() => {
 		getContractor(localStorage.getItem("UID")).then((contractor) => {
-			setApiCalls(apiCalls + 1);
+			getCityName(contractor.location[0], contractor.location[1]).then((city) => setUserCity(city));
 			setContractor(contractor);
 		})
 	}, [])
@@ -26,6 +28,7 @@ const ContractorInfo = () => {
 			<h3>Email: {contractor.email}</h3>
 			<h3>Phone: {contractor.phone}</h3>
 			<h3>Location: {contractor.location}</h3>
+			<h3>City: {userCity}</h3>
 			<h3>Skills: {contractor.skilltags}</h3>
 			<h3>Rating: </h3>
 		</div>)
