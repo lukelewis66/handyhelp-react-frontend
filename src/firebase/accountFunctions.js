@@ -106,7 +106,7 @@ export function editInfo(name, phone, UID) {
 
 export function editContractor(name, phone, bio, skilltags, UID) {
 
-    return new Promise(function (resolve, reject) {        
+    return new Promise(function (resolve, reject) {
         const forms = {
             name: name,
             phone: phone,

@@ -7,8 +7,8 @@ const ClientInfo = () => {
 	const [userCity, setUserCity] = useState("");
 	useEffect(() => {
 		getUserInfo(localStorage.getItem("UID")).then((data) => {
-			console.log(data.location);
-			getCityName(data.location[0], data.location[1]).then((city) => setUserCity(city));
+			//console.log(data.location);
+			//getCityName(data.location[0], data.location[1]).then((city) => setUserCity(city));
 			setUserinfo(data);
 		})
 	}, []);
@@ -17,7 +17,7 @@ const ClientInfo = () => {
 		<div className="infoPanel">
 			<h2>Name: {userInfo.name}</h2>
 			<h3>Location: {userInfo.location}</h3>
-			<h3>City: {userCity}</h3>
+			<h3>City: {userInfo.location_string}</h3>
 		</div>)
 }
 
