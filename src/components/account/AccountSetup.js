@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { Button, Modal, Form, Container } from "react-bootstrap";
 import { createAccount, checkUserExists } from "../../firebase/accountFunctions";
+import { getCityName } from "../../gmaps/geocode";
 
 import AccountInfo from "./AccountInfo";
 import AccountConfirm from "./AccountConfirm";
@@ -18,6 +19,7 @@ const AccountSetup = ({ UID }) => {
         name: "",
         phone: "",
         location: [],
+        location_string: "",
         email: localStorage.getItem("email"),
     });
     const [errorMessage, setErrorMessage] = useState("");
@@ -41,10 +43,13 @@ const AccountSetup = ({ UID }) => {
     }
 
     function handleCoordinates(lat, lng) {
-        setForm((prevState) => ({
-            ...prevState,
-            location: [lat, lng],
-        }))
+        getCityName(lat, lng).then(cityName => {
+            setForm((prevState) => ({
+                ...prevState,
+                location: [lat, lng],
+                location_string: cityName,
+            }))
+        })
     }
 
     //in case someone tries route /setupaccount even though they already have an account set up.
