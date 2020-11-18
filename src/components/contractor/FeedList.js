@@ -1,5 +1,6 @@
 import React from "react";
 import FeedItem from "./FeedItem";
+import MakeFeedItemModal from "./MakeFeedItemModal";
 
 const FeedList = () => {
     const fakeFeedItems = [
@@ -17,6 +18,7 @@ const FeedList = () => {
                     <FeedItem key={item.id} props={item} />
                 ))}
             </div>
+            <MakeFeedItemModal />
         </div>
     );
 }
