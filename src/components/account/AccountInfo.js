@@ -35,7 +35,7 @@ const AccountInfo = ({ formData, handleChange, handleAccountTypeSelection, handl
                 </Form.Group>
                 {/* Doesn't work, just click use current location for now */}
                 <Form.Group>
-                    <GeoSearchBar handleCoordinates={handleCoordinates} />
+                    <GeoSearchBar prevLocationSelected={formData.location_string} handleCoordinates={handleCoordinates} />
                 </Form.Group>
 
                 <Form.Group>

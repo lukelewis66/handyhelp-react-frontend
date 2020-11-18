@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import { Button, Modal, Form, Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { createAccount, checkUserExists } from "../../firebase/accountFunctions";
 import { getCityName } from "../../gmaps/geocode";
 
