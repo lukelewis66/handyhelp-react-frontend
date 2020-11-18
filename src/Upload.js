@@ -1,10 +1,9 @@
 // Pass the upload function a valid array of image file(s), UID, and the type of images being uploaded:
 // if the image being uploaded is for a profile picture, pass "ProfilePic" as the type, 
 // if it's a listing picture, pass the LID as the type.
-function Upload(images, UID, type) {
-    if (images && UID && type) {
+function Upload(images, UID, type, id) {
+    if (images && UID && type && id) {
         var s3Urls = [];
-        var imageUrl = '';
         const files = Array.from(images);
         for (let j = 0; j < files.length; j++) {
             if (!files[j].type.match('image.*')) {
@@ -14,9 +13,11 @@ function Upload(images, UID, type) {
                 )
             }
         }
+        var imageUrl = 'http://' + UID.toLowerCase() + '.s3-us-west-1.amazonaws.com/';
         for (let i = 0; i < files.length; i++) {
             const formData = new FormData();
             formData.append("type", type);
+            formData.append("IDnum", id);
             formData.append("bucket", UID);
             formData.append("acl", "public-read-write");
             formData.append("key", files[i].name);
@@ -26,11 +27,13 @@ function Upload(images, UID, type) {
                 body: formData,
             });
             if (type == 'ProfilePic') {
-                imageUrl = 'http://' + UID.toLowerCase() + '.s3-us-west-1.amazonaws.com/ProfilePic.png';
+                imageUrl += 'ProfilePic.png';
+            }
+            else if (type == 'Listing') {
+                imageUrl += 'Listings/' + id + '/' + files[i].name;
             }
             else {
-                imageUrl = 'http://' + UID.toLowerCase() + '.s3-us-west-1.amazonaws.com/Listings/' + type + '/';
-                imageUrl += files[i].name;
+                imageUrl += 'Feed/' + id + '/' + files[i].name;
             }
             s3Urls.push(imageUrl);
         }
@@ -41,7 +44,7 @@ function Upload(images, UID, type) {
     }
     else {
         return (
-            console.log('Upload failed: something wrong occurred and your file(s) were not uploaded.')
+            console.log('Upload failed: you did not provide all the neccessary parameters for Upload().')
         )
     }
 }

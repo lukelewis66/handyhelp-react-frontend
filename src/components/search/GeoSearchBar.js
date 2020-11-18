@@ -22,15 +22,21 @@ import { Form } from "react-bootstrap";
     )
 */
 
-const GeoSearchBar = ({ handleCoordinates }) => {
+const GeoSearchBar = ({ handleCoordinates, prevLocationSelected }) => {
     let autocompleteRef = useRef();
     const G = window.google.maps;
     let autocomplete;
     const [checked, setChecked] = useState(false);
 
     useEffect(() => {
-        console.log(autocompleteRef);
-        autocomplete = new G.places.Autocomplete(autocompleteRef.current, { types: ["geocode"] });
+        var options = {
+            types: ['(cities)'],
+            componentRestrictions: { country: "us" }
+        };
+        autocomplete = new G.places.Autocomplete(autocompleteRef.current, options);
+        if (prevLocationSelected) {
+            autocompleteRef.current.value = prevLocationSelected;
+        }
         autocomplete.setFields(["geometry"]);
         autocomplete.addListener("place_changed", getCoordinates);
     }, []);
@@ -39,7 +45,6 @@ const GeoSearchBar = ({ handleCoordinates }) => {
 
     function getCoordinates() {
         // Get the place details from the autocomplete object.
-        console.log("wadup");
         const place = autocomplete.getPlace();
         const lat = place.geometry.location.lat();
         const lng = place.geometry.location.lng();
@@ -91,7 +96,7 @@ const GeoSearchBar = ({ handleCoordinates }) => {
 
     return (
         <div id="locationField" style={{ display: "flex", flexDirection: "column" }}>
-            <Form.Label>Enter your location</Form.Label>
+            <Form.Label>Enter your county</Form.Label>
             <Form.Control as="input"
                 id="autocomplete"
                 placeholder="Ex: Santa Barbara, CA"

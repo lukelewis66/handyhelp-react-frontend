@@ -9,12 +9,11 @@ import Upload from "../../Upload";
 
 //https://codeburst.io/react-image-upload-with-kittens-cc96430eaece
 
-const MakeListingModal = () => {
+const MakeFeedItemModal = () => {
     //https://react-bootstrap.github.io/components/modal/
     const [show, setShow] = useState(false);
     const [form, setForm] = useState({
-        active: true,
-        client: localStorage.getItem("UID"),
+        contractor: localStorage.getItem("UID"),
         title: "",
         description: "",
         images: [],
@@ -75,11 +74,11 @@ const MakeListingModal = () => {
     const handleSubmit = () => {
         console.log("Form: ", form);
         if (form.title === "" || form.description === "") {
-            alert("Listing title and description must be filled out");
+            alert("Post title and description must be filled out");
         }
         else {
             const server = process.env.REACT_APP_SERVER_URL;
-            const url = `${server}/addlisting/`;
+            const url = `${server}/addfeeditem/`;
             const requestOptions = {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -93,12 +92,12 @@ const MakeListingModal = () => {
                         // Whoever is uploading should pass their UID and LID (if uploading listing images) or 'ProfilePic' (if uploading profile pictures)
                         // upload images and update listing document if user has added photos
                         if (imageFiles.length > 0) {
-                            const imgurls = Upload(imageFiles, localStorage.getItem("UID"), "Listing", id);
+                            const imgurls = Upload(imageFiles, localStorage.getItem("UID"), "Feed", id);
                             const updateBody = {
-                                listingID: id,
+                                feedID: id,
                                 imageUrls: imgurls,
                             }
-                            const updateUrl = `${server}/updatelistingimages`;
+                            const updateUrl = `${server}/updatefeeditemimages`;
                             const requestOpts = {
                                 method: "POST",
                                 headers: { "Content-Type": "application/json" },
@@ -106,7 +105,7 @@ const MakeListingModal = () => {
                             }
                             fetch(updateUrl, requestOpts).then((response => response.text().then(message => console.log(message))));
                         }
-                        alert("Your listing has been added.");
+                        alert("Your post has been added.");
                         handleClose();
                         clearForm();
                     })));
@@ -115,24 +114,24 @@ const MakeListingModal = () => {
 
     return (
         <div className="component-border">
-            <h3>MakeListingModal component</h3>
+            <h3>MakeFeedItemModal component</h3>
             <Button variant="primary" onClick={handleShow}>
-                Create Listing
+                Create Post
           </Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Enter Listing Info</Modal.Title>
+                    <Modal.Title>Enter Post Info</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Form.Group>
-                            <Form.Label>Listing Title</Form.Label>
+                            <Form.Label>Post Title</Form.Label>
                             <Form.Control
-                                placeholder="Ex: Need help fixing my fence"
+                                placeholder="Ex: Checkout this fence I fixed!"
                                 field="title"
                                 onChange={(e) => handleChange(e, "title")} />
-                            <Form.Text className="text-muted">Enter a descriptive title for your listing</Form.Text>
+                            <Form.Text className="text-muted">Enter a descriptive title for your post</Form.Text>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Description</Form.Label>
@@ -141,19 +140,19 @@ const MakeListingModal = () => {
                                 rows={4}
                                 field="description"
                                 onChange={(e) => handleChange(e, "description")} />
-                            <Form.Text className="text-muted">Enter a more thorough description of your listing</Form.Text>
+                            <Form.Text className="text-muted">Enter a more thorough description of the work you did</Form.Text>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Images</Form.Label>
                             <div>
                                 <input type="file" accept="image/*" multiple onChange={(e) => handleChange(e, "images")} />
                             </div>
-                            <Form.Text className="text-muted">Choose up to 10 images for your listing</Form.Text>
+                            <Form.Text className="text-muted">Choose up to 10 images for your post</Form.Text>
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Select Tags</Form.Label>
                             {showTags()}
-                            <Form.Text className="text-muted">Select any relevant tags to help contractors find your listing.</Form.Text>
+                            <Form.Text className="text-muted">Select any relevant tags to the post.</Form.Text>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
@@ -162,7 +161,7 @@ const MakeListingModal = () => {
                         Close
               </Button>
                     <Button variant="primary" onClick={handleSubmit}>
-                        Publish Listing
+                        Publish Post
               </Button>
                 </Modal.Footer>
             </Modal>
@@ -171,4 +170,4 @@ const MakeListingModal = () => {
 
 }
 
-export default MakeListingModal;
+export default MakeFeedItemModal;

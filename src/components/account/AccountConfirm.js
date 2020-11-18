@@ -19,6 +19,10 @@ const AccountConfirm = ({ formData }) => {
                     </tr>
                     <tr>
                         <td>Location</td>
+                        <td>{formData.location_string}</td>
+                    </tr>
+                    <tr>
+                        <td>Location Coordinates</td>
                         <td>{formData.location}</td>
                     </tr>
                     <tr>
