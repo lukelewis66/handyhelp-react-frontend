@@ -18,6 +18,7 @@ const FeedList = () => {
         { id: 2, description: "description 2", image: "https://handyhelpimages.s3-us-west-1.amazonaws.com/FeedItem2.jpg", skilltags: "fake skilltags 2" },
         { id: 3, description: "description 3", image: "https://handyhelpimages.s3-us-west-1.amazonaws.com/FeedItem3.png", skilltags: "fake skilltags 3" },
         { id: 4, description: "description 4", image: "https://handyhelpimages.s3-us-west-1.amazonaws.com/FeedItem4.jpg", skilltags: "fake skilltags 4" },
+        
     ];
     */
 

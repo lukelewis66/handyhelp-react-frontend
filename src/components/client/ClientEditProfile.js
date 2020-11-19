@@ -9,6 +9,8 @@ import AccountReactivate from "../account/AccountReactivate";
 
 import { getUserInfo } from "../../firebase/Client";
 
+import MakeListingModal from "./MakeListingModal";
+
 const ClientEditProfile = () => {
 
     const [active, setActive] = useState();
@@ -51,26 +53,29 @@ const ClientEditProfile = () => {
 
     return (
         <div>
-            <Form className="formStyle">
-                <Form.Group>
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control value = {userInfo.email} disabled/>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" defaultValue = {userInfo.name} placeholder="Enter Name" autoComplete="name" id="name" ref={nameRef} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Phone</Form.Label>
-                    <Form.Control type="text" defaultValue = {userInfo.phone} placeholder="Enter Phone Number" autoComplete="tel" id="phone" ref={phoneRef} />
-                </Form.Group>
-                <Button variant="primary" type="submit" id="submitButton" onClick={handleClick}>
-                    Submit
-                </Button>
-                <p style={{ color: "red" }}>{formMessage}</p>
-                {active}
-            </Form>
-
+            <div className="tabStyleEdit">
+                <Form className="formStyle">
+                    <Form.Group>
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control value = {userInfo.email} disabled/>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control type="text" defaultValue = {userInfo.name} placeholder="Enter Name" autoComplete="name" id="name" ref={nameRef} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Phone</Form.Label>
+                        <Form.Control type="text" defaultValue = {userInfo.phone} placeholder="Enter Phone Number" autoComplete="tel" id="phone" ref={phoneRef} />
+                    </Form.Group>
+                    <Button variant="primary" type="submit" id="submitButton" onClick={handleClick}>
+                        Submit
+                    </Button>
+                    <p style={{ color: "red" }}>{formMessage}</p>
+                    {active}
+                </Form>
+                
+            </div>
+            <MakeListingModal />
         </div>
     )
 }

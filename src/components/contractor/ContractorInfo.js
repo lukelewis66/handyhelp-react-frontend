@@ -24,14 +24,7 @@ const ContractorInfo = () => {
 	}, [])
 	return (
 		<div className="infoPanel">
-			<h2>Name: {contractor.name}</h2>
-			<h2>Bio: {contractor.bio}</h2>
-			<h3>Email: {contractor.email}</h3>
-			<h3>Phone: {contractor.phone}</h3>
-			<h3>Location: {contractor.location}</h3>
-			<h3>City: {contractor.location_string}</h3>
-			<h3>Skills: {contractor.skilltags}</h3>
-			<h3>Rating: </h3>
+			<h1>Welcome back, {contractor.name}!</h1>
 		</div>)
 }
 

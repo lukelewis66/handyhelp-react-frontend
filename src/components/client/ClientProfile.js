@@ -22,28 +22,13 @@ const ClientProfile = () => {
                 return <ClientListingList active={true} />;
         }
     }
-    /*
-    const [active, setActive] = useState("CurrentListings");
-
-    const showActive = () => {
-        switch (active) {
-            case "PastListings":
-                return <ClientListingList active={false} />;
-            case "Edit":
-                return <ClientEditProfile />;
-            default:
-                return <ClientListingList active={true} />;
-        }
-    }
-    */
 
     return (
        <div>
-	    <div className = "profileHeader">
-	    	<ClientPhoto />
+	    <div>
 	    	<ClientInfo />
 	    </div>
-            <Nav variant="tabs" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
+            <Nav fill variant="tabs" className = "tabsStyle" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
                 <Nav.Item >
                     <Nav.Link eventKey="CurrentListings">Current Listings</Nav.Link>
                 </Nav.Item>

@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 const ContractorPage = () => {
   return (
-    <div>
+    <div className = "screen">
       <ContractorProfile />
     </div>
   );

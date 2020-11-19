@@ -42,19 +42,36 @@ html {
 }
 
 .infoPanel {
-  border: solid;
-  height:300px;
-  width:1600px;
-  padding: 5px;
-  margin-left: 10px;
+  height: 100px;
+  width: 1600px;
+  margin: 0px 250px 50px 250px;
+  padding: 25px 25px;
 }
 
-.infoPanel {
-  border: solid;
-  height:300px;
-  width:1600px;
-  padding: 5px;
-  margin-left: 10px;
+.tabStyle {
+  display: flex;
+  flex-wrap: wrap; 
+  background-color:white;
+  margin: 0px 250px 0px 250px;
+  padding: 25px 25px;
+  height: 600px;
+  max-height: 1000px;
+}
+
+.tabStyleEdit {
+  flex-wrap: wrap; 
+  justify-content: center;
+  background-color:white;
+  margin: 0px 250px 0px 250px;
+  padding: 25px 25px;
+  height: 600px;
+  max-height: 1000px;
+}
+
+.tabsStyle {
+  margin: 25px 250px 0px 250px;
+  border-radius: 5px 5px 0px 0px;
+  background-color: #434c55;
 }
 
 .profileHeader {
@@ -114,6 +131,19 @@ html {
   margin: 3px 3px;
 }
 
+.listingModal {
+  display: flex;
+  width: auto;
+  background-color: white;
+  margin: 0px 250px 25px 250px;
+  border-radius: 0 0 5px 5px;
+  padding: 25px;
+}
+
+.screen {
+  background-color: #0098ff;
+  height: 100%;
+}
 
 
 

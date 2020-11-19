@@ -69,7 +69,7 @@ const ContractorEditProfile = () => {
   }
 
   return (
-    <div>
+    <div className = "tabStyleEdit">
             <Form className="formStyle">
                 <Form.Group>
                   <Form.Label>Email</Form.Label>
