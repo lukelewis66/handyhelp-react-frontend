@@ -7,7 +7,7 @@ import ClientProfile from "../client/ClientProfile";
 
 const ClientPage = () => {
   return (
-    <div>
+    <div className = "screen">
       <ClientProfile />
     </div>
   );

@@ -15,10 +15,10 @@ const ClientInfo = () => {
 
 	return (
 		<div className="infoPanel">
-			<h2>Name: {userInfo.name}</h2>
-			<h3>Location: {userInfo.location}</h3>
-			<h3>City: {userInfo.location_string}</h3>
-		</div>)
+			<h1> Welcome back, {userInfo.name}!</h1>
+			<h3>{userInfo.location_string}</h3>
+		</div>
+		)
 }
 
 export default ClientInfo

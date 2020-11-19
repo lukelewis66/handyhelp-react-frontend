@@ -114,9 +114,8 @@ const MakeListingModal = () => {
     }
 
     return (
-        <div className="component-border">
-            <h3>MakeListingModal component</h3>
-            <Button variant="primary" onClick={handleShow}>
+        <div className="listingModal">
+            <Button className = "" variant="primary" onClick={handleShow}>
                 Create Listing
           </Button>
 

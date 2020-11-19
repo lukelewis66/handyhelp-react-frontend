@@ -13,24 +13,10 @@ const ClientInactiveListingList = ({ active }) => {
         })
     }, []);
 
-    /*
-    const fakeClientListingItems = [
-        { id: 1, description: "description 1", image: "https://handyhelpimages.s3-us-west-1.amazonaws.com/listingItem1.jpg", skilltags: "fake skilltags 1" },
-        { id: 2, description: "description 2", image: "https://handyhelpimages.s3-us-west-1.amazonaws.com/listingItem2.jpg", skilltags: "fake skilltags 2" },
-        { id: 3, description: "description 3", image: "https://handyhelpimages.s3-us-west-1.amazonaws.com/listingItem3.jpg", skilltags: "fake skilltags 3" },
-        { id: 4, description: "description 4", image: "https://handyhelpimages.s3-us-west-1.amazonaws.com/listingItem4.jpg", skilltags: "fake skilltags 4" },
-    ];
-    */
-    /*
-    function logListingItems() {
-        console.log(listingItems);
-    }
-    */
     return (
         <div>
-            {/* <h4>({active ? "Query Active Listings" : "Query Inactive Listings"})</h4> */}
 
-            <div className="flex-list">
+            <div className="tabStyle">
                 {listingItems.map((item) => (
                     <ClientListingItem key={item.id} props={item} />
                 ))}
