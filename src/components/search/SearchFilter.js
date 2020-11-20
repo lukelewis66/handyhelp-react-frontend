@@ -1,31 +1,55 @@
 import React, { useState } from "react";
 
 import { Form, Button } from "react-bootstrap";
+import { SKILLTAGS } from "../../constants/skilltags";
+import GeoSearchBar from "./GeoSearchBar";
 
 const SearchFilter = ({ handleFilters }) => {
-    const [tagFilters, setTagFilters] = useState([])
+    const [filters, setFilters] = useState({
+        location: [],
+        distance: 25,
+        skilltags: [],
+    });
 
-    const allSkillTags = ["skilltag 1", "skilltag 2", "skilltag 3", "skilltag 4"];
-
-    //needs work. Should be updating tagFilters
-    const handleSkillCheck = (skilltag) => {
-        console.log("skilltag: " + skilltag);
-        //setTagFilters([...tagFilters, skilltag]);
-    }
-
-    //needs work. should be calling handleFilters, which calls function in parent that updates selectedFilters prop for SearchList
     const doFilter = () => {
-        console.log("Filter button called");
-        //handleFilters(tagFilters);
+        console.log("tag filters: ", filters.skilltags);
     }
 
+    const showTags = () => {
+        return SKILLTAGS.map((tag) => (
+            <Form.Check type="checkbox" label={tag.label} value={tag.label} onChange={(e) => handleSkillTagSelection(e)} />
+        ));
+    }
+
+    const handleSkillTagSelection = (e) => {
+        let val = [...filters.skilltags];
+        const curTag = e.target.value;
+        if (val.some((tag) => tag === curTag)) {
+            val.splice(val.indexOf(curTag), 1);
+        }
+        else {
+            val.push(e.target.value);
+        }
+        setFilters((prevState) => ({
+            ...prevState,
+            skilltags: val
+        }))
+    }
+
+    function handleCoordinates(lat, lng) {
+        setFilters((prevState) => ({
+            ...prevState,
+            location: [lat, lng]
+        }))
+    }
 
     return (
-        <div className="component-border" style={{ width: "25%" }}>
-            <h1>SearchFilter Component</h1>
-            <p>tagFilters: {tagFilters}</p>
+        <div className="search-filter">
+            <h3>Filter Your Search</h3>
             <Form>
-                {allSkillTags.map((skilltag) => <Form.Check key={skilltag} type="checkbox" label={skilltag} onChange={() => handleSkillCheck(skilltag)} />)}
+                <GeoSearchBar handleCoordinates={handleCoordinates} prevLocationSelected={false} />
+                <Form.Label>Filter by Skill Tags</Form.Label>
+                {showTags()}
                 <Button onClick={() => doFilter()}>Filter</Button>
             </Form>
         </div>

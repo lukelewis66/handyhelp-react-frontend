@@ -101,6 +101,17 @@ html {
   justify-content: center;
 }
 
+.search-list {
+  background-color: #0098ff;
+  width: 75%;
+}
+
+.search-filter {
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 25%;
+}
+
 .flex-list .component-border {
   width: 45%;
 }
@@ -144,6 +155,7 @@ html {
   background-color: #0098ff;
   height: 100%;
 }
+
 
 
 
