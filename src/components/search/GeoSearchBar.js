@@ -96,7 +96,6 @@ const GeoSearchBar = ({ handleCoordinates, prevLocationSelected }) => {
 
     return (
         <div id="locationField" style={{ display: "flex", flexDirection: "column" }}>
-            <Form.Label>Enter your county</Form.Label>
             <Form.Control as="input"
                 id="autocomplete"
                 placeholder="Ex: Santa Barbara, CA"

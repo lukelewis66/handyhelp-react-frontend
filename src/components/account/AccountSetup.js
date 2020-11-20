@@ -34,7 +34,6 @@ const AccountSetup = ({ UID }) => {
 
     const handleChange = (e, field) => {
         let val = e.target.value;
-        console.log("handle change val: ", val);
         //copies previous form state, and updates the changed form field
         setForm((prevState) => ({
             ...prevState,

@@ -33,5 +33,10 @@ export const SKILLTAGS = [
         key: "pestcontrol",
         label: "Pest Control",
         description: "",
+    },
+    {
+        key: "plumbing",
+        label: "Plumbing",
+        description: "",
     }
 ]
