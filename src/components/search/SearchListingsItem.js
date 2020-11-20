@@ -11,6 +11,7 @@ const SearchListingsItem = ({ props }) => {
             <Card.Body>
                 <Card.Img className="itemPhoto" variant="top" src={props.images[0] ? props.images[0] : "/hammer-icon.jpg"} alt="ClientListingImage" />
                 <Card.Title>{props.title}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">{props.location_string}</Card.Subtitle>
                 <Card.Text>
                     {props.description}
                     {props.skilltags}

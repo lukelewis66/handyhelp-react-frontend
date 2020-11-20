@@ -4,7 +4,7 @@ import { Form, Button } from "react-bootstrap";
 import { SKILLTAGS } from "../../constants/skilltags";
 import GeoSearchBar from "./GeoSearchBar";
 
-const SearchFilter = ({ handleFilters }) => {
+const SearchFilter = ({ handleFilters, handleClearFilters }) => {
     const [filters, setFilters] = useState({
         location: [],
         distance: 50,
@@ -13,6 +13,10 @@ const SearchFilter = ({ handleFilters }) => {
 
     const doFilter = () => {
         handleFilters(filters);
+    }
+
+    const clearFilters = () => {
+        handleClearFilters();
     }
 
     const showTags = () => {
@@ -52,6 +56,7 @@ const SearchFilter = ({ handleFilters }) => {
                 <Form.Label><b>Filter by Skill Tags</b></Form.Label>
                 {showTags()}
                 <Button onClick={() => doFilter()}>Filter</Button>
+                <Button onClick={() => clearFilters()}>Clear Filters</Button>
             </Form>
         </div>
     )

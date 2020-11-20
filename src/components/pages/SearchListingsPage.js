@@ -9,7 +9,7 @@ import { filterByDistance, filterByTags } from "../search/filterFunctions";
 const SearchListingsPage = () => {
     const [allListings, setAllListings] = useState([]);
     const [filteredListings, setFilteredListings] = useState(null);
-    const [filterMessage, setFilterMessage] = useState("Showing all contractors");
+    const [filterMessage, setFilterMessage] = useState("Showing all listings");
     const [skillFilterMessage, setSkillFilterMessage] = useState("");
 
     useEffect(() => {
@@ -22,7 +22,7 @@ const SearchListingsPage = () => {
         });
     }, []);
 
-    const handleFilter = (filters) => {
+    const handleFilters = (filters) => {
         var filtered = allListings;
         if (filters.location.length > 0) {
             getCityName(filters.location[0], filters.location[1]).then((city) => {
@@ -43,11 +43,16 @@ const SearchListingsPage = () => {
         setFilteredListings(filtered);
     }
 
+    const handleClearFilters = () => {
+        setFilteredListings(allListings);
+        setFilterMessage("Showing all Listings")
+        setSkillFilterMessage("");
+    }
+
     return (
         <div>
-            <h1>SearchListingsPage component</h1>
             <div style={{ display: "flex" }}>
-                <SearchFilter handleFilter={handleFilter} />
+                <SearchFilter handleFilters={handleFilters} handleClearFilters={handleClearFilters} />
                 <SearchListingsList listings={filteredListings} filterMessage={filterMessage} skillFilterMessage={skillFilterMessage} />
             </div>
         </div>

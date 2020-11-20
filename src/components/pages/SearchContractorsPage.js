@@ -41,10 +41,16 @@ const SearchContractorsPage = () => {
         setFilteredContractors(filtered);
     }
 
+    const handleClearFilters = () => {
+        setFilteredContractors(allContractors);
+        setFilterMessage("Showing all contractors")
+        setSkillFilterMessage("");
+    }
+
     return (
         <div>
             <div className="search-page" style={{ display: "flex" }}>
-                <SearchFilter handleFilters={handleFilters} />
+                <SearchFilter handleFilters={handleFilters} handleClearFilters={handleClearFilters} />
                 <SearchContractorsList contractors={filteredContractors} filterMessage={filterMessage} skillTagFilters={skillFilterMessage} />
             </div>
         </div>
