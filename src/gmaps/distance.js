@@ -24,8 +24,8 @@ export function distance(lon1,lat1,lon2,lat2) {
 		dist = Math.acos(dist);
 		dist = dist * 180/Math.PI;
 		dist = dist * 60 * 1.1515;
-		// if (unit=="K") { dist = dist * 1.609344 }
-		// if (unit=="N") { dist = dist * 0.8684 }
+		//if (unit=="K") { dist = dist * 1.609344 }
+		//if (unit=="N") { dist = dist * 0.8684 }
 		return dist;
 	}
 }

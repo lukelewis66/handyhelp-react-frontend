@@ -206,6 +206,5 @@ const Navbar = ({ activepage, isClient }) => {
 
     );
   }
-  console.log(isClient);
 }
 export default Navbar;
