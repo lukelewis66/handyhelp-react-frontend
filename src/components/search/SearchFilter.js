@@ -7,7 +7,7 @@ import GeoSearchBar from "./GeoSearchBar";
 const SearchFilter = ({ handleFilters }) => {
     const [filters, setFilters] = useState({
         location: [],
-        distance: 25,
+        distance: 50,
         skilltags: [],
     });
 
