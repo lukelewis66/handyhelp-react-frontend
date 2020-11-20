@@ -101,6 +101,10 @@ html {
   justify-content: center;
 }
 
+.search-page{
+  background-color: #0098ff;
+  display: flex;
+}
 .search-list {
   background-color: #0098ff;
   width: 75%;
@@ -110,6 +114,25 @@ html {
   margin: 2rem auto;
   padding: 1rem;
   width: 25%;
+}
+
+.contractor-card {
+	margin: 10px;
+  width: 300px;
+}
+
+.contractor-search-image {
+  width: 75px;
+  height: auto;
+  border: solid;
+  border-radius: 50%;
+}
+
+.contractor-search-basicinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 1rem;
 }
 
 .flex-list .component-border {

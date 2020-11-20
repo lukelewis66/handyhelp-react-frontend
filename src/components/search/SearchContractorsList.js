@@ -4,11 +4,14 @@ import SearchContractorsItem from "./SearchContractorsItem";
 
 import { Spinner } from "react-bootstrap";
 
-const SearchContractorsList = ({ contractors }) => {
+const SearchContractorsList = ({ contractors, filterMessage }) => {
     return (
         <div className="search-list">
+            <div>
+                <h3>{filterMessage}</h3>
+            </div>
+            {contractors.length ? null : <Spinner animation="border" />}
             <div className="flex-list">
-                {contractors.length ? null : <Spinner animation="border" />}
                 {contractors.map((contractor) => (
                     <SearchContractorsItem key={contractor.id} props={contractor} />
                 ))}

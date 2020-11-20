@@ -12,7 +12,7 @@ const SearchFilter = ({ handleFilters }) => {
     });
 
     const doFilter = () => {
-        console.log("tag filters: ", filters.skilltags);
+        handleFilters(filters);
     }
 
     const showTags = () => {
@@ -47,8 +47,9 @@ const SearchFilter = ({ handleFilters }) => {
         <div className="search-filter">
             <h3>Filter Your Search</h3>
             <Form>
+                <Form.Label><b>Filer by Location</b></Form.Label>
                 <GeoSearchBar handleCoordinates={handleCoordinates} prevLocationSelected={false} />
-                <Form.Label>Filter by Skill Tags</Form.Label>
+                <Form.Label><b>Filter by Skill Tags</b></Form.Label>
                 {showTags()}
                 <Button onClick={() => doFilter()}>Filter</Button>
             </Form>

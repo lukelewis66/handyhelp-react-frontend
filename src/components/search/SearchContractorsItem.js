@@ -8,12 +8,18 @@ const SearchContractorsItem = ({ props }) => {
     fullLink += props.id;
 
     return (
-        < Card className="cardStyle" variant="outlined" >
+        < Card className="contractor-card" variant="outlined" >
             <Card.Body>
-                <Card.Title>{props.name}</Card.Title>
+                <div style={{ display: "flex", marginBottom: "1rem" }}>
+                    <img className="contractor-search-image" src="/contractor-anon.jpg" />
+                    <div className="contractor-search-basicinfo">
+                        <Card.Title>{props.name}</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">{props.location_string}</Card.Subtitle>
+                    </div>
+                </div>
                 <Card.Text>
-                    Email: {props.email}
-                    Phone: {props.phone}
+                    Email: {props.email}<br />
+                    Phone: {props.phone}<br />
                 </Card.Text>
                 <Button as={Link} to={fullLink}>Learn More</Button>
             </Card.Body>
