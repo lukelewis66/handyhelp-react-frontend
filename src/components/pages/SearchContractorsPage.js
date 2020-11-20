@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 
 import SearchContractorsList from "../search/SearchContractorsList";
 import { getAllContractors } from "../../firebase/Contractor";
-import { distance } from "../../gmaps/distance";
 import { getCityName } from "../../gmaps/geocode";
+import { filterByDistance, filterByTags } from "../search/filterFunctions";
 
 import SearchFilter from "../search/SearchFilter";
 
@@ -20,7 +20,6 @@ const SearchContractorsPage = () => {
         });
     }, []);
 
-    // function filterContractors(filter){
     function handleFilters(filters) {
         var filtered = allContractors;
         if (filters.location.length > 0) {
@@ -40,33 +39,6 @@ const SearchContractorsPage = () => {
             setSkillFilterMessage("");
         }
         setFilteredContractors(filtered);
-    }
-
-    function filterByDistance(currentList, filterDistance, filterLocation) {
-        let filteredDistance = [];
-        currentList.forEach(contractor => {
-            contractor["distance"] = distance(filterLocation[1], filterLocation[0], contractor.location[1], contractor.location[0]);
-            if (contractor["distance"] <= filterDistance) {
-                filteredDistance.push(contractor);
-            }
-        });
-        return filteredDistance;
-    }
-
-    function filterByTags(currentList, tags) {
-        let filteredTags = [];
-        currentList.forEach(contractor => {
-            let i = 0;
-            while (i < contractor.skilltags.length) {
-                //current contractors skill tag is in the filter
-                if (tags.some((tag) => tag === contractor.skilltags[i])) {
-                    filteredTags.push(contractor);
-                    break;
-                }
-                i++;
-            }
-        });
-        return filteredTags;
     }
 
     return (
