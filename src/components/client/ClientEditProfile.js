@@ -75,7 +75,6 @@ const ClientEditProfile = () => {
                 </Form>
                 
             </div>
-            <MakeListingModal />
         </div>
     )
 }

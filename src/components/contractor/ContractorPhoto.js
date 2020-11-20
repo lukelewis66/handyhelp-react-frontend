@@ -4,7 +4,9 @@ import { Image } from "react-bootstrap";
 
 const ContractorPhoto = () => {
 	const [profilepicture, setProfilePicture] = useState("");
-	
+
+	const [userCity, setUserCity] = useState("");
+
 	const [apiCalls, setApiCalls] = useState(0);
 
 	useEffect(() => {
@@ -17,7 +19,7 @@ const ContractorPhoto = () => {
 	
 
     return(
-	<div className = "profilePhoto">
+	<div className = "profilePhoto" >
 		<Image fluid src={profilepicture} />
 	</div>);
 	

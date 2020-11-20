@@ -27,11 +27,12 @@ const ContractorProfile = () => {
     }
     return (
         <div>
-            <div className = "profileHeader">
-            <div style={{display: "flex"}}>
-	    	    <ContractorInfo />
-            </div>
-	    </div>
+            <div className = "">
+                <div className = "profileHeader">
+                    <ContractorPhoto />
+                    <ContractorInfo />
+                </div>
+	        </div>
             <Nav fill variant="tabs" className = "tabsStyle" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
                 <Nav.Item >
                     <Nav.Link eventKey="Feed">Feed</Nav.Link>

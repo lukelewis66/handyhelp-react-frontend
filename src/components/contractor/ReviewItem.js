@@ -2,8 +2,7 @@ import React from "react";
 
 const ReviewItem = ({ props }) => {
     return (
-        <div className="component-border">
-            <h3>ReviewItem component</h3>
+        <div>
             <ul>
                 <li>{props.rating}</li>
                 <li>{props.comment}</li>
