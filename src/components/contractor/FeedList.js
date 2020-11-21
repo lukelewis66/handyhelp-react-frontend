@@ -23,11 +23,13 @@ const FeedList = () => {
     */
 
     return (
-        <div className="component-border">
-            <div className="flex-list">
-                {feedItems.map((item) => (
-                    <FeedItem key={item.id} props={item} />
-                ))}
+        <div >
+            <div className="listingAndFeedTab">
+                <div className="flex-list">
+                    {feedItems.map((item) => (
+                        <FeedItem key={item.id} props={item} />
+                    ))}
+                </div>
             </div>
             <MakeFeedItemModal />
         </div>

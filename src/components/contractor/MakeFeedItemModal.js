@@ -113,8 +113,7 @@ const MakeFeedItemModal = () => {
     }
 
     return (
-        <div className="component-border">
-            <h3>MakeFeedItemModal component</h3>
+        <div className = "feedModal">
             <Button variant="primary" onClick={handleShow}>
                 Create Post
           </Button>
