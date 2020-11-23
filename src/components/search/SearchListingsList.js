@@ -1,31 +1,34 @@
 import React, { useState, useEffect } from "react";
 
 import SearchListingsItem from "./SearchListingsItem";
-import { getAllListings } from "../../firebase/Client";
 
-const SearchListingsList = ({ selectedFilters }) => {
+import { Spinner } from "react-bootstrap";
 
-    const [listings, setListings] = useState([]);
 
-    useEffect(() => {
-        const filterUID = false;
-        const active = true;
-        getAllListings(filterUID, active).then((list) => {
-            setListings(list);
-        });
-    }, []);
+const SearchListingsList = ({ listings, filterMessage, skillFilterMessage }) => {
+    const showListings = () => {
+        if (listings === null) {
+            return <Spinner animation="border" />;
+        }
+        else if (listings.length === 0) {
+            return <h2>Sorry, no listings found.</h2>
+        }
+        else {
+            var list = listings.map((listing) => (
+                <SearchListingsItem key={listing.id} props={listing} />
+            ))
+            return list;
+        }
+    }
 
     return (
         <div className="search-list">
-            <h1>Results</h1>
-            <p>Selected Filters: {selectedFilters}</p>
+            <div>
+                <h3>{filterMessage}</h3>
+                {skillFilterMessage ? <h3>{skillFilterMessage}</h3> : null}
+            </div>
             <div className="flex-list">
-                {listings.map((item) => (
-                    <SearchListingsItem key={item.id} props={item} />
-                ))}
-                {/* {fakeListingItems.map((item) => (
-                    <SearchListingsItem key={item.description} props={item} />
-                ))} */}
+                {showListings()}
             </div>
         </div>
     );

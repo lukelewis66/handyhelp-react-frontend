@@ -1,15 +1,5 @@
-import { useEffect, useState } from "react";
-import { getContractor } from "../firebase/Contractor.js"
-
 export function distance(lon1, lat1, lon2, lat2) {
-	// var lat2 = target[0];
-	// var lon2 = target[1];
-	// var unit = "M";
-	// var lat1 = user[0];
-	// var lon1 = user[1];
-
-
-	if ((lat1 == lat2) && (lon1 == lon2)) {
+	if ((lat1 === lat2) && (lon1 === lon2)) {
 		return 0;
 	}
 	else {
@@ -24,8 +14,6 @@ export function distance(lon1, lat1, lon2, lat2) {
 		dist = Math.acos(dist);
 		dist = dist * 180 / Math.PI;
 		dist = dist * 60 * 1.1515;
-		//if (unit=="K") { dist = dist * 1.609344 }
-		//if (unit=="N") { dist = dist * 0.8684 }
 		return dist;
 	}
 }
