@@ -104,6 +104,7 @@ html {
 .search-page{
   background-color: #0098ff;
   display: flex;
+  height: 100%;
 }
 .search-list {
   background-color: #0098ff;
@@ -111,9 +112,20 @@ html {
 }
 
 .search-filter {
-  margin: 2rem auto;
+  margin: 1rem 0 1rem 1rem;
   padding: 1rem;
   width: 25%;
+  height: min-content;
+  border-radius: 25px;
+  background-color: white;
+}
+
+.filter-div {
+  border-radius: 25px;
+  border: 2px solid;
+  border-color:  #0098ff;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 .contractor-card {
@@ -121,9 +133,20 @@ html {
   width: 300px;
 }
 
+.skill-pill {
+  margin: 0px 1px;
+}
+
+.contractor-card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
 .contractor-search-image {
   width: 75px;
-  height: auto;
+  height: 75px;
   border: solid;
   border-radius: 50%;
 }

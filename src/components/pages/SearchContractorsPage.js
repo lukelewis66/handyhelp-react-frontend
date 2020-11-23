@@ -48,11 +48,9 @@ const SearchContractorsPage = () => {
     }
 
     return (
-        <div>
-            <div className="search-page" style={{ display: "flex" }}>
-                <SearchFilter handleFilters={handleFilters} handleClearFilters={handleClearFilters} />
-                <SearchContractorsList contractors={filteredContractors} filterMessage={filterMessage} skillTagFilters={skillFilterMessage} />
-            </div>
+        <div className="search-page">
+            <SearchFilter handleFilters={handleFilters} handleClearFilters={handleClearFilters} />
+            <SearchContractorsList contractors={filteredContractors} filterMessage={filterMessage} skillTagFilters={skillFilterMessage} />
         </div>
     );
 }

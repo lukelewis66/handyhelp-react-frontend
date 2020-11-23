@@ -50,11 +50,9 @@ const SearchListingsPage = () => {
     }
 
     return (
-        <div>
-            <div style={{ display: "flex" }}>
-                <SearchFilter handleFilters={handleFilters} handleClearFilters={handleClearFilters} />
-                <SearchListingsList listings={filteredListings} filterMessage={filterMessage} skillFilterMessage={skillFilterMessage} />
-            </div>
+        <div className="search-page">
+            <SearchFilter handleFilters={handleFilters} handleClearFilters={handleClearFilters} />
+            <SearchListingsList listings={filteredListings} filterMessage={filterMessage} skillFilterMessage={skillFilterMessage} />
         </div>
     );
 }

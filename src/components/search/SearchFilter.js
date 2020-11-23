@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Form, Button } from "react-bootstrap";
-import { SKILLTAGS } from "../../constants/skilltags";
+import { SKILLTAGS, SKILLTAG_PILLS } from "../../constants/skilltags";
 import GeoSearchBar from "./GeoSearchBar";
 
 const SearchFilter = ({ handleFilters, handleClearFilters }) => {
@@ -21,7 +21,10 @@ const SearchFilter = ({ handleFilters, handleClearFilters }) => {
 
     const showTags = () => {
         return SKILLTAGS.map((tag) => (
-            <Form.Check type="checkbox" label={tag.label} value={tag.label} onChange={(e) => handleSkillTagSelection(e)} />
+            <label style={{ display: "flex" }}>
+                <input type="checkbox" style={{ marginRight: "10px" }} value={tag.label} onChange={(e) => handleSkillTagSelection(e)} />
+                {SKILLTAG_PILLS[tag.label]}
+            </label>
         ));
     }
 
@@ -51,11 +54,17 @@ const SearchFilter = ({ handleFilters, handleClearFilters }) => {
         <div className="search-filter">
             <h3>Filter Your Search</h3>
             <Form>
-                <Form.Label><b>Filer by Location</b></Form.Label>
-                <GeoSearchBar handleCoordinates={handleCoordinates} prevLocationSelected={false} />
-                <Form.Label><b>Filter by Skill Tags</b></Form.Label>
-                {showTags()}
-                <Button onClick={() => doFilter()}>Filter</Button>
+                <div className="filter-div">
+                    <Form.Label><b>Filter by Location</b></Form.Label>
+                    <GeoSearchBar handleCoordinates={handleCoordinates} prevLocationSelected={false} />
+                </div>
+                <div className="filter-div">
+                    <Form.Label><b>Filter by Skill Tags</b></Form.Label>
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                        {showTags()}
+                    </div>
+                </div>
+                <Button onClick={() => doFilter()} style={{ marginRight: "10px" }}>Filter</Button>
                 <Button onClick={() => clearFilters()}>Clear Filters</Button>
             </Form>
         </div>
