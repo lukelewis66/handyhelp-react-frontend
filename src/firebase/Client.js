@@ -6,24 +6,20 @@ export function getAllListings(UID, active) {
             'Accept': 'application/json',
         }
     };
-    console.log("get all listings called with UID: ", UID, " \nactive: ", active);
     return new Promise(function (resolve, reject) {
         fetch(url, req)
             .then(response => response.json())
             .then(data => {
                 //changing {objects} to [objects] so we can map them when showing.
                 const listData = Object.keys(data).map(key => data[key]);
-                console.log("listData: ", listData);
                 //console.log(listData);
                 var listings;
                 if (UID) {
-                    console.log("here with UID: ", UID);
                     listings = listData.filter((listing) => listing.client === UID && listing.active === active);
                 }
                 else {
                     listings = listData.filter((listing) => listing.active === active);
                 }
-                console.log("resolving with listings: ", listings);
                 resolve(listings);
             })
             .catch(err => reject(err));
@@ -63,7 +59,6 @@ export function getListing(LID) {
         fetch(url)
             .then(response => response.json())
             .then(listing => {
-                console.log("listing retrieved: ", listing);
                 resolve(listing);
             })
             .catch(err => reject(err));
@@ -82,7 +77,6 @@ export function getUserInfo(UID) {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                console.log("user retrieved: ", data);
                 resolve(data);
             });
     })

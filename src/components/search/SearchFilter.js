@@ -21,7 +21,7 @@ const SearchFilter = ({ handleFilters, handleClearFilters }) => {
 
     const showTags = () => {
         return SKILLTAGS.map((tag) => (
-            <label style={{ display: "flex" }}>
+            <label>
                 <input type="checkbox" style={{ marginRight: "10px" }} value={tag.label} onChange={(e) => handleSkillTagSelection(e)} />
                 {SKILLTAG_PILLS[tag.label]}
             </label>
@@ -44,10 +44,18 @@ const SearchFilter = ({ handleFilters, handleClearFilters }) => {
     }
 
     function handleCoordinates(lat, lng) {
-        setFilters((prevState) => ({
-            ...prevState,
-            location: [lat, lng]
-        }))
+        if (!lat || !lng) {
+            setFilters((prevState) => ({
+                ...prevState,
+                location: []
+            }))
+        }
+        else {
+            setFilters((prevState) => ({
+                ...prevState,
+                location: [lat, lng]
+            }))
+        }
     }
 
     return (

@@ -14,7 +14,6 @@ const SearchListingsList = ({ listings, filterMessage, skillFilterMessage }) => 
             return <h2>Sorry, no listings found.</h2>
         }
         else {
-            console.log("listings: ", listings);
             var list = listings.map((listing) => (
                 <SearchListingsItem key={listing.id} props={listing} />
             ))

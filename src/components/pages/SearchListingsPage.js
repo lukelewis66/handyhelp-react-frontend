@@ -16,7 +16,6 @@ const SearchListingsPage = () => {
         const filterUID = false;
         const active = true;
         getAllListings(filterUID, active).then((list) => {
-            console.log(list);
             setAllListings(list);
             setFilteredListings(list);
         });
