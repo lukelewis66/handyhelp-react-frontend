@@ -17,8 +17,6 @@ const ContractorProfile = () => {
         switch (active) {
             case "Reviews":
                 return <ReviewList />
-            case "Bio":
-                return <BioList />
             case "Edit":
                 return <ContractorEditProfile />
             default:
@@ -39,9 +37,6 @@ const ContractorProfile = () => {
                 </Nav.Item>
                 <Nav.Item >
                     <Nav.Link eventKey="Reviews">Reviews</Nav.Link>
-                </Nav.Item>
-                <Nav.Item >
-                    <Nav.Link eventKey="Bio">Bio</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link eventKey="Edit">Edit Profile</Nav.Link>
