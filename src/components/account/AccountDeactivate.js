@@ -28,7 +28,7 @@ const AccountDeactivate = () => {
 
     return (
         <div className="formStyle">
-            <Button className="active-button" variant="primary" onClick={handleShow}>
+            <Button className="active-button" variant="danger" onClick={handleShow}>
                 Deactivate Account
             </Button>
 

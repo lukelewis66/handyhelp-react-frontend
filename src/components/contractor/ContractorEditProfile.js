@@ -4,8 +4,24 @@ import { Modal, Form, Button } from "react-bootstrap";
 import { getContractor} from "../../firebase/Contractor";
 import { SKILLTAGS } from "../../constants/skilltags";
 import { checkUserActive, editContractor } from "../../firebase/accountFunctions";
+import AccountDeactivate from "../account/AccountDeactivate";
+import AccountReactivate from "../account/AccountReactivate";
 
 const ContractorEditProfile = () => {
+
+  const [active, setActive] = useState();
+  useEffect(() => {
+      checkUserActive(localStorage.getItem("UID"))
+          .then((data) => {
+              if (data.active) {
+                  setActive(<AccountDeactivate />);
+              }
+              else {
+                  setActive(<AccountReactivate />);
+              }
+          })
+  }, [])
+
   const [contractorInfo, setInfo] = useState([]);
   useEffect(() => {
     getContractor(localStorage.getItem("UID")).then((data) => {
@@ -99,6 +115,7 @@ const ContractorEditProfile = () => {
           Submit
         </Button>
         <p style={{ color: "red" }}>{formMessage}</p>
+        {active}
       </Form>
     </div>
   </div>

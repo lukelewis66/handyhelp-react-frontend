@@ -26,6 +26,7 @@ const ContractorInfo = () => {
 		<div className="infoPanelCon">
 			<h1>Welcome back, {contractor.name}!</h1>
 			<h3>{contractor.location_string}</h3>
+			<p>{contractor.bio}</p>
 		</div>)
 }
 
