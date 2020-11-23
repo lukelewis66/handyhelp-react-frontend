@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { initMap } from "../../gmaps/initMap.js"
+import { useParams } from "react-router"; 
 import { getUserInfo, getListing } from "../../firebase/Client";
 import { getUserLocation } from "../../firebase/accountFunctions.js";
 import { distance } from "../../gmaps/distance.js";

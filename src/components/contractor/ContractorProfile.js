@@ -17,8 +17,6 @@ const ContractorProfile = () => {
         switch (active) {
             case "Reviews":
                 return <ReviewList />
-            case "Bio":
-                return <BioList />
             case "Edit":
                 return <ContractorEditProfile />
             default:
@@ -27,20 +25,18 @@ const ContractorProfile = () => {
     }
     return (
         <div>
-            <div className = "profileHeader">
-            <div style={{display: "flex"}}>
-	    	    <ContractorInfo />
-            </div>
-	    </div>
+            <div className = "">
+                <div className = "profileHeader">
+                    <ContractorPhoto />
+                    <ContractorInfo />
+                </div>
+	        </div>
             <Nav fill variant="tabs" className = "tabsStyle" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
                 <Nav.Item >
                     <Nav.Link eventKey="Feed">Feed</Nav.Link>
                 </Nav.Item>
                 <Nav.Item >
                     <Nav.Link eventKey="Reviews">Reviews</Nav.Link>
-                </Nav.Item>
-                <Nav.Item >
-                    <Nav.Link eventKey="Bio">Bio</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
                     <Nav.Link eventKey="Edit">Edit Profile</Nav.Link>

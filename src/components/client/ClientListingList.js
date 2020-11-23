@@ -15,7 +15,7 @@ const ClientListingList = ({ active }) => {
 
     return (
         <div>
-            <div className="tabStyle">
+            <div className="listingAndFeedTab">
                 {listingItems.map((item) => (
                     <ClientListingItem key={item.id} props={item} />
                 ))}

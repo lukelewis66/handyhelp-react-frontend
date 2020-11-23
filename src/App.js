@@ -76,10 +76,10 @@ function App() {
                         <Route path="/" exact>
                             {userExists ? <HomePage /> : <Redirect to="/accountsetup" />}
                         </Route>
-                        <Route path="/client" component={isClient ? ClientPage : HomePage} />
-                        <Route path="/contractor" component={(!isClient || isClient === 2) ? ContractorPage : HomePage} />
-                        <Route path="/searchlistings" component={(!isClient || isClient === 2) ? SearchListingsPage : HomePage } />
-                        <Route path="/searchcontractors" component={isClient ? SearchContractorsPage : HomePage} />
+                        <Route path="/client" component={isClient ? ClientPage : ErrorPage} />
+                        <Route path="/contractor" component={(!isClient || isClient === 2) ? ContractorPage : ErrorPage} />
+                        <Route path="/searchlistings" component={(!isClient || isClient === 2) ? SearchListingsPage : ErrorPage } />
+                        <Route path="/searchcontractors" component={isClient ? SearchContractorsPage : ErrorPage} />
                         <Route path="/about" component={AboutPage} />
                         <Route path="/listing/:LID" children={<IndividualListing />} />
                         <Route path="/contractors/:UID" children={<IndividualContractor />} />
