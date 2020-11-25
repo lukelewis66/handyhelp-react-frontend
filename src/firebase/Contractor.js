@@ -87,3 +87,24 @@ export function getFeedItem(FID) {
             .catch(err => reject(err));
     })
 }
+
+export function getReviews(UID) {
+    const url = `${process.env.REACT_APP_SERVER_URL}/getreviews`;
+    const req = {
+        method: "GET",
+        headers: {
+            'Accept': 'application/json',
+        }
+    };
+    return new Promise(function (resolve, reject) {
+        fetch(url, req)
+            .then(response => response.json())
+            .then(data => {
+                const revList = Object.keys(data).map(key => data[key]);
+                var reviews;
+                reviews = revList.filter((review) => review.contractor === UID);
+                resolve(reviews);
+            })
+            .catch(err => reject(err));
+    })
+}
