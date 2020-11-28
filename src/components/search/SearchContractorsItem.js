@@ -31,7 +31,7 @@ const SearchContractorsItem = ({ props }) => {
                     {props.email}<br />
                     {props.phone}<br />
                 </Card.Text> */}
-                    <Button as={Link} to={fullLink} target="_blank">Learn More</Button>
+                    <Button as={Link} to={fullLink} target="_blank">View Profile</Button>
                 </div>
             </Card.Body>
         </Card >
