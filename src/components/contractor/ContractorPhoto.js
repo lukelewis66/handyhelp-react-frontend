@@ -9,6 +9,7 @@ const ContractorPhoto = () => {
 
 	const [apiCalls, setApiCalls] = useState(0);
 
+	
 	useEffect(() => {
 		getContractor(localStorage.getItem("UID")).then((contractor) => {
 			console.log(contractor);
@@ -20,7 +21,7 @@ const ContractorPhoto = () => {
 
     return(
 	<div className = "profilePhoto" >
-		<Image fluid src={profilepicture} />
+		<Image fluid src={profilepicture } />
 	</div>);
 	
 }
