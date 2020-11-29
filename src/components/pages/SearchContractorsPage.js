@@ -17,6 +17,7 @@ const SearchContractorsPage = () => {
         getAllContractors().then((list) => {
             setAllContractors(list);
             setFilteredContractors(list);
+            console.log("filtered contractors: ", filteredContractors);
         });
     }, []);
 

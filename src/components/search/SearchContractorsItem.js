@@ -17,10 +17,20 @@ const SearchContractorsItem = ({ props }) => {
         < Card className="contractor-card" variant="outlined" >
             <Card.Body className="contractor-card-body">
                 <div style={{ display: "flex" }}>
-                    <img className="contractor-search-image" src={props.profilepic ? props.profilepic : "/contractor-anon.jpg"} />
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+
+                        <img className="contractor-search-image" src={props.profilepic ? props.profilepic : "/contractor-anon.jpg"} />
+                        <span className="rating-display">&#9734;{props.rating}</span>
+                    </div>
                     <div className="contractor-search-basicinfo">
                         <Card.Title>{props.name}</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">{props.location_string}</Card.Subtitle>
+                        <div>
+                            <div style={{ display: "flex" }}>
+                                <Card.Subtitle className="text-muted">
+                                    {props.location_string}
+                                </Card.Subtitle>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column" }}>

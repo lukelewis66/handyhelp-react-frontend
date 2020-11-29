@@ -177,6 +177,21 @@ html {
   border-radius: 50%;
 }
 
+.rating-display {
+  border: 1px solid;
+  padding-top: .5em;
+  padding-right: .6em;
+  padding-left: .6em;
+  border-radius: 5rem;
+  display: inline-block;
+  padding: .25em .4em;
+  font-size: 75%;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
 .contractor-search-basicinfo {
   display: flex;
   flex-direction: column;

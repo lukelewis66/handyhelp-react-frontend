@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Form, Button } from "react-bootstrap";
 import { SKILLTAGS, SKILLTAG_PILLS } from "../../constants/skilltags";
@@ -11,7 +11,8 @@ const SearchFilter = ({ handleFilters, handleClearFilters }) => {
         skilltags: [],
     });
 
-    const doFilter = () => {
+    function doFilter() {
+        console.log("doFilter called with filters:", filters);
         handleFilters(filters);
     }
 
