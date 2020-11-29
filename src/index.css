@@ -105,6 +105,13 @@ html {
   height: 350px;
 }
 
+.reviewCardStyle {
+  margin: 10px;
+  width: 1300px;
+  height: 100px;
+  max-height: 200px;
+}
+
 .formStyle {
   max-width: 500px;
   margin: 2rem auto;
