@@ -179,7 +179,7 @@ html {
 
 .rating-display {
   border: 1px solid;
-  padding-top: .5em;
+  margin-top: .2em;
   padding-right: .6em;
   padding-left: .6em;
   border-radius: 5rem;

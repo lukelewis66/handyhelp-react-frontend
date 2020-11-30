@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import { Form, Button } from "react-bootstrap";
 import { SKILLTAGS, SKILLTAG_PILLS } from "../../constants/skilltags";
@@ -10,6 +10,10 @@ const SearchFilter = ({ handleFilters, handleClearFilters }) => {
         distance: 50,
         skilltags: [],
     });
+
+    const [distance, setDistance] = useState(50);
+
+    const distanceRef = useRef();
 
     function doFilter() {
         console.log("doFilter called with filters:", filters);
@@ -59,6 +63,12 @@ const SearchFilter = ({ handleFilters, handleClearFilters }) => {
         }
     }
 
+    function changeDistance() {
+        setFilters((prevState) => ({
+            ...prevState,
+            distance: distanceRef.current.value,
+        }));
+    }
     return (
         <div className="search-filter">
             <h3>Filter Your Search</h3>
@@ -66,6 +76,8 @@ const SearchFilter = ({ handleFilters, handleClearFilters }) => {
                 <div className="filter-div">
                     <Form.Label><b>Filter by Location</b></Form.Label>
                     <GeoSearchBar handleCoordinates={handleCoordinates} prevLocationSelected={false} />
+                    <Form.Label style={{ marginTop: "1rem" }}>Distance: {filters.distance} miles</Form.Label>
+                    <input ref={distanceRef} style={{ width: "100%" }} type="range" id="search-range" name="search-range" min="25" max="75" value={filters.distance} onInput={() => changeDistance()} />
                 </div>
                 <div className="filter-div">
                     <Form.Label><b>Filter by Skill Tags</b></Form.Label>
