@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { Card, Button } from "react-bootstrap";
 import { SKILLTAG_PILLS } from "../../constants/skilltags";
+import Message from "../Message";
 
 const SearchContractorsItem = ({ props }) => {
 
@@ -31,6 +32,7 @@ const SearchContractorsItem = ({ props }) => {
                     {props.email}<br />
                     {props.phone}<br />
                 </Card.Text> */}
+                    <Message UID={props.client}/>
                     <Button as={Link} to={fullLink} target="_blank">Learn More</Button>
                 </div>
             </Card.Body>
