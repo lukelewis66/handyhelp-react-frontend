@@ -21,7 +21,7 @@ const IndividualContractor = () => {
 
   useEffect(() => {
     console.log("individual contractor useeffect | UID: ", UID);
-    getContractor(UID).then((contractor) => {
+    getContractor(con.c_UID).then((contractor) => {
     console.log(">>>>>>>>>>>>>>>>",contractor);
     setcon(contractor);
   })}

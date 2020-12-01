@@ -8,9 +8,8 @@ const IndividualContractorPhoto = ({photoURL}) => {
 	console.log(photoURL);
 
     return(
-	<div className = "profilePhoto" >
 		<Image fluid src={photoURL ? photoURL : "/contractor-anon.jpg"} />
-	</div>);
+	);
 	
 }
 

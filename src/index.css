@@ -45,6 +45,14 @@ html {
   display: flex;
 }
 
+.profilePhoto2 {
+  margin: 0px 0px 0px 0%;
+  height: 200px;
+  width: 200px;
+  padding: 1.3%;
+  display: flex;
+}
+
 .profileHeader {
   display: flex;
 }
@@ -136,7 +144,13 @@ html {
   background-color: #0098ff;
   width: 75%;
 }
-
+.profile-photo {
+  margin: 1rem 1rem 1rem 1rem;
+  padding: 1rem;
+  height: min-content;
+  border-radius: 25px;
+  background-color: rgba(27, 27, 27, 0.377);
+}
 .search-filter {
   margin: 1rem 0 1rem 1rem;
   padding: 1rem;
@@ -144,6 +158,15 @@ html {
   height: min-content;
   border-radius: 25px;
   background-color: white;
+}
+
+.profile-info {
+  margin: 1rem 0 1rem 1rem;
+  padding: 1rem;
+  width: 62.5%;
+  height: min-content;
+  border-radius: 25px;
+  background-color: rgb(198, 220, 245);
 }
 
 .filter-div {
