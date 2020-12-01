@@ -164,3 +164,40 @@ export function getUserLocation(UID) {
     });
 }
 
+export function getUserEmail(UID) {
+    return new Promise(function (resolve, reject) {
+        const server = process.env.REACT_APP_SERVER_URL;
+        var url = new URL(`${server}/getuseremail`);
+        const params = new URLSearchParams();
+        params.append("UID", UID);
+        url.search = params.toString();
+        console.log(url.toString());
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                resolve(data)
+                console.log(data);
+            }
+            )
+            .catch((err) => reject(err));
+    });
+}
+
+export function getUserName(UID) {
+    return new Promise(function (resolve, reject) {
+        const server = process.env.REACT_APP_SERVER_URL;
+        var url = new URL(`${server}/getusername`);
+        const params = new URLSearchParams();
+        params.append("UID", UID);
+        url.search = params.toString();
+        console.log(url.toString());
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                resolve(data)
+                console.log(data);
+            }
+            )
+            .catch((err) => reject(err));
+    });
+}
