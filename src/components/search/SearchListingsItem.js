@@ -22,7 +22,6 @@ const SearchListingsItem = ({ props }) => {
                 {showTags()}
                 <Card.Text>
                     {props.description}
-                    {props.skilltags}
                 </Card.Text>
                 <Button as={Link} to={fullLink}>Learn More</Button>
             </Card.Body>

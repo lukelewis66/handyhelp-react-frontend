@@ -13,6 +13,17 @@ const SearchContractorsItem = ({ props }) => {
             SKILLTAG_PILLS[tag]
         ));
     }
+
+    function showRating() {
+        var ratingString;
+        if (props.ratingCount !== 0) {
+            return <span className="rating-display">&#9734;{props.rating.toFixed(2)}</span>
+        }
+        else {
+            return <span className="rating-display">No Ratings</span>
+        }
+
+    }
     return (
         < Card className="contractor-card" variant="outlined" >
             <Card.Body className="contractor-card-body">
@@ -20,7 +31,7 @@ const SearchContractorsItem = ({ props }) => {
                     <div style={{ display: "flex", flexDirection: "column" }}>
 
                         <img className="contractor-search-image" src={props.profilepic ? props.profilepic : "/contractor-anon.jpg"} />
-                        <span className="rating-display">&#9734;{props.rating}</span>
+                        {showRating()}
                     </div>
                     <div className="contractor-search-basicinfo">
                         <Card.Title>{props.name}</Card.Title>
