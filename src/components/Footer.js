@@ -8,14 +8,13 @@ const Footer = () => {
             bg="dark"
             variant="dark"
         >
-            <Navbar.Brand> Footer Component </Navbar.Brand>
             <Navbar.Text>&copy; Dirty-Devs 2020</Navbar.Text>
             <Nav>
                 <Nav.Link as={Link} to="/about">
                     About Us
                 </Nav.Link>
             </Nav>
-            
+
         </Navbar>
     );
 }

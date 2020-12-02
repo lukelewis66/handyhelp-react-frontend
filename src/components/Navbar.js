@@ -6,6 +6,7 @@ import { Navbar as BootNav, Nav } from "react-bootstrap"; //need to rename Boots
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import SignOut from "./SignOut";
+import { ToastProvider } from "react-toast-notifications";
 
 //https://react-bootstrap.netlify.app/components/navbar/#navbars
 
@@ -37,8 +38,10 @@ const Navbar = ({ activepage, isClient }) => {
     } else {
       return (
         <Nav>
-          <SignUp />
-          <SignIn />
+          <ToastProvider placement='top-center'>
+            <SignUp />
+            <SignIn />
+          </ToastProvider>
         </Nav>
       );
     }

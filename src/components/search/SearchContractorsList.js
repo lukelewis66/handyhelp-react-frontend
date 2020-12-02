@@ -22,8 +22,8 @@ const SearchContractorsList = ({ contractors, filterMessage, skillTagFilters }) 
     return (
         <div className="search-list">
             <div>
-                <h3>{filterMessage}</h3>
-                {skillTagFilters ? <h3>{skillTagFilters}</h3> : null}
+                <h3 style={{ textAlign: "center" }}>{filterMessage}</h3>
+                {skillTagFilters ? <h3 style={{ textAlign: "center" }}>{skillTagFilters}</h3> : null}
             </div>
             <div className="flex-list">
                 {showContractors()}

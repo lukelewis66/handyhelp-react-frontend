@@ -4,19 +4,21 @@ import SearchContractorsList from "../search/SearchContractorsList";
 import { getAllContractors } from "../../firebase/Contractor";
 import { getCityName } from "../../gmaps/geocode";
 import { filterByDistance, filterByTags } from "../search/filterFunctions";
+import { SKILLTAG_PILLS } from "../../constants/skilltags";
 
 import SearchFilter from "../search/SearchFilter";
 
 const SearchContractorsPage = () => {
     const [allContractors, setAllContractors] = useState([]);
     const [filteredContractors, setFilteredContractors] = useState(null);
-    const [filterMessage, setFilterMessage] = useState("Showing all contractors");
+    const [filterMessage, setFilterMessage] = useState(<span className="filter-message">Showing all relevant contractors</span>);
     const [skillFilterMessage, setSkillFilterMessage] = useState("");
 
     useEffect(() => {
         getAllContractors().then((list) => {
             setAllContractors(list);
             setFilteredContractors(list);
+            console.log("filtered contractors: ", filteredContractors);
         });
     }, []);
 
@@ -24,7 +26,7 @@ const SearchContractorsPage = () => {
         var filtered = allContractors;
         if (filters.location.length > 0) {
             getCityName(filters.location[0], filters.location[1]).then((city) => {
-                setFilterMessage(`Showing relevant contractors within ${filters.distance} miles of ${city}.`);
+                setFilterMessage(<span className="filter-message">Showing relevant contractors within {filters.distance} miles of {city}</span>);
             });
             filtered = filterByDistance(allContractors, filters.distance, filters.location);
         }
@@ -34,7 +36,11 @@ const SearchContractorsPage = () => {
             } else {
                 filtered = filterByTags(allContractors, filters.skilltags);
             }
-            setSkillFilterMessage(`Skill Tag Filters: ${filters.skilltags.join(", ")}`);
+            var filterComponents = filters.skilltags.map(tag => {
+                return SKILLTAG_PILLS[tag];
+            })
+            setSkillFilterMessage(filterComponents);
+            // setSkillFilterMessage(`Skill Tag Filters: ${filters.skilltags.join(", ")}`);
         } else {
             setSkillFilterMessage("");
         }
@@ -43,7 +49,8 @@ const SearchContractorsPage = () => {
 
     const handleClearFilters = () => {
         setFilteredContractors(allContractors);
-        setFilterMessage("Showing all contractors")
+        // setFilterMessage("Showing all contractors");
+        setFilterMessage(<span className="filter-message">Showing all relevant contractors</span>);
         setSkillFilterMessage("");
     }
 
