@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 import { Form, Button } from "react-bootstrap";
 import { SKILLTAGS, SKILLTAG_PILLS } from "../../constants/skilltags";
@@ -10,8 +10,6 @@ const SearchFilter = ({ handleFilters, handleClearFilters }) => {
         distance: 50,
         skilltags: [],
     });
-
-    const [distance, setDistance] = useState(50);
 
     const distanceRef = useRef();
 

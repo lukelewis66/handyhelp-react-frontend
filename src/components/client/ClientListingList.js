@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap"
 import ClientListingItem from "./ClientListingItem";
 import MakeListingModal from "./MakeListingModal";
 import { getAllListings } from "../../firebase/Client";

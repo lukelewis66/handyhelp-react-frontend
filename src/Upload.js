@@ -27,10 +27,10 @@ function Upload(images, UID, type, id) {
                 method: 'POST',
                 body: formData,
             });
-            if (type == 'ProfilePic') {
+            if (type === 'ProfilePic') {
                 imageUrl += 'ProfilePic.png';
             }
-            else if (type == 'Listing') {
+            else if (type === 'Listing') {
                 imageUrl += 'Listings/' + id + '/' + files[i].name;
             }
             else {

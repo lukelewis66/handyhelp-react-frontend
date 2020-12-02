@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { Card, Button } from "react-bootstrap";
 import { SKILLTAG_PILLS } from "../../constants/skilltags";
-import Message from "../Message";
 
 const SearchContractorsItem = ({ props }) => {
 
@@ -16,7 +15,6 @@ const SearchContractorsItem = ({ props }) => {
     }
 
     function showRating() {
-        var ratingString;
         if (props.ratingCount !== 0) {
             return <span className="rating-display">&#9734;{props.rating.toFixed(2)}</span>
         }

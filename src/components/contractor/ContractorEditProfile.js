@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-import DeactivateContractor from "./DeactivateContractor.js";
 import { Modal, Form, Button } from "react-bootstrap";
 import { getContractor } from "../../firebase/Contractor";
 import { SKILLTAGS } from "../../constants/skilltags";

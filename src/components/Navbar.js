@@ -28,7 +28,6 @@ const Navbar = ({ activepage, isClient }) => {
   const [active, setActive] = useState(activepage); //activepage (from url) passed in by App on first render (e.g. on a browser refresh)
 
   const authButtons = () => {
-    var authBtns;
     if (UID) {
       return (
         <Nav>
