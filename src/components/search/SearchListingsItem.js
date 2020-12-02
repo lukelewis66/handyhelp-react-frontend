@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { Card, Button } from "react-bootstrap";
 import { SKILLTAG_PILLS } from "../../constants/skilltags";
+import Message from "../Message";
 
 const SearchListingsItem = ({ props }) => {
 
