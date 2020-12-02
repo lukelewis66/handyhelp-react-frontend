@@ -116,6 +116,28 @@ html {
   height: 350px;
 }
 
+.listing-card {
+  margin: 0.5rem 1.5rem;
+  width: 100%;
+  height: 200px;
+}
+
+.listing-photo {
+  height: 160px;
+  width: 100%;
+  justify-content: center;
+  padding-right: 1.25rem;
+}
+
+.listing-info {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+  justify-content: space-between;
+  width: 50%;
+  height: 130px;
+}
+
 .reviewCardStyle {
   margin: 10px;
   width: 1300px;
@@ -229,6 +251,37 @@ hr.solid {
   border-radius: 50%;
 }
 
+.rating-display {
+  background-color: white;
+  border: 1px solid;
+  margin-top: .2em;
+  padding-right: .6em;
+  padding-left: .6em;
+  border-radius: 5rem;
+  display: inline-block;
+  padding: .25em .4em;
+  font-size: 75%;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.filter-message {
+  background-color: white;
+  margin-top: 1rem;
+  padding-right: .6em;
+  padding-left: .6em;
+  border-radius: 5rem;
+  display: inline-block;
+  padding: .25em .4em;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
 .contractor-search-basicinfo {
   display: flex;
   flex-direction: column;
@@ -289,7 +342,14 @@ hr.solid {
   height: 100%;
 }
 
+.react-toast-notifications__container {
+  z-index: 200000 !important;
+}
 
-
+.listing-description{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 
 

@@ -14,25 +14,43 @@ const SearchContractorsItem = ({ props }) => {
             SKILLTAG_PILLS[tag]
         ));
     }
+
+    function showRating() {
+        var ratingString;
+        if (props.ratingCount !== 0) {
+            return <span className="rating-display">&#9734;{props.rating.toFixed(2)}</span>
+        }
+        else {
+            return <span className="rating-display">No Ratings</span>
+        }
+
+    }
     return (
         < Card className="contractor-card" variant="outlined" >
             <Card.Body className="contractor-card-body">
                 <div style={{ display: "flex" }}>
-                    <img className="contractor-search-image" src={props.profilepic ? props.profilepic : "/contractor-anon.jpg"} />
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+
+                        <img className="contractor-search-image" src={props.profilepic ? props.profilepic : "/contractor-anon.jpg"} />
+                        {showRating()}
+                    </div>
                     <div className="contractor-search-basicinfo">
                         <Card.Title>{props.name}</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">{props.location_string}</Card.Subtitle>
+                        <div>
+                            <div style={{ display: "flex" }}>
+                                <Card.Subtitle className="text-muted">
+                                    {props.location_string}
+                                </Card.Subtitle>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
                     <div style={{ display: "flex", marginBottom: "10px", marginTop: "10px" }}>
                         {showTags()}
                     </div>
-                    {/* <Card.Text>
-                    {props.email}<br />
-                    {props.phone}<br />
-                </Card.Text> */}
-                    <Button as={Link} to={fullLink} target="_blank">Learn More</Button>
+                    <Button as={Link} to={fullLink} target="_blank">View Profile</Button>
+
                 </div>
             </Card.Body>
         </Card >

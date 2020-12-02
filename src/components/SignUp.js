@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
+import { useToasts } from "react-toast-notifications";
 /// for BucketInit(UID) function
 import BucketInit from '../BucketInit';
 
@@ -14,7 +15,7 @@ const SignUp = () => {
     })
 
     const [formMessage, setFormMessage] = useState("");
-
+    const { addToast } = useToasts();
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -29,14 +30,25 @@ const SignUp = () => {
     }
 
     const handleSignUp = () => {
+
         if (
             form.email === "" ||
             form.password === "" ||
             form.confirm_password === ""
         ) {
             setFormMessage("All fields must be filled");
+            var content = "All fields must be filled";
+            addToast(content, {
+                appearance: 'error',
+                autoDismiss: true,
+            });
         } else if (form.password !== form.confirm_password) {
             setFormMessage("Passwords do not match");
+            var content = "Passwords do not match";
+            addToast(content, {
+                appearance: 'error',
+                autoDismiss: true,
+            });
         } else {
             console.log("calling signup....");
             signUp(form.email, form.password)
