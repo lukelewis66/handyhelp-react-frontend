@@ -1,15 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Form, Button } from "react-bootstrap";
-
 import { checkUserActive, editInfo } from "../../firebase/accountFunctions";
-
 import AccountDeactivate from "../account/AccountDeactivate";
-
 import AccountReactivate from "../account/AccountReactivate";
-
 import { getUserInfo } from "../../firebase/Client";
-
-import MakeListingModal from "./MakeListingModal";
 
 const ClientEditProfile = () => {
 

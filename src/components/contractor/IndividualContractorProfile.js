@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useRef, useParams } from "react";
-import { distance } from "../../gmaps/distance";
+import React, { useState } from "react";
 import IndividualFeedList from "./IndividualFeedList";
 import ReviewList from "./ReviewList";
-import BioList from "./BioList";
-import ContractorEditProfile from "./ContractorEditProfile";
 import IndividualContractorPhoto from "./IndividualContractorPhoto";
-import IndividualContractorInfo from "./IndividualContractorInfo";
-import { getContractor } from "../../firebase/Contractor";
+import Message from "../Message";
+
 
 import { Nav } from "react-bootstrap";
 import { getUserInfo } from "../../firebase/Client";
@@ -40,9 +37,10 @@ const IndividualContractorProfile = ({ contractor }) => {
         </div>
         <div className="profile-info">
           <div className="infoPanelCon">
-            <h1>Contractor: {contractor.name}</h1>
+            <h1>{contractor.name}</h1>
             <h3>Based in {contractor.location_string}</h3>
             <p>{contractor.bio}</p>
+            <Message UID={c_UID}/>
           </div>
         </div>
       </div>

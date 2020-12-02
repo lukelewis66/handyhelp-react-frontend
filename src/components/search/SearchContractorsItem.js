@@ -32,7 +32,6 @@ const SearchContractorsItem = ({ props }) => {
                     {props.email}<br />
                     {props.phone}<br />
                 </Card.Text> */}
-                    <Message UID={props.client}/>
                     <Button as={Link} to={fullLink} target="_blank">Learn More</Button>
                 </div>
             </Card.Body>

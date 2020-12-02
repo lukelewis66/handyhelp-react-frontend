@@ -1,5 +1,4 @@
-import React, { useState, useEffect,useRef, useParams } from "react";
-import { getContractor } from "../../firebase/Contractor";
+import React from "react";
 import { Image } from "react-bootstrap"; 
 
 const IndividualContractorPhoto = ({photoURL}) => {

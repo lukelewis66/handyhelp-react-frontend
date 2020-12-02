@@ -1,17 +1,10 @@
-import userEvent from "@testing-library/user-event";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getContractor } from "../../firebase/Contractor";
-import { getUserLocation } from "../../firebase/accountFunctions.js";
-import { distance } from "../../gmaps/distance";
 import IndividualContractorProfile from "../contractor/IndividualContractorProfile"
-import MakeReviewModal from "./MakeReviewModal";
+
 
 const IndividualContractor = () => {
-  const [apiCalls, setApiCalls] = useState(0);
-  const [user, setUser] = useState({
-    location: [0, 0],
-  });
   let { UID } = useParams();
   UID = UID.substring(4, UID.length);
   const [con, setcon] = useState({

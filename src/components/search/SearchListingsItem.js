@@ -25,7 +25,6 @@ const SearchListingsItem = ({ props }) => {
                     {props.description}
                     {props.skilltags}
                 </Card.Text>
-                <Message UID={props.client}/>
                 <Button as={Link} to={fullLink}>Learn More</Button>
             </Card.Body>
         </Card >
