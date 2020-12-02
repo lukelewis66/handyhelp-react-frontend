@@ -105,6 +105,19 @@ html {
   height: 350px;
 }
 
+.listing-card {
+  margin: 0.5rem 1.5rem;
+  width: 100%;
+  height: 200px;
+}
+
+.listing-photo {
+  height:160px;
+  width: 180px;
+  justify-content: center;
+  padding-right: 1.25rem;
+}
+
 .reviewCardStyle {
   margin: 10px;
   width: 1300px;
@@ -272,5 +285,10 @@ html {
   z-index: 200000 !important;
 }
 
+.listing-description{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 
 

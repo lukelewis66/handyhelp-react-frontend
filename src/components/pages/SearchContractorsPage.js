@@ -39,7 +39,6 @@ const SearchContractorsPage = () => {
             var filterComponents = filters.skilltags.map(tag => {
                 return SKILLTAG_PILLS[tag];
             })
-            console.log("filter components: ", filterComponents);
             setSkillFilterMessage(filterComponents);
             // setSkillFilterMessage(`Skill Tag Filters: ${filters.skilltags.join(", ")}`);
         } else {

@@ -14,16 +14,20 @@ const SearchListingsItem = ({ props }) => {
         ));
     }
     return (
-        < Card className="cardStyle" variant="outlined" >
-            <Card.Body>
-                <Card.Img className="itemPhoto" variant="top" src={props.images[0] ? props.images[0] : "/hammer-icon.jpg"} alt="ClientListingImage" />
-                <Card.Title>{props.title}</Card.Title>
-                <Card.Subtitle className="mb-2 text-muted">{props.location_string}</Card.Subtitle>
-                {showTags()}
-                <Card.Text>
-                    {props.description}
-                </Card.Text>
-                <Button as={Link} to={fullLink}>Learn More</Button>
+        < Card className="listing-card" variant="outlined" >
+            <Card.Body style={{ display: "flex", alignItems: "center" }}>
+                <img className="listing-photo" src={props.images[0] ? props.images[0] : "/hammer-icon.jpg"} alt="ClientListingImage" />
+                <div>
+                    <Card.Title>{props.title}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">{props.location_string}</Card.Subtitle>
+                    <div>
+                        {showTags()}
+                    </div>
+                    <Card.Text>
+                        {props.description}
+                    </Card.Text>
+                    <Button as={Link} to={fullLink}>Learn More</Button>
+                </div>
             </Card.Body>
         </Card >
     );
