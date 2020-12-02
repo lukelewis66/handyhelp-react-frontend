@@ -8,7 +8,7 @@ export function getCityName(latitude, longitude) {
     }
     return new Promise(function (resolve, reject) {
         geocoder.geocode({ location: latlng }, (results, status) => {
-            if (status == "OK") {
+            if (status === "OK") {
                 if (results[0]) {
                     //console.log("results: ", results);
                     var city = results[0].address_components.filter(ac => ~ac.types.indexOf('locality'))[0].long_name;
