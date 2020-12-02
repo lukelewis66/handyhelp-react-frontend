@@ -112,10 +112,19 @@ html {
 }
 
 .listing-photo {
-  height:160px;
-  width: 180px;
+  height: 160px;
+  width: 100%;
   justify-content: center;
   padding-right: 1.25rem;
+}
+
+.listing-info {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+  justify-content: space-between;
+  width: 50%;
+  height: 130px;
 }
 
 .reviewCardStyle {

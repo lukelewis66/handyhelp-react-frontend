@@ -48,10 +48,6 @@ const SearchContractorsItem = ({ props }) => {
                     <div style={{ display: "flex", marginBottom: "10px", marginTop: "10px" }}>
                         {showTags()}
                     </div>
-                    {/* <Card.Text>
-                    {props.email}<br />
-                    {props.phone}<br />
-                </Card.Text> */}
                     <Button as={Link} to={fullLink} target="_blank">View Profile</Button>
                 </div>
             </Card.Body>
