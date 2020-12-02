@@ -1,7 +1,12 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import DeleteFeedItemModal from "./DeleteFeedItemModal";
 
 const FeedItem = ({ props }) => {
+	let DeleteFeedItemProps = {
+		UID: localStorage.getItem("UID"),
+		FID: props.id
+	}
 	if(props.images[0]) {
 		return (
 			<div>
@@ -14,6 +19,7 @@ const FeedItem = ({ props }) => {
 						</Card.Text>
 						<Card.Link href="#">Card Link</Card.Link>
 						<Card.Link href="#">Another Link</Card.Link>
+						<DeleteFeedItemModal {...DeleteFeedItemProps} />
 					</Card.Body>
 				</Card>
 			</div>
@@ -30,6 +36,7 @@ const FeedItem = ({ props }) => {
 						</Card.Text>
 						<Card.Link href="#">Card Link</Card.Link>
 						<Card.Link href="#">Another Link</Card.Link>
+						<DeleteFeedItemModal {...DeleteFeedItemProps} />
 					</Card.Body>
 				</Card>
 			</div>
