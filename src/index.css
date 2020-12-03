@@ -237,6 +237,25 @@ html {
   height: 100%;
 }
 
+.homepage-carousel-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.homepage-img-transform{   
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.homepage-main-text {
+  position: absolute;
+  top: 200px;
+  width: 96.66666666666666%;
+  color: #FFF;
+}
 
 
 
