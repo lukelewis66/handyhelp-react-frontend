@@ -13,7 +13,6 @@ function Upload(images, UID, type, id) {
                 )
             }
         }
-        
         for (let i = 0; i < files.length; i++) {
             var imageUrl = 'http://' + UID.toLowerCase() + '.s3-us-west-1.amazonaws.com/';
             const formData = new FormData();
