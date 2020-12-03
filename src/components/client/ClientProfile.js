@@ -5,8 +5,9 @@ import { Nav } from "react-bootstrap";
 import ClientListingList from "./ClientListingList";
 import ClientInactiveListingList from "./ClientInactiveListing";
 import ClientEditProfile from "./ClientEditProfile";
-import ClientPhoto from "./ClientPhoto"
 import ClientInfo from "./ClientInfo"
+import { ToastProvider } from "react-toast-notifications";
+
 
 
 const ClientProfile = () => {
@@ -17,7 +18,7 @@ const ClientProfile = () => {
             case "PastListings":
                 return <ClientInactiveListingList active={false} />;
             case "Edit":
-                return <ClientEditProfile />;
+                return <ToastProvider placement='bottom-center'> <ClientEditProfile /> </ToastProvider>
             default:
                 return <ClientListingList active={true} />;
         }

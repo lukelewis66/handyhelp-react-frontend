@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import FeedItem from "./FeedItem";
-import MakeFeedItemModal from "./MakeFeedItemModal";
 import { getAllFeedItems } from "../../firebase/Contractor";
 import { Spinner } from "react-bootstrap";
 
