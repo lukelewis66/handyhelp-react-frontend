@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import { Carousel } from "react-bootstrap";
-=======
-import React from "react";
->>>>>>> main
 
 const HomePage = () => {
     return (
@@ -52,8 +48,8 @@ const HomePage = () => {
                     />
                 </Carousel.Item>
             </Carousel>
-            <div className="homepage-main-text">
-                <h1>HandyHelp</h1>
+            <div style={{ textAlign: "center" }} className="homepage-main-text">
+                <h1><b>HandyHelp</b></h1>
             </div>
         </div>
     );
