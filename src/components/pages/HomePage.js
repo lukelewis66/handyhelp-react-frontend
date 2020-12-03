@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { Carousel } from "react-bootstrap";
+=======
+import React from "react";
+>>>>>>> main
 
 const HomePage = () => {
     return (

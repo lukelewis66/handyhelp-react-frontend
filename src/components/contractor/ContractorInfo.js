@@ -14,6 +14,7 @@ const ContractorInfo = () => {
 		phone: "",
 	});
 
+
 	const [userCity, setUserCity] = useState("");
 
 	useEffect(() => {

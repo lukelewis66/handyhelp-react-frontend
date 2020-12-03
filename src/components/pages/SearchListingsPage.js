@@ -5,11 +5,12 @@ import SearchFilter from "../search/SearchFilter";
 import { getAllListings } from "../../firebase/Client";
 import { getCityName } from "../../gmaps/geocode";
 import { filterByDistance, filterByTags } from "../search/filterFunctions";
+import { SKILLTAG_PILLS } from "../../constants/skilltags";
 
 const SearchListingsPage = () => {
     const [allListings, setAllListings] = useState([]);
     const [filteredListings, setFilteredListings] = useState(null);
-    const [filterMessage, setFilterMessage] = useState("Showing all listings");
+    const [filterMessage, setFilterMessage] = useState(<span className="filter-message">Showing all relevant listings</span>);
     const [skillFilterMessage, setSkillFilterMessage] = useState("");
 
     useEffect(() => {
@@ -23,9 +24,10 @@ const SearchListingsPage = () => {
 
     const handleFilters = (filters) => {
         var filtered = allListings;
+        console.log("alllistings: ", allListings);
         if (filters.location.length > 0) {
             getCityName(filters.location[0], filters.location[1]).then((city) => {
-                setFilterMessage(`Showing relevant listings within ${filters.distance} miles of ${city}.`);
+                setFilterMessage(<span className="filter-message">Showing relevant listings within {filters.distance} miles of {city}</span>);
             });
             filtered = filterByDistance(allListings, filters.distance, filters.location);
         }
@@ -35,7 +37,10 @@ const SearchListingsPage = () => {
             } else {
                 filtered = filterByTags(allListings, filters.skilltags);
             }
-            setSkillFilterMessage(`Skill Tag Filters: ${filters.skilltags.join(", ")}`);
+            var filterComponents = filters.skilltags.map(tag => {
+                return SKILLTAG_PILLS[tag];
+            })
+            setSkillFilterMessage(filterComponents);
         } else {
             setSkillFilterMessage("");
         }
@@ -44,7 +49,7 @@ const SearchListingsPage = () => {
 
     const handleClearFilters = () => {
         setFilteredListings(allListings);
-        setFilterMessage("Showing all Listings")
+        setFilterMessage(<span className="filter-message">Showing all relevant listings</span>)
         setSkillFilterMessage("");
     }
 

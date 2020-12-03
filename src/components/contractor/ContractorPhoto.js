@@ -5,14 +5,9 @@ import { Image } from "react-bootstrap";
 const ContractorPhoto = () => {
 	const [profilepicture, setProfilePicture] = useState("");
 
-	const [userCity, setUserCity] = useState("");
-
-	const [apiCalls, setApiCalls] = useState(0);
-
+	
 	useEffect(() => {
 		getContractor(localStorage.getItem("UID")).then((contractor) => {
-			console.log(contractor);
-			setApiCalls(apiCalls + 1);
 			setProfilePicture(contractor.profilepic);
 		})
 	}, [])
@@ -20,7 +15,7 @@ const ContractorPhoto = () => {
 
     return(
 	<div className = "profilePhoto" >
-		<Image fluid src={profilepicture} />
+		<Image fluid src={profilepicture } />
 	</div>);
 	
 }

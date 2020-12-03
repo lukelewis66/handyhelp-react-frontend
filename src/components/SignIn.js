@@ -51,7 +51,7 @@ const SignIn = () => {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>SignIn Component</Modal.Title>
+                    <Modal.Title>Sign In</Modal.Title>
                 </Modal.Header>
                 <Modal.Body><Form>
                     <Form.Group>
