@@ -13,8 +13,8 @@ function Upload(images, UID, type, id) {
                 )
             }
         }
-        var imageUrl = 'http://' + UID.toLowerCase() + '.s3-us-west-1.amazonaws.com/';
         for (let i = 0; i < files.length; i++) {
+            var imageUrl = 'http://' + UID.toLowerCase() + '.s3-us-west-1.amazonaws.com/';
             const formData = new FormData();
             formData.append("type", type);
             formData.append("IDnum", id);
@@ -26,10 +26,10 @@ function Upload(images, UID, type, id) {
                 method: 'POST',
                 body: formData,
             });
-            if (type == 'ProfilePic') {
+            if (type === 'ProfilePic') {
                 imageUrl += 'ProfilePic.png';
             }
-            else if (type == 'Listing') {
+            else if (type === 'Listing') {
                 imageUrl += 'Listings/' + id + '/' + files[i].name;
             }
             else {

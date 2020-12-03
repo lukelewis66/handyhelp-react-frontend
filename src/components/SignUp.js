@@ -30,6 +30,7 @@ const SignUp = () => {
     }
 
     const handleSignUp = () => {
+
         if (
             form.email === "" ||
             form.password === "" ||

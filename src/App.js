@@ -7,6 +7,7 @@ import ContractorPage from './components/pages/ContractorPage';
 import HomePage from './components/pages/HomePage';
 import SearchListingsPage from './components/pages/SearchListingsPage';
 import SearchContractorsPage from './components/pages/SearchContractorsPage';
+import SpinnerPage from './components/pages/SpinnerPage';
 import ErrorPage from './components/pages/ErrorPage';
 import AboutPage from './components/pages/AboutPage';
 import AccountSetup from './components/account/AccountSetup';
@@ -20,12 +21,11 @@ import { checkUserExists, getUserRole } from "./firebase/accountFunctions";
 
 function App() {
     const [apiCalls, setApiCalls] = useState(0);
-    const [isClient, setClient] = useState(4);
+    const [isClient, setClient] = useState(3);
     const UID = localStorage.getItem("UID");
     const [userExists, setUserExists] = useState(true);
     const pageOnLoad = window.location.pathname.toString();
     console.log("pageOnLoad: ", pageOnLoad);
-    var aswitch = false;
 
     useEffect(() => {
         console.log("in use effect with apicalls: ", apiCalls);
@@ -40,15 +40,14 @@ function App() {
                             .then((response) => {
                                 setApiCalls(apiCalls + 1);
                                 if (response.role === "client") {
-                                    console.log("isClient = 1");
+                                    console.log("Logging in as a client");
                                     setClient(1);
                                 }
                                 else if (response.role === "contractor") {
-                                    console.log("isClient = 0");
+                                    console.log("Logging in as a contractor");
                                     setClient(0);
                                 }
                                 else if (response.role === "Admin") {
-                                    console.log("User is chill");
                                     setClient(2);
                                 }
                                 else {
@@ -76,10 +75,10 @@ function App() {
                         <Route path="/" exact>
                             {userExists ? <HomePage /> : <Redirect to="/accountsetup" />}
                         </Route>
-                        <Route path="/client" component={isClient ? ClientPage : ErrorPage} />
-                        <Route path="/contractor" component={(!isClient || isClient === 2) ? ContractorPage : ErrorPage} />
-                        <Route path="/searchlistings" component={(!isClient || isClient === 2) ? SearchListingsPage : ErrorPage } />
-                        <Route path="/searchcontractors" component={isClient ? SearchContractorsPage : ErrorPage} />
+                        <Route path="/client" component={(isClient === 1 || isClient === 2) ? ClientPage : (isClient === 3 ? SpinnerPage : ErrorPage)} />
+                        <Route path="/contractor" component={(isClient === 0 || isClient === 2) ? ContractorPage : (isClient === 3 ? SpinnerPage : ErrorPage)} />
+                        <Route path="/searchlistings" component={(isClient === 0 || isClient === 2) ? SearchListingsPage : (isClient === 3 ? SpinnerPage : ErrorPage) } />
+                        <Route path="/searchcontractors" component={(isClient === 1 || isClient === 2) ? SearchContractorsPage : (isClient === 3 ? SpinnerPage : ErrorPage)} />
                         <Route path="/about" component={AboutPage} />
                         <Route path="/listing/:LID" children={<IndividualListing />} />
                         <Route path="/contractors/:UID" children={<IndividualContractor />} />

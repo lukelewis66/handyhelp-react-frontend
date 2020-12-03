@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useToasts } from "react-toast-notifications";
 import { Button, Modal, Form } from "react-bootstrap";
-import { signIn, getUID } from "../firebase/authFunctions";
+import { signIn} from "../firebase/authFunctions";
 
 
 

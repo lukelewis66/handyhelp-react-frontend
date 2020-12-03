@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import FeedList from "./FeedList";
 import ReviewList from "./ReviewList";
-import BioList from "./BioList";
 import ContractorEditProfile from "./ContractorEditProfile";
 import ContractorPhoto from "./ContractorPhoto"
 import ContractorInfo from "./ContractorInfo"

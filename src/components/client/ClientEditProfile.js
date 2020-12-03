@@ -7,6 +7,7 @@ import { getUserInfo } from "../../firebase/Client";
 import MakeListingModal from "./MakeListingModal";
 import { useToasts } from "react-toast-notifications";
 
+
 const ClientEditProfile = () => {
 
     const [active, setActive] = useState();
