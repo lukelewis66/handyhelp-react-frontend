@@ -45,6 +45,14 @@ html {
   display: flex;
 }
 
+.profilePhoto2 {
+  margin: 0px 0px 0px 0%;
+  height: auto;
+  width: 200px;
+  padding: 1.3%;
+  display: block;
+}
+
 .profileHeader {
   display: flex;
 }
@@ -58,6 +66,9 @@ html {
 
 .infoPanelCon {
   width: 50%;
+  padding: 1%;
+}
+.infoPanelCon2 {
   padding: 1%;
 }
 
@@ -105,6 +116,28 @@ html {
   height: 350px;
 }
 
+.listing-card {
+  margin: 0.5rem 1.5rem;
+  width: 100%;
+  height: 200px;
+}
+
+.listing-photo {
+  height: 160px;
+  width: 100%;
+  justify-content: center;
+  padding-right: 1.25rem;
+}
+
+.listing-info {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+  justify-content: space-between;
+  width: 50%;
+  height: 130px;
+}
+
 .reviewCardStyle {
   margin: 10px;
   width: 1300px;
@@ -136,7 +169,31 @@ html {
   background-color: #0098ff;
   width: 75%;
 }
+.profile-photo {
+  margin: 1rem 1rem 1rem 1rem;
+  padding: 1rem;
+  height: min-content;
+  border-radius: 25px;
+  background-color: rgba(27, 27, 27, 0.377);
+}
 
+.vert {
+ vertical-align: top; 
+ width: 72%;
+}
+
+hr.solid {
+  border-top: 3px solid #bbb;
+}
+
+
+.profile-photo2 {
+  margin: 1rem 1rem 1rem 1rem;
+  padding: 0rem;
+  height: auto;
+  border-radius: 25px;
+  background-color: rgba(65, 72, 87, 0);
+}
 .search-filter {
   margin: 1rem 0 1rem 1rem;
   padding: 1rem;
@@ -144,6 +201,23 @@ html {
   height: min-content;
   border-radius: 25px;
   background-color: white;
+}
+
+.profile-info {
+  margin: 1rem 0 1rem 1rem;
+  padding: 1rem;
+  width: 72%;
+  height: min-content;
+  border-radius: 25px;
+  background-color: rgb(198, 220, 245);
+}
+
+.profile-info2 {
+  margin: 1rem 1rem 1rem 1rem;
+  padding: 1rem;
+  height: min-content;
+  border-radius: 25px;
+  background-color: rgb(198, 220, 245);
 }
 
 .filter-div {
@@ -177,6 +251,37 @@ html {
   border-radius: 50%;
 }
 
+.rating-display {
+  background-color: white;
+  border: 1px solid;
+  margin-top: .2em;
+  padding-right: .6em;
+  padding-left: .6em;
+  border-radius: 5rem;
+  display: inline-block;
+  padding: .25em .4em;
+  font-size: 75%;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
+
+.filter-message {
+  background-color: white;
+  margin-top: 1rem;
+  padding-right: .6em;
+  padding-left: .6em;
+  border-radius: 5rem;
+  display: inline-block;
+  padding: .25em .4em;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+}
 .contractor-search-basicinfo {
   display: flex;
   flex-direction: column;
@@ -237,7 +342,14 @@ html {
   height: 100%;
 }
 
+.react-toast-notifications__container {
+  z-index: 200000 !important;
+}
 
-
+.listing-description{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
 
 

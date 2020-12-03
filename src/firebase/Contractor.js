@@ -1,5 +1,4 @@
 export function getContractor(UID) {
-    console.log("getContractor called");
     const server = process.env.REACT_APP_SERVER_URL;
     var url = new URL(`${server}/getcontractor`);
     const params = new URLSearchParams();
@@ -9,7 +8,6 @@ export function getContractor(UID) {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                console.log("contractor data: ", data);
                 resolve(data);
             });
     })
