@@ -44,8 +44,8 @@ const SignUp = () => {
             });
         } else if (form.password !== form.confirm_password) {
             setFormMessage("Passwords do not match");
-            var content = "Passwords do not match";
-            addToast(content, {
+            var contentmessage = "Passwords do not match";
+            addToast(contentmessage, {
                 appearance: 'error',
                 autoDismiss: true,
             });

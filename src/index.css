@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -9,7 +9,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -22,13 +22,14 @@ html {
   display: flex;
 }
 
-.component-border{
+.component-border {
   border: solid;
   padding: 5px;
   margin: 10px;
 }
 
-#root, #root main{
+#root,
+#root main {
   height: 100%;
 }
 
@@ -71,11 +72,16 @@ html {
 .infoPanelCon2 {
   padding: 1%;
 }
+.infoPanelabout {
+  text-align: center;
+  width: 24.8%;
+  padding-left: .9%;
+}
 
 .tabStyle {
   display: flex;
-  flex-wrap: wrap; 
-  background-color:white;
+  flex-wrap: wrap;
+  background-color: white;
   margin: 0% 13% 0 13%;
   padding: 25px 25px;
   height: 50%;
@@ -85,18 +91,28 @@ html {
 
 .listingAndFeedTab {
   display: flex;
-  flex-wrap: wrap; 
-  background-color:white;
+  flex-wrap: wrap;
+  background-color: white;
   margin: 0% 13% 0 13%;
   padding: 25px 25px;
   height: 600px;
   max-height: 1000px;
 }
 
+.aboutnames {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgba(63, 74, 85, 0.411);
+  margin: 0% 0% 0 0%;
+  padding: 5px 5px;
+  height: 340px;
+  max-height: 1000px;
+}
+
 .tabStyleEdit {
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   justify-content: center;
-  background-color:white;
+  background-color: white;
   margin: 0% 13% 1% 13%;
   padding: 25px 25px;
   height: 820px;
@@ -111,7 +127,7 @@ html {
 }
 
 .cardStyle {
-	margin: 10px;
+  margin: 10px;
   width: 300px;
   height: 350px;
 }
@@ -150,17 +166,17 @@ html {
   margin: 2rem auto;
 }
 
-#submitButton{
+#submitButton {
   width: auto;
 }
 
 .flex-list {
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   justify-content: center;
 }
 
-.search-page{
+.search-page {
   background-color: #0098ff;
   display: flex;
   height: 100%;
@@ -178,14 +194,13 @@ html {
 }
 
 .vert {
- vertical-align: top; 
- width: 72%;
+  vertical-align: top;
+  width: 72%;
 }
 
 hr.solid {
   border-top: 3px solid #bbb;
 }
-
 
 .profile-photo2 {
   margin: 1rem 1rem 1rem 1rem;
@@ -216,20 +231,28 @@ hr.solid {
   margin: 1rem 1rem 1rem 1rem;
   padding: 1rem;
   height: min-content;
-  border-radius: 25px;
+  border-radius: 15px;
+  background-color: rgb(198, 220, 245);
+}
+
+.profile-info3 {
+  margin: 0rem 1rem 0rem 1rem;
+  padding: 1rem;
+  height: min-content;
+  border-radius: 15px;
   background-color: rgb(198, 220, 245);
 }
 
 .filter-div {
   border-radius: 25px;
   border: 2px solid;
-  border-color:  #0098ff;
+  border-color: #0098ff;
   padding: 1rem;
   margin-bottom: 1rem;
 }
 
 .contractor-card {
-	margin: 10px;
+  margin: 10px;
   width: 300px;
 }
 
@@ -237,7 +260,7 @@ hr.solid {
   margin: 0px 1px;
 }
 
-.contractor-card-body{
+.contractor-card-body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -254,12 +277,12 @@ hr.solid {
 .rating-display {
   background-color: white;
   border: 1px solid;
-  margin-top: .2em;
-  padding-right: .6em;
-  padding-left: .6em;
+  margin-top: 0.2em;
+  padding-right: 0.6em;
+  padding-left: 0.6em;
   border-radius: 5rem;
   display: inline-block;
-  padding: .25em .4em;
+  padding: 0.25em 0.4em;
   font-size: 75%;
   font-weight: 500;
   line-height: 1;
@@ -271,11 +294,11 @@ hr.solid {
 .filter-message {
   background-color: white;
   margin-top: 1rem;
-  padding-right: .6em;
-  padding-left: .6em;
+  padding-right: 0.6em;
+  padding-left: 0.6em;
   border-radius: 5rem;
   display: inline-block;
-  padding: .25em .4em;
+  padding: 0.25em 0.4em;
   font-weight: 500;
   line-height: 1;
   text-align: center;
@@ -301,8 +324,8 @@ hr.solid {
   height: 100%;
 }
 
-
-.box-header, .box-footer {
+.box-header,
+.box-footer {
   flex: 0 1 auto;
   /* The above is shorthand for:
   flex-grow: 0,
@@ -311,11 +334,11 @@ hr.solid {
   */
 }
 
-.box-body{
+.box-body {
   flex: 1 1 auto;
 }
 
-.sign-button{
+.sign-button {
   margin: 3px 3px;
 }
 
@@ -346,10 +369,8 @@ hr.solid {
   z-index: 200000 !important;
 }
 
-.listing-description{
+.listing-description {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
-
-

@@ -5,7 +5,6 @@ import { Nav } from "react-bootstrap";
 import ClientListingList from "./ClientListingList";
 import ClientInactiveListingList from "./ClientInactiveListing";
 import ClientEditProfile from "./ClientEditProfile";
-import ClientPhoto from "./ClientPhoto"
 import ClientInfo from "./ClientInfo"
 
 

@@ -6,7 +6,6 @@ import Message from "../Message";
 
 
 import { Nav } from "react-bootstrap";
-import { getUserInfo } from "../../firebase/Client";
 //https://react-bootstrap.netlify.app/components/navs/
 
 const IndividualContractorProfile = ({ contractor }) => {
