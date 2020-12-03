@@ -6,6 +6,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { SKILLTAGS } from "../../constants/skilltags";
 
 import Upload from "../../Upload";
+import { useToasts } from "react-toast-notifications";
 
 //https://codeburst.io/react-image-upload-with-kittens-cc96430eaece
 
@@ -41,7 +42,7 @@ const MakeFeedItemModal = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    const { addToast } = useToasts();
 
 
     const handleChange = (e, field) => {
@@ -74,7 +75,11 @@ const MakeFeedItemModal = () => {
     const handleSubmit = () => {
         console.log("Form: ", form);
         if (form.title === "" || form.description === "") {
-            alert("Post title and description must be filled out");
+            var content = 'Post title and description must be filled out'
+            addToast( content, {
+                appearance: 'error',
+                autoDismiss: true,
+            });
         }
         else {
             const server = process.env.REACT_APP_SERVER_URL;
@@ -105,7 +110,12 @@ const MakeFeedItemModal = () => {
                             }
                             fetch(updateUrl, requestOpts).then((response => response.text().then(message => console.log(message))));
                         }
-                        alert("Your post has been added.");
+                        var content = 'Your post has been added';
+                        addToast( content, {
+                            appearance: 'success',
+                            autoDismiss: true,
+                        });
+                        //alert("Your post has been added.");
                         handleClose();
                         clearForm();
                     })));

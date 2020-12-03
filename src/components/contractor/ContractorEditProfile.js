@@ -8,6 +8,7 @@ import {
 } from "../../firebase/accountFunctions";
 import AccountDeactivate from "../account/AccountDeactivate";
 import AccountReactivate from "../account/AccountReactivate";
+import { useToasts } from "react-toast-notifications";
 
 const ContractorEditProfile = () => {
   const [active, setActive] = useState();
@@ -29,6 +30,7 @@ const ContractorEditProfile = () => {
   }, []);
 
   const [formMessage, setFormMessage] = useState("");
+  const { addToast } = useToasts();
 
   const showTags = () => {
     return SKILLTAGS.map((tag) => (
@@ -60,7 +62,13 @@ const ContractorEditProfile = () => {
     var phone = phoneRef.current.value;
     var bio = bioRef.current.value;
     var tags = skills;
-    if (name === "" || phone === "" || bio === "" || !tags[0]) {
+
+    if(name === "" || phone === "" || bio === "" || !tags[0]) {
+      var content = "All fields must be filled";
+      addToast(content, {
+        appearance: 'error',
+        autoDismiss: true,
+      });
       setFormMessage("All fields must be filled");
     } else {
       editContractor(

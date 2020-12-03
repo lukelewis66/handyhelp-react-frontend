@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { useToasts } from "react-toast-notifications";
 import { Button, Modal, Form } from "react-bootstrap";
 import { signIn} from "../firebase/authFunctions";
 
@@ -13,7 +13,7 @@ const SignIn = () => {
         password: "",
     })
     const [formMessage, setFormMessage] = useState("");
-
+    const { addToast } = useToasts();
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -33,6 +33,11 @@ const SignIn = () => {
             form.confirm_password === ""
         ) {
             setFormMessage("All fields must be filled");
+            var content = "All fields must be filled";
+            addToast(content, {
+                appearance: 'error',
+                autoDismiss: true,
+            });
         }
         else {
             signIn(form.email, form.password)
@@ -40,7 +45,15 @@ const SignIn = () => {
                     //msg would be "success"
                     window.location.assign("/");
                 })
-                .catch((err) => setFormMessage(err));
+                //.catch((err) => setFormMessage(err));
+                .catch((err) => {
+                    setFormMessage(err);
+                    var content = "Invalid sign in. Please try again"
+                    addToast( content, {
+                        appearance: 'error',
+                        autoDismiss: true,
+                    });
+                });
         }
     }
     return (
@@ -64,7 +77,7 @@ const SignIn = () => {
                     </Form.Group>
                 </Form></Modal.Body>
                 <Modal.Footer>
-                    <p style={{ color: "red" }}>{formMessage}</p>
+                    {/* <p style={{ color: "red" }}>{formMessage}</p> */}
                     <Button variant="secondary" onClick={handleClose}>
                         Close
               </Button>

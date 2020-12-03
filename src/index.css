@@ -367,6 +367,8 @@ hr.solid {
 
 .react-toast-notifications__container {
   z-index: 200000 !important;
+  /* transform: scale(1.5) !important; */
+  margin: 1% 0%;
 }
 
 .listing-description {

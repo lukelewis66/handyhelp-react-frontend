@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getContractor } from "../../firebase/Contractor";
+import { getUserLocation } from "../../firebase/accountFunctions.js";
+import { distance } from "../../gmaps/distance";
+import MakeReviewModal from "./MakeReviewModal";
+import { ToastProvider } from "react-toast-notifications";
 import IndividualContractorProfile from "../contractor/IndividualContractorProfile"
-
 
 const IndividualContractor = () => {
   let { UID } = useParams();

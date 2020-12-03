@@ -44,8 +44,8 @@ const SignUp = () => {
             });
         } else if (form.password !== form.confirm_password) {
             setFormMessage("Passwords do not match");
-            var contentmessage = "Passwords do not match";
-            addToast(contentmessage, {
+            var content = "Passwords do not match";
+            addToast(content, {
                 appearance: 'error',
                 autoDismiss: true,
             });
@@ -56,7 +56,15 @@ const SignUp = () => {
                 .then(() => window.location.assign("/"))
                 /// calling test version of bucket initialization here
                 /// end test
-                .catch((err) => setFormMessage(err));
+                //.catch((err) => setFormMessage(err));
+                .catch((err) => {
+                    setFormMessage(err);
+                    var content = "Email badly formatted"
+                    addToast( content, {
+                        appearance: 'error',
+                        autoDismiss: true,
+                    });
+                });
         }
     }
 
@@ -87,7 +95,7 @@ const SignUp = () => {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <p style={{ color: "red" }}>{formMessage}</p>
+                    {/* <p style={{ color: "red" }}>{formMessage}</p> */}
                     <Button variant="secondary" onClick={handleClose}>
                         Close
               </Button>
