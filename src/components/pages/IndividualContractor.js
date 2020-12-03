@@ -5,6 +5,7 @@ import { getContractor } from "../../firebase/Contractor";
 import { getUserLocation } from "../../firebase/accountFunctions.js";
 import { distance } from "../../gmaps/distance";
 import MakeReviewModal from "./MakeReviewModal";
+import { ToastProvider } from "react-toast-notifications";
 
 const IndividualContractor = () => {
   const [apiCalls, setApiCalls] = useState(0);
@@ -57,7 +58,7 @@ const IndividualContractor = () => {
         miles
       </h2>
       <h2>Api Calls: {apiCalls}</h2>
-        <MakeReviewModal UID={conUID}/>
+      <ToastProvider placement='top-center'> <MakeReviewModal UID={conUID}/> </ToastProvider>
     </div>
   );
 };

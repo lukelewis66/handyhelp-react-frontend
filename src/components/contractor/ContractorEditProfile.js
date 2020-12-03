@@ -6,6 +6,7 @@ import { SKILLTAGS } from "../../constants/skilltags";
 import { checkUserActive, editContractor } from "../../firebase/accountFunctions";
 import AccountDeactivate from "../account/AccountDeactivate";
 import AccountReactivate from "../account/AccountReactivate";
+import { useToasts } from "react-toast-notifications";
 
 const ContractorEditProfile = () => {
 
@@ -31,6 +32,7 @@ const ContractorEditProfile = () => {
   }, []);
 
   const [formMessage, setFormMessage] = useState("");
+  const { addToast } = useToasts();
 
   const showTags = () => {
     return SKILLTAGS.map((tag) => (
@@ -59,6 +61,11 @@ const ContractorEditProfile = () => {
     var bio = bioRef.current.value;
     var tags = skills;
     if(name === "" || phone === "" || bio === "" || !tags[0]) {
+      var content = "All fields must be filled";
+      addToast(content, {
+        appearance: 'error',
+        autoDismiss: true,
+      });
       setFormMessage("All fields must be filled");
     }
     else {
@@ -114,7 +121,6 @@ const ContractorEditProfile = () => {
         <Button variant="primary" type="submit" id="submitButton" onClick={handleClick}>
           Submit
         </Button>
-        <p style={{ color: "red" }}>{formMessage}</p>
         {active}
       </Form>
     </div>

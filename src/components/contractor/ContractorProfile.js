@@ -6,8 +6,9 @@ import BioList from "./BioList";
 import ContractorEditProfile from "./ContractorEditProfile";
 import ContractorPhoto from "./ContractorPhoto"
 import ContractorInfo from "./ContractorInfo"
-
+import { ToastProvider } from "react-toast-notifications";
 import { Nav } from "react-bootstrap";
+
 //https://react-bootstrap.netlify.app/components/navs/
 
 const ContractorProfile = () => {
@@ -18,7 +19,7 @@ const ContractorProfile = () => {
             case "Reviews":
                 return <ReviewList />
             case "Edit":
-                return <ContractorEditProfile />
+                return <ToastProvider placement='bottom-center'> <ContractorEditProfile /> </ToastProvider>
             default:
                 return <FeedList />
         }

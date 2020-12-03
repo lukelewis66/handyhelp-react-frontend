@@ -7,6 +7,8 @@ import { SKILLTAGS } from "../../constants/skilltags";
 
 import Upload from "../../Upload";
 
+import { useToasts } from "react-toast-notifications";
+
 //https://codeburst.io/react-image-upload-with-kittens-cc96430eaece
 
 const MakeReviewModal = ({UID}) => {
@@ -49,7 +51,7 @@ const MakeReviewModal = ({UID}) => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    const { addToast } = useToasts();
 
 
     const handleChange = (e, field) => {
@@ -67,10 +69,20 @@ const MakeReviewModal = ({UID}) => {
     const handleSubmit = () => {
         console.log("Form: ", form);
         if (form.title === "" || form.description === "" || form.rating === 0) {
-            alert("Title, description, and rating must be filled out");
+            var content = 'Title, description, and rating must be filled out';
+            addToast( content, {
+                appearance: 'error',
+                autoDismiss: true,
+            });
+            //alert("Title, description, and rating must be filled out");
         }
         else if((form.rating != 1) &&(form.rating != 2)&&(form.rating != 3)&&(form.rating != 4)&&(form.rating != 5)){
-            alert("Please enter either 1, 2, 3, 4, or 5 in the rating");
+            var content = 'Please enter either 1, 2, 3, 4, or 5 in the rating';
+            addToast( content, {
+                appearance: 'error',
+                autoDismiss: true,
+            });
+            //alert("Please enter either 1, 2, 3, 4, or 5 in the rating");
         }
         else {
             const server = process.env.REACT_APP_SERVER_URL;

@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
+import { useToasts } from "react-toast-notifications";
 
 var firebaseConfig = {
     apiKey: "AIzaSyBMyHuPUowgsJ7TKb9WWqdjJU4pyveLgt8",
@@ -33,6 +34,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 })
 
 export function signIn(email, password) {
+
     return new Promise(function (resolve, reject) {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(() => {

@@ -1,15 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Form, Button } from "react-bootstrap";
-
 import { checkUserActive, editInfo } from "../../firebase/accountFunctions";
-
 import AccountDeactivate from "../account/AccountDeactivate";
-
 import AccountReactivate from "../account/AccountReactivate";
-
 import { getUserInfo } from "../../firebase/Client";
-
 import MakeListingModal from "./MakeListingModal";
+import { useToasts } from "react-toast-notifications";
 
 const ClientEditProfile = () => {
 
@@ -35,6 +31,7 @@ const ClientEditProfile = () => {
     }, []);
 
     const [formMessage, setFormMessage] = useState("");
+    const { addToast } = useToasts();
 
     const nameRef = useRef();
     const phoneRef = useRef();
@@ -43,6 +40,11 @@ const ClientEditProfile = () => {
         var name = nameRef.current.value;
         var phone = phoneRef.current.value;
         if(name === "" || phone === "") {
+            var content = "All fields must be filled";
+            addToast(content, {
+                appearance: 'error',
+                autoDismiss: true,
+            });
             setFormMessage("All fields must be filled");
         }
         else {
@@ -70,7 +72,6 @@ const ClientEditProfile = () => {
                     <Button variant="primary" type="submit" id="submitButton" onClick={handleClick}>
                         Submit
                     </Button>
-                    <p style={{ color: "red" }}>{formMessage}</p>
                     {active}
                 </Form>
                 

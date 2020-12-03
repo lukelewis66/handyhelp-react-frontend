@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
+import { useToasts } from "react-toast-notifications";
 /// for BucketInit(UID) function
 import BucketInit from '../BucketInit';
 
@@ -14,7 +15,7 @@ const SignUp = () => {
     })
 
     const [formMessage, setFormMessage] = useState("");
-
+    const { addToast } = useToasts();
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -35,8 +36,18 @@ const SignUp = () => {
             form.confirm_password === ""
         ) {
             setFormMessage("All fields must be filled");
+            var content = "All fields must be filled";
+            addToast(content, {
+                appearance: 'error',
+                autoDismiss: true,
+            });
         } else if (form.password !== form.confirm_password) {
             setFormMessage("Passwords do not match");
+            var content = "Passwords do not match";
+            addToast(content, {
+                appearance: 'error',
+                autoDismiss: true,
+            });
         } else {
             console.log("calling signup....");
             signUp(form.email, form.password)
@@ -44,7 +55,15 @@ const SignUp = () => {
                 .then(() => window.location.assign("/"))
                 /// calling test version of bucket initialization here
                 /// end test
-                .catch((err) => setFormMessage(err));
+                //.catch((err) => setFormMessage(err));
+                .catch((err) => {
+                    setFormMessage(err);
+                    var content = "Email badly formatted"
+                    addToast( content, {
+                        appearance: 'error',
+                        autoDismiss: true,
+                    });
+                });
         }
     }
 
@@ -75,7 +94,7 @@ const SignUp = () => {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <p style={{ color: "red" }}>{formMessage}</p>
+                    {/* <p style={{ color: "red" }}>{formMessage}</p> */}
                     <Button variant="secondary" onClick={handleClose}>
                         Close
               </Button>

@@ -6,6 +6,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { SKILLTAGS } from "../../constants/skilltags";
 
 import Upload from "../../Upload";
+import { useToasts } from "react-toast-notifications";
 
 //https://codeburst.io/react-image-upload-with-kittens-cc96430eaece
 
@@ -42,7 +43,7 @@ const MakeListingModal = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
+    const { addToast } = useToasts();
 
 
     const handleChange = (e, field) => {
@@ -75,7 +76,12 @@ const MakeListingModal = () => {
     const handleSubmit = () => {
         console.log("Form: ", form);
         if (form.title === "" || form.description === "") {
-            alert("Listing title and description must be filled out");
+            var content = 'Listing title and description must be filled out';
+            addToast( content, {
+                appearance: 'error',
+                autoDismiss: true,
+            });
+            //alert("Listing title and description must be filled out");
         }
         else {
             const server = process.env.REACT_APP_SERVER_URL;
@@ -106,7 +112,12 @@ const MakeListingModal = () => {
                             }
                             fetch(updateUrl, requestOpts).then((response => response.text().then(message => console.log(message))));
                         }
-                        alert("Your listing has been added.");
+                        var content = 'Your listing has been added';
+                        addToast( content, {
+                            appearance: 'success',
+                            autoDismiss: true,
+                        });
+                        //alert("Your listing has been added.");
                         handleClose();
                         clearForm();
                     })));
