@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import IndividualFeedList from "./IndividualFeedList";
 import ReviewList from "./ReviewList";
+import IndividualReviewList from "./IndividualReviewList";
 import IndividualContractorPhoto from "./IndividualContractorPhoto";
 import Message from "../Message";
 
@@ -18,7 +19,7 @@ const IndividualContractorProfile = ({ contractor }) => {
   const showActive = () => {
     switch (active) {
       case "Reviews":
-        return <ReviewList />;
+        return <IndividualReviewList c_UID={c_UID}/>;
       default:
         return <IndividualFeedList c_UID={c_UID} />;
     }
