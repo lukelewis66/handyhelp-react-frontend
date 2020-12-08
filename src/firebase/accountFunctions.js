@@ -104,8 +104,8 @@ export function editInfo(name, phone, UID) {
     });
 }
 
-export function editContractor(name, phone, bio, skilltags, UID) {
-
+export function editContractor(name, phone, bio, skilltags, UID, profilepic) {
+    console.log("profilepic: ", profilepic)
     return new Promise(function (resolve, reject) {
         const forms = {
             name: name,
@@ -113,6 +113,7 @@ export function editContractor(name, phone, bio, skilltags, UID) {
             bio: bio,
             skilltags: skilltags,
             UID: UID,
+            profilepic: profilepic
         }
         const server = process.env.REACT_APP_SERVER_URL;
         fetch(`${server}/editContractor/`, {
