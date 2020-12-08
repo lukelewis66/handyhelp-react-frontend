@@ -21,7 +21,7 @@ const ClientListingList = ({ active }) => {
                 ))}
 
             </div>
-            <ToastProvider placement = 'top-center'> <MakeListingModal /> </ToastProvider>
+            <ToastProvider placement='top-center'> <MakeListingModal /> </ToastProvider>
         </div>
     );
 }

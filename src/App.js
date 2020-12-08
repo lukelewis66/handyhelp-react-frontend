@@ -33,11 +33,13 @@ function App() {
         if (UID) {
             checkUserExists(UID)
                 .then(data => {
+                    console.log("checkUserExists: ", data);
                     if (data.exists === false) {
                         setUserExists(false);
                     } else {
                         getUserRole(UID)
                             .then((response) => {
+                                console.log("getUserRole: ", response);
                                 setApiCalls(apiCalls + 1);
                                 if (response.role === "client") {
                                     console.log("Logging in as a client");

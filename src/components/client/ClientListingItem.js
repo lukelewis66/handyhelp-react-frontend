@@ -12,8 +12,6 @@ const ClientListingItem = ({ props }) => {
 						<Card.Text>
 							{props.description}
 						</Card.Text>
-						<Card.Link href="#">Card Link</Card.Link>
-						<Card.Link href="#">Another Link</Card.Link>
 					</Card.Body>
 				</Card>
 			</div>
@@ -28,8 +26,6 @@ const ClientListingItem = ({ props }) => {
 						<Card.Text>
 							{props.description}
 						</Card.Text>
-						<Card.Link href="#">Card Link</Card.Link>
-						<Card.Link href="#">Another Link</Card.Link>
 					</Card.Body>
 				</Card>
 			</div>
