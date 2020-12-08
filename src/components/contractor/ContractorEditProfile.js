@@ -141,7 +141,6 @@ const ContractorEditProfile = () => {
           >
             Submit
           </Button>
-          <p style={{ color: "red" }}>{formMessage}</p>
           {active}
         </Form>
         <button

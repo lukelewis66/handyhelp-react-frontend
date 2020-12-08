@@ -14,8 +14,7 @@ const ReviewList = () => {
 
     return (
         <div className = "tabStyle">
-            <h3>Your Reviews</h3>
-            <div className = "flex-list">
+            <div className = "reviews">
                 {reviewItems.map((item) => (
                     <ReviewItem key={item.id} props={item} />
                 ))}
