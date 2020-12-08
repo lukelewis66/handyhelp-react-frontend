@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ClientListingItem from "./ClientListingItem";
 import MakeListingModal from "./MakeListingModal";
 import { getAllListings } from "../../firebase/Client";
+import { ToastProvider } from "react-toast-notifications";
 
 const ClientListingList = ({ active }) => {
     const [listingItems, setListingItems] = useState([]);
@@ -20,7 +21,7 @@ const ClientListingList = ({ active }) => {
                 ))}
 
             </div>
-            <MakeListingModal />
+            <ToastProvider placement = 'top-center'> <MakeListingModal /> </ToastProvider>
         </div>
     );
 }

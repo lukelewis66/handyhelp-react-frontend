@@ -3,6 +3,7 @@ import FeedItem from "./FeedItem";
 import { getAllFeedItems } from "../../firebase/Contractor";
 import { Spinner } from "react-bootstrap";
 
+
 const IndividualFeedList = ({ c_UID }) => {
   const [feedItems, setFeedItems] = useState();
   const [noFeed, setFeed] = useState(0);

@@ -155,10 +155,23 @@ html {
 }
 
 .reviewCardStyle {
-  margin: 10px;
-  width: 1300px;
-  height: 100px;
-  max-height: 200px;
+  margin: 0.5rem 1.5rem;
+  width: 100%;
+  height: 150px;
+}
+
+.reviewCardInfo {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1rem;
+  justify-content: space-between;
+  width: 50%;
+  height: 130px;
+}
+
+.reviews {
+  margin: 5px 50px 0px 5px;
+  width: 100%;
 }
 
 .formStyle {
