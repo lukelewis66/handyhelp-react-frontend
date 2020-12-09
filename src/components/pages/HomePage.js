@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Carousel } from "react-bootstrap";
+import HomeInfo from "../homepage/HomeInfo";
 
 const HomePage = () => {
     return (
-        <div>
+        <div style={{ backgroundColor: "#0098ff" }}>
             <Carousel style={{ height: "700px", overflow: "hidden" }}>
                 <Carousel.Item className="homepage-carousel-item">
                     <img
@@ -50,7 +51,9 @@ const HomePage = () => {
             </Carousel>
             <div style={{ textAlign: "center" }} className="homepage-main-text">
                 <h1><b>HandyHelp</b></h1>
+                <h3>Share a helping hand</h3>
             </div>
+            <HomeInfo />
         </div>
     );
 }

@@ -38,6 +38,7 @@ function App() {
                     } else {
                         getUserRole(UID)
                             .then((response) => {
+                                console.log("getUserRole: ", response);
                                 setApiCalls(apiCalls + 1);
                                 if (response.role === "client") {
                                     console.log("Logging in as a client");
@@ -61,7 +62,7 @@ function App() {
         }
     }, []);
 
-    
+
 
     return (
         <main>
@@ -77,7 +78,7 @@ function App() {
                         </Route>
                         <Route path="/client" component={(isClient === 1 || isClient === 2) ? ClientPage : (isClient === 3 ? SpinnerPage : ErrorPage)} />
                         <Route path="/contractor" component={(isClient === 0 || isClient === 2) ? ContractorPage : (isClient === 3 ? SpinnerPage : ErrorPage)} />
-                        <Route path="/searchlistings" component={(isClient === 0 || isClient === 2) ? SearchListingsPage : (isClient === 3 ? SpinnerPage : ErrorPage) } />
+                        <Route path="/searchlistings" component={(isClient === 0 || isClient === 2) ? SearchListingsPage : (isClient === 3 ? SpinnerPage : ErrorPage)} />
                         <Route path="/searchcontractors" component={(isClient === 1 || isClient === 2) ? SearchContractorsPage : (isClient === 3 ? SpinnerPage : ErrorPage)} />
                         <Route path="/about" component={AboutPage} />
                         <Route path="/listing/:LID" children={<IndividualListing />} />

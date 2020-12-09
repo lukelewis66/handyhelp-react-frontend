@@ -93,10 +93,12 @@ html {
   display: flex;
   flex-wrap: wrap;
   background-color: white;
+  border-radius: 0 0 5px 5px;
   margin: 0% 13% 0 13%;
   padding: 25px 25px;
   height: 600px;
-  max-height: 1000px;
+  overflow: scroll;
+  margin-bottom: 1rem;
 }
 
 .aboutnames {
@@ -342,13 +344,14 @@ hr.solid {
   margin: 3px 3px;
 }
 
-.listingModal {
-  display: flex;
-  width: auto;
+.listing-modal {
   background-color: white;
-  margin: 0% 13% 1% 13%;
-  border-radius: 0 0 5px 5px;
+  width: auto;
+  margin: 0% 13% 0% 13%;
   padding: 25px;
+  text-align: center;
+  border-bottom: solid 1px;
+  border-color: #0098ff;
 }
 
 .feedModal {

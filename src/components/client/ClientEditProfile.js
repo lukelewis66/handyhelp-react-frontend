@@ -4,7 +4,6 @@ import { checkUserActive, editInfo } from "../../firebase/accountFunctions";
 import AccountDeactivate from "../account/AccountDeactivate";
 import AccountReactivate from "../account/AccountReactivate";
 import { getUserInfo } from "../../firebase/Client";
-import MakeListingModal from "./MakeListingModal";
 import { useToasts } from "react-toast-notifications";
 
 
@@ -40,7 +39,7 @@ const ClientEditProfile = () => {
     const handleClick = (e) => {
         var name = nameRef.current.value;
         var phone = phoneRef.current.value;
-        if(name === "" || phone === "") {
+        if (name === "" || phone === "") {
             var content = "All fields must be filled";
             addToast(content, {
                 appearance: 'error',
@@ -50,7 +49,7 @@ const ClientEditProfile = () => {
         }
         else {
             editInfo(name, phone, localStorage.getItem("UID")).then(() => window.location.reload());
-        }      
+        }
         e.preventDefault();
     }
 
@@ -60,22 +59,22 @@ const ClientEditProfile = () => {
                 <Form className="formStyle">
                     <Form.Group>
                         <Form.Label>Email</Form.Label>
-                        <Form.Control value = {userInfo.email} disabled/>
+                        <Form.Control value={userInfo.email} disabled />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Name</Form.Label>
-                        <Form.Control type="text" defaultValue = {userInfo.name} placeholder="Enter Name" autoComplete="name" id="name" ref={nameRef} />
+                        <Form.Control type="text" defaultValue={userInfo.name} placeholder="Enter Name" autoComplete="name" id="name" ref={nameRef} />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Phone</Form.Label>
-                        <Form.Control type="text" defaultValue = {userInfo.phone} placeholder="Enter Phone Number" autoComplete="tel" id="phone" ref={phoneRef} />
+                        <Form.Control type="text" defaultValue={userInfo.phone} placeholder="Enter Phone Number" autoComplete="tel" id="phone" ref={phoneRef} />
                     </Form.Group>
                     <Button variant="primary" type="submit" id="submitButton" onClick={handleClick}>
                         Submit
                     </Button>
                     {active}
                 </Form>
-                
+
             </div>
         </div>
     )
