@@ -19,6 +19,7 @@ const ContractorInfo = () => {
 			setContractor(contractor);
 		})
 	}, [])
+	console.log("testing");
 	return (
 		<div className="infoPanelCon">
 			<h1>Welcome back, {contractor.name}!</h1>

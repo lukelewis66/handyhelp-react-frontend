@@ -4,6 +4,7 @@ import MakeListingModal from "./MakeListingModal";
 import { ToastProvider } from "react-toast-notifications";
 import { getAllListings } from "../../firebase/Client";
 
+
 const ClientInactiveListingList = ({ active }) => {
     const [listingItems, setListingItems] = useState([]);
     useEffect(() => {

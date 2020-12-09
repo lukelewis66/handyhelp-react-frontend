@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import FeedItem from "./FeedItem";
 import { getAllFeedItems } from "../../firebase/Contractor";
 import { Spinner } from "react-bootstrap";
+import { ToastProvider } from "react-toast-notifications";
+import MakeFeedItemModal from "./MakeFeedItemModal";
+
 
 const IndividualFeedList = ({ c_UID }) => {
   const [feedItems, setFeedItems] = useState();
@@ -24,6 +27,7 @@ const IndividualFeedList = ({ c_UID }) => {
             <Spinner animation="border" />
           </div>
         </div>
+        <ToastProvider placement='top-center'> <MakeFeedItemModal /> </ToastProvider>
       </div>
        
     ); 
@@ -35,6 +39,7 @@ const IndividualFeedList = ({ c_UID }) => {
             No Feed Found
           </div>
         </div>
+        <ToastProvider placement='top-center'> <MakeFeedItemModal /> </ToastProvider>
       </div>
     );
   }
@@ -48,6 +53,7 @@ const IndividualFeedList = ({ c_UID }) => {
             ))}
           </div>
         </div>
+        <ToastProvider placement='top-center'> <MakeFeedItemModal /> </ToastProvider>
       </div>
     );
   }

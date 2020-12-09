@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
+import { useToasts } from "react-toast-notifications";
 
 const DeleteFeedItemModal = (props) => {
     var uid = props.UID;
     var fid = props.FID;
 
     const [show, setShow] = useState(false);
+    const { addToast } = useToasts();
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -20,6 +22,11 @@ const DeleteFeedItemModal = (props) => {
             fetch(`${server}/deletefeeditem`, {
                 method: 'POST',
                 body: formData,
+            });
+            var content = "Your post was successfully deleted";
+            addToast(content, {
+                appearance: 'info',
+                autoDismiss: true,
             });
             handleClose();
         });

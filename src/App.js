@@ -33,6 +33,7 @@ function App() {
         if (UID) {
             checkUserExists(UID)
                 .then(data => {
+                    console.log("checkUserExists: ", data);
                     if (data.exists === false) {
                         setUserExists(false);
                     } else {

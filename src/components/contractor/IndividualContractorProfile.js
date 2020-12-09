@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import IndividualFeedList from "./IndividualFeedList";
 import ReviewList from "./ReviewList";
+import IndividualReviewList from "./IndividualReviewList";
 import IndividualContractorPhoto from "./IndividualContractorPhoto";
+import IndividualContractorInfo from "./IndividualContractorInfo";
 import Message from "../Message";
 
 
@@ -18,12 +20,12 @@ const IndividualContractorProfile = ({ contractor }) => {
   const showActive = () => {
     switch (active) {
       case "Reviews":
-        return <ReviewList />;
+        return <IndividualReviewList c_UID={c_UID}/>;
       default:
         return <IndividualFeedList c_UID={c_UID} />;
     }
   };
-
+  /*
   return (
     <div>
       <div className="profileHeader">
@@ -58,6 +60,26 @@ const IndividualContractorProfile = ({ contractor }) => {
         </Nav.Item>
       </Nav>
       {showActive()}
+    </div>
+  );
+  */
+  return (
+    <div>
+        <div className = "">
+            <div className = "profileHeader">
+                <IndividualContractorPhoto photoURL={contractor.profilepic} />
+                <IndividualContractorInfo c_UID={c_UID}/>
+            </div>
+        </div>
+        <Nav fill variant="tabs" className = "tabsStyle" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
+            <Nav.Item >
+                <Nav.Link eventKey="Feed">Feed</Nav.Link>
+            </Nav.Item>
+            <Nav.Item >
+                <Nav.Link eventKey="Reviews">Reviews</Nav.Link>
+            </Nav.Item>
+        </Nav>
+        {showActive()}
     </div>
   );
 };

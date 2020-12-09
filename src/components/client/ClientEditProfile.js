@@ -5,6 +5,7 @@ import AccountDeactivate from "../account/AccountDeactivate";
 import AccountReactivate from "../account/AccountReactivate";
 import { getUserInfo } from "../../firebase/Client";
 import { useToasts } from "react-toast-notifications";
+import { getUserRole } from "../../firebase/accountFunctions";
 
 
 const ClientEditProfile = () => {
@@ -52,6 +53,8 @@ const ClientEditProfile = () => {
         }
         e.preventDefault();
     }
+    
+    console.log(getUserRole(localStorage.getItem("UID")));
 
     return (
         <div>

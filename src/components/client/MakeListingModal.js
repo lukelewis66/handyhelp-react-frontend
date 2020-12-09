@@ -8,6 +8,7 @@ import Upload from "../../Upload";
 import { useToasts } from "react-toast-notifications";
 import { addListing } from "../../firebase/Client";
 
+
 //https://codeburst.io/react-image-upload-with-kittens-cc96430eaece
 
 const MakeListingModal = ({ refreshListings }) => {
@@ -45,6 +46,21 @@ const MakeListingModal = ({ refreshListings }) => {
     const handleShow = () => setShow(true);
     const { addToast } = useToasts();
 
+    const getExtension = (file) => {
+        var parts = file.split('.');
+        return parts[parts.length - 1];
+    }
+
+    const isImage = (file) => {
+        var ext = getExtension(file);
+        console.log(ext);
+        if(ext === "jpg" || ext === "jpeg" || ext === "png") {
+            return true;
+        }
+        return false;
+    }
+
+
 
     const handleChange = (e, field) => {
         let val;
@@ -60,8 +76,26 @@ const MakeListingModal = ({ refreshListings }) => {
         }
         else if (field === "images") {
             const files = Array.from(e.target.files);
-            setImageFiles(files);
-            val = [];
+            var i;
+            var correctFiles = true;
+            for(i = 0; i < files.length; i++) {
+                if(!(isImage(files[i].name))) {
+                    correctFiles = false;
+                }
+            }
+            if(correctFiles) {
+                setImageFiles(files);
+                val = [];
+            }
+             else {
+                 setImageFiles([]);
+                val = [];
+                var content = "Incorrect file type(s)! Please reselect your images"
+                addToast( content, {
+                    appearance: 'error',
+                    autoDismiss: true,
+                });
+             }
         }
         else {
             val = e.target.value;
