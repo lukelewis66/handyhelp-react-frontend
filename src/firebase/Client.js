@@ -1,3 +1,5 @@
+import Upload from "../Upload";
+
 export function getAllListings(UID, active) {
     const url = `${process.env.REACT_APP_SERVER_URL}/getlistings`;
     const req = {
@@ -80,4 +82,52 @@ export function getUserInfo(UID) {
                 resolve(data);
             });
     })
+}
+
+export function addListing(UID, listingForm, imageFiles) {
+    console.log("Form: ", listingForm);
+    const server = process.env.REACT_APP_SERVER_URL;
+    const url = `${server}/addlisting/`;
+    const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(listingForm)
+    }
+    return new Promise(function (resolve, reject) {
+        if (listingForm.title === "" || listingForm.description === "") {
+            reject('Listing title and description must be filled out');
+        }
+        else {
+            fetch(url, requestOptions)
+                .catch(() => reject('There was a problem adding your listing. Please try again.'))
+                .then((response => response.text()
+                    .then(id => {
+                        console.log("response id: ", id);
+
+                        // Whoever is uploading should pass their UID and LID (if uploading listing images) or 'ProfilePic' (if uploading profile pictures)
+                        // upload images and update listing document if user has added photos
+                        if (imageFiles.length > 0) {
+                            const imgurls = Upload(imageFiles, UID, "Listing", id);
+                            const updateBody = {
+                                listingID: id,
+                                imageUrls: imgurls,
+                            }
+                            const updateUrl = `${server}/updatelistingimages`;
+                            const requestOpts = {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify(updateBody),
+                            }
+                            fetch(updateUrl, requestOpts)
+                                .then(() => resolve('Your listing has been added'))
+                                .catch(() => reject('There was an error in uploading your listing images. Please try again.'));
+                        }
+                        else {
+                            resolve('Your listing has been added')
+                        }
+                    })));
+        }
+
+    })
+
 }
