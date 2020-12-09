@@ -151,7 +151,8 @@ const ContractorEditProfile = () => {
       <div className="tabStyleEdit">
         <Form className="formStyle">
           <Form.Group>
-            <h1>Upload a profile picture:</h1>
+          <Form.Label>Upload a profile picture</Form.Label>
+            <br />
             <input type="file" accept="image/*" onChange={(e) => handleImageChange(e)} />
           </Form.Group>
           <Form.Group>

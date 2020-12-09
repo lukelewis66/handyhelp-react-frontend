@@ -4,14 +4,14 @@ import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 
 import { SKILLTAGS } from "../../constants/skilltags";
-
 import Upload from "../../Upload";
 import { useToasts } from "react-toast-notifications";
+import { addListing } from "../../firebase/Client";
 
 
 //https://codeburst.io/react-image-upload-with-kittens-cc96430eaece
 
-const MakeListingModal = () => {
+const MakeListingModal = ({ refreshListings }) => {
     //https://react-bootstrap.github.io/components/modal/
     const [show, setShow] = useState(false);
     const [form, setForm] = useState({
@@ -108,61 +108,31 @@ const MakeListingModal = () => {
     }
 
     const handleSubmit = () => {
-        console.log("Form: ", form);
-        if (form.title === "" || form.description === "") {
-            var content = 'Listing title and description must be filled out';
-            addToast( content, {
-                appearance: 'error',
-                autoDismiss: true,
+        addListing(localStorage.getItem("UID"), form, imageFiles)
+            .then(content => {
+                addToast(content, {
+                    appearance: 'success',
+                    autoDismiss: true,
+                });
+                //alert("Your listing has been added.");
+                refreshListings();
+                handleClose();
+                clearForm();
+            })
+            .catch(content => {
+                addToast(content, {
+                    appearance: 'error',
+                    autoDismiss: true,
+                });
             });
-            //alert("Listing title and description must be filled out");
-        }
-        else {
-            const server = process.env.REACT_APP_SERVER_URL;
-            const url = `${server}/addlisting/`;
-            const requestOptions = {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(form)
-            }
-            fetch(url, requestOptions)
-                .then((response => response.text()
-                    .then(id => {
-                        console.log("response id: ", id);
 
-                        // Whoever is uploading should pass their UID and LID (if uploading listing images) or 'ProfilePic' (if uploading profile pictures)
-                        // upload images and update listing document if user has added photos
-                        if (imageFiles.length > 0) {
-                            const imgurls = Upload(imageFiles, localStorage.getItem("UID"), "Listing", id);
-                            const updateBody = {
-                                listingID: id,
-                                imageUrls: imgurls,
-                            }
-                            const updateUrl = `${server}/updatelistingimages`;
-                            const requestOpts = {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify(updateBody),
-                            }
-                            fetch(updateUrl, requestOpts).then((response => response.text().then(message => console.log(message))));
-                        }
-                        var content = 'Your listing has been added';
-                        addToast( content, {
-                            appearance: 'success',
-                            autoDismiss: true,
-                        });
-                        //alert("Your listing has been added.");
-                        handleClose();
-                        clearForm();
-                    })));
-        }
     }
 
     return (
-        <div className="listingModal">
-            <Button className = "" variant="primary" onClick={handleShow}>
+        <div className="listing-modal">
+            <Button style={{ textAlign: "center" }} className="" variant="primary" onClick={handleShow}>
                 Create Listing
-          </Button>
+            </Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

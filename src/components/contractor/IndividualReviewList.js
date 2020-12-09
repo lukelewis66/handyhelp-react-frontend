@@ -18,11 +18,11 @@ const IndividualReviewList = ({ c_UID }) => {
     
         });
     }, []);
-    console.log(revItems);
+    
     if (!revItems && !noRev) {
         return(
             <div>
-            <div className="listingAndFeedTab">
+            <div className="tabStyle">
               <div className="flex-list">
                 <Spinner animation="border" />
               </div>
@@ -34,7 +34,7 @@ const IndividualReviewList = ({ c_UID }) => {
     else if(!revItems && noRev){
         return(
             <div>
-            <div className="listingAndFeedTab">
+            <div className="tabStyle">
               <div className="flex-list">
                 No Reviews Found
               </div>

@@ -1,27 +1,39 @@
 import React, { useState, useEffect } from "react";
 import ClientListingItem from "./ClientListingItem";
 import MakeListingModal from "./MakeListingModal";
-import { getAllListings } from "../../firebase/Client";
 import { ToastProvider } from "react-toast-notifications";
+import { Spinner } from "react-bootstrap";
 
-const ClientListingList = ({ active }) => {
-    const [listingItems, setListingItems] = useState([]);
-    useEffect(() => {
-        getAllListings(localStorage.getItem("UID"), active).then((list) => {
-            console.log("listings retrieved on clientlistinglist: ", list);
-            setListingItems(list);
-        })
-    }, []);
+const ClientListingList = ({ active, listings, refreshListings }) => {
+    console.log("listings in clientlistinglist: ", listings);
+    const showAddButton = () => {
+        if (active) {
+            return (
+                <ToastProvider placement="top-center">
+                    <MakeListingModal refreshListings={refreshListings} />
+                </ToastProvider>
+            )
+        }
+    }
 
+    const showListings = () => {
+        if (listings === null) {
+            return <Spinner style={{ textAlign: "center" }} animation="border" />;
+        }
+        else {
+            return (
+                listings.map((item) => (
+                    <ClientListingItem key={item.id} props={item} />
+                ))
+            )
+        }
+    }
     return (
         <div>
+            {showAddButton()}
             <div className="listingAndFeedTab">
-                {listingItems.map((item) => (
-                    <ClientListingItem key={item.id} props={item} />
-                ))}
-
+                {showListings()}
             </div>
-            <ToastProvider placement='top-center'> <MakeListingModal /> </ToastProvider>
         </div>
     );
 }
