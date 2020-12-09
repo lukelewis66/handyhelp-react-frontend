@@ -9,42 +9,42 @@ const HomePage = () => {
                 <Carousel.Item className="homepage-carousel-item">
                     <img
                         className="d-block w-100 justify-content-center"
-                        src="/homepage-photos/pic1.jpg"
+                        src={require("../../homepage-photos/pic1.jpg")}
                         alt="Image 1"
                     />
                 </Carousel.Item>
                 <Carousel.Item className="homepage-carousel-item">
                     <img
                         className="d-block w-100 justify-content-center"
-                        src="/homepage-photos/pic2.jpg"
+                        src={require("../../homepage-photos/pic2.jpg")}
                         alt="Image 2"
                     />
                 </Carousel.Item>
                 <Carousel.Item className="homepage-carousel-item">
                     <img
                         className="d-block w-100 justify-content-center homepage-img-transform"
-                        src="/homepage-photos/pic3.jpg"
+                        src={require("../../homepage-photos/pic3.jpg")}
                         alt="Image 3"
                     />
                 </Carousel.Item>
                 <Carousel.Item className="homepage-carousel-item">
                     <img
                         className="d-block w-100 justify-content-center homepage-img-transform"
-                        src="/homepage-photos/pic4.jpg"
+                        src={require("../../homepage-photos/pic4.jpg")}
                         alt="Image 4"
                     />
                 </Carousel.Item>
                 <Carousel.Item className="homepage-carousel-item">
                     <img
                         className="d-block w-100 justify-content-center"
-                        src="/homepage-photos/pic5.jpg"
+                        src={require("../../homepage-photos/pic5.jpg")}
                         alt="Image 5"
                     />
                 </Carousel.Item>
                 <Carousel.Item className="homepage-carousel-item">
                     <img
                         className="d-block w-100 justify-content-center"
-                        src="/homepage-photos/pic6.jpg"
+                        src={require("../../homepage-photos/pic6.jpg")}
                         alt="Image 6"
                     />
                 </Carousel.Item>

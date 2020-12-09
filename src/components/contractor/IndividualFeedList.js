@@ -20,8 +20,8 @@ const IndividualFeedList = ({ c_UID }) => {
   }, []);
 
   if (!feedItems && !noFeed) {
-    return(
-        <div>
+    return (
+      <div>
         <div className="listingAndFeedTab">
           <div className="flex-list">
             <Spinner animation="border" />
@@ -29,11 +29,11 @@ const IndividualFeedList = ({ c_UID }) => {
         </div>
         <ToastProvider placement='top-center'> <MakeFeedItemModal /> </ToastProvider>
       </div>
-       
-    ); 
-  }else if (!feedItems && noFeed) {
-    return(
-        <div>
+
+    );
+  } else if (!feedItems && noFeed) {
+    return (
+      <div>
         <div className="listingAndFeedTab">
           <div className="flex-list">
             No Feed Found
@@ -47,11 +47,9 @@ const IndividualFeedList = ({ c_UID }) => {
     return (
       <div>
         <div className="listingAndFeedTab">
-          <div className="flex-list">
-            {feedItems.map((item) => (
-              <FeedItem key={item.id} props={item} />
-            ))}
-          </div>
+          {feedItems.map((item) => (
+            <FeedItem key={item.id} props={item} />
+          ))}
         </div>
         <ToastProvider placement='top-center'> <MakeFeedItemModal /> </ToastProvider>
       </div>
