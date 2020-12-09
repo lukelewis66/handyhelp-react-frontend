@@ -44,6 +44,7 @@ const FeedItem = ({ props }) => {
 							{props.description}
 						</Card.Text>
 						<ToastProvider placement='top-center'> <DeleteFeedItemModal {...DeleteFeedItemProps}/> </ToastProvider>
+						
 					</Card.Body>
 				</Card>
 			</div>

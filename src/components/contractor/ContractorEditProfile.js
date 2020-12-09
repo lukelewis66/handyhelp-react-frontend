@@ -208,15 +208,15 @@ const ContractorEditProfile = () => {
           </Button>
           {active}
         </Form>
-        <button
+        {/* <button
           otrype="button"
           class="btn btn-info btn-lg"
           data-toggle="modal"
           data-target="#myModal"
         >
           Deactivate Account
-        </button>
-        <div class="modal fade" id="myModal" role="dialog"></div>
+        </button> */}
+        {/* <div class="modal fade" id="myModal" role="dialog"></div>
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -238,7 +238,7 @@ const ContractorEditProfile = () => {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
