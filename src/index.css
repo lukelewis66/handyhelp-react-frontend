@@ -382,11 +382,11 @@ hr.solid {
 }
 
 .homepage-carousel-item {
-  display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   position: relative;
+  height: 100%;
 }
 
 .homepage-img-transform{   
