@@ -25,7 +25,6 @@ const IndividualContractorProfile = ({ contractor }) => {
         return <IndividualFeedList c_UID={c_UID} />;
     }
   };
-<<<<<<< HEAD
   function showRating() {
     if (contractor.ratingCount !== 0) {
         return <span className="rating-display">&#9734;{contractor.rating ? contractor.rating.toFixed(2) : "0"}</span>
@@ -35,9 +34,6 @@ const IndividualContractorProfile = ({ contractor }) => {
     }
 
 }
-=======
-  /*
->>>>>>> e61616573f4c6c8931f6a6179547814089e39cb1
   return (
     <div>
       <div className="profileHeader">
@@ -75,26 +71,25 @@ const IndividualContractorProfile = ({ contractor }) => {
       {showActive()}
     </div>
   );
-  */
-  return (
-    <div>
-        <div className = "">
-            <div className = "profileHeader">
-                <IndividualContractorPhoto photoURL={contractor.profilepic} />
-                <IndividualContractorInfo c_UID={c_UID}/>
-            </div>
-        </div>
-        <Nav fill variant="tabs" className = "tabsStyle" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
-            <Nav.Item >
-                <Nav.Link eventKey="Feed">Feed</Nav.Link>
-            </Nav.Item>
-            <Nav.Item >
-                <Nav.Link eventKey="Reviews">Reviews</Nav.Link>
-            </Nav.Item>
-        </Nav>
-        {showActive()}
-    </div>
-  );
+  // return (
+  //   <div>
+  //       <div className = "">
+  //           <div className = "profileHeader">
+  //               <IndividualContractorPhoto photoURL={contractor.profilepic} />
+  //               <IndividualContractorInfo c_UID={c_UID}/>
+  //           </div>
+  //       </div>
+  //       <Nav fill variant="tabs" className = "tabsStyle" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
+  //           <Nav.Item >
+  //               <Nav.Link eventKey="Feed">Feed</Nav.Link>
+  //           </Nav.Item>
+  //           <Nav.Item >
+  //               <Nav.Link eventKey="Reviews">Reviews</Nav.Link>
+  //           </Nav.Item>
+  //       </Nav>
+  //       {showActive()}
+  //   </div>
+  // );
 };
 
 export default IndividualContractorProfile;
