@@ -16,22 +16,22 @@ const ContractorProfile = () => {
     const showActive = () => {
         switch (active) {
             case "Reviews":
-                return <ReviewList />
+                return <ToastProvider placement='bottom-center'><ReviewList /></ToastProvider>
             case "Edit":
                 return <ToastProvider placement='bottom-center'> <ContractorEditProfile /> </ToastProvider>
             default:
-                return <FeedList />
+                return <ToastProvider placement='bottom-center'> <FeedList /></ToastProvider>
         }
     }
     return (
         <div>
-            <div className = "">
-                <div className = "profileHeader">
+            <div className="">
+                <div className="profileHeader">
                     <ContractorPhoto />
                     <ContractorInfo />
                 </div>
-	        </div>
-            <Nav fill variant="tabs" className = "tabsStyle" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
+            </div>
+            <Nav fill variant="tabs" className="tabsStyle" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
                 <Nav.Item >
                     <Nav.Link eventKey="Feed">Feed</Nav.Link>
                 </Nav.Item>

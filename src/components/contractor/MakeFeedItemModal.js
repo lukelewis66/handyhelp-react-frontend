@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 
 import { Modal, Button, Form } from "react-bootstrap";
@@ -22,6 +22,8 @@ const MakeFeedItemModal = () => {
         skilltags: [],
     });
 
+    const [role, setRole] = useState(null);
+
     const [imageFiles, setImageFiles] = useState([])
 
     const showTags = () => {
@@ -29,7 +31,6 @@ const MakeFeedItemModal = () => {
             <Form.Check type="checkbox" label={tag.label} value={tag.label} onChange={(e) => handleChange(e, "skilltags")} />
         ));
     }
-
     const clearForm = () => {
         console.log("clear form called");
         setForm((prevState) => ({
@@ -122,114 +123,60 @@ const MakeFeedItemModal = () => {
                     })));
         }
     }
-    if (getUserRole(localStorage.getItem("UID")) == "contractor") {
-        return (
-            <div className="feedModal">
-                <Button variant="primary" onClick={handleShow}>
-                    Create Post
-            </Button>
+    return (
+        <div className="feedModal">
+            <Button variant="primary" onClick={handleShow}>
+                Create Post
+                </Button>
 
-                <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Enter Post Info</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Form>
-                            <Form.Group>
-                                <Form.Label>Post Title</Form.Label>
-                                <Form.Control
-                                    placeholder="Ex: Checkout this fence I fixed!"
-                                    field="title"
-                                    onChange={(e) => handleChange(e, "title")} />
-                                <Form.Text className="text-muted">Enter a descriptive title for your post</Form.Text>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Description</Form.Label>
-                                <Form.Control
-                                    as="textarea"
-                                    rows={4}
-                                    field="description"
-                                    onChange={(e) => handleChange(e, "description")} />
-                                <Form.Text className="text-muted">Enter a more thorough description of the work you did</Form.Text>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Images</Form.Label>
-                                <div>
-                                    <input type="file" accept="image/*" multiple onChange={(e) => handleChange(e, "images")} />
-                                </div>
-                                <Form.Text className="text-muted">Choose up to 10 images for your post</Form.Text>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Select Tags</Form.Label>
-                                {showTags()}
-                                <Form.Text className="text-muted">Select any relevant tags to the post.</Form.Text>
-                            </Form.Group>
-                        </Form>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Enter Post Info</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Form>
+                        <Form.Group>
+                            <Form.Label>Post Title</Form.Label>
+                            <Form.Control
+                                placeholder="Ex: Checkout this fence I fixed!"
+                                field="title"
+                                onChange={(e) => handleChange(e, "title")} />
+                            <Form.Text className="text-muted">Enter a descriptive title for your post</Form.Text>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control
+                                as="textarea"
+                                rows={4}
+                                field="description"
+                                onChange={(e) => handleChange(e, "description")} />
+                            <Form.Text className="text-muted">Enter a more thorough description of the work you did</Form.Text>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Images</Form.Label>
+                            <div>
+                                <input type="file" accept="image/*" multiple onChange={(e) => handleChange(e, "images")} />
+                            </div>
+                            <Form.Text className="text-muted">Choose up to 10 images for your post</Form.Text>
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Select Tags</Form.Label>
+                            {showTags()}
+                            <Form.Text className="text-muted">Select any relevant tags to the post.</Form.Text>
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
                 </Button>
-                        <Button variant="primary" onClick={handleSubmit}>
-                            Publish Post
+                    <Button variant="primary" onClick={handleSubmit}>
+                        Publish Post
                 </Button>
-                    </Modal.Footer>
-                </Modal>
-            </div >
-        );
-    }
-    else {
-        return (
-            <div className="feedModal">
-                <Modal show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Enter Post Info</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <Form>
-                            <Form.Group>
-                                <Form.Label>Post Title</Form.Label>
-                                <Form.Control
-                                    placeholder="Ex: Checkout this fence I fixed!"
-                                    field="title"
-                                    onChange={(e) => handleChange(e, "title")} />
-                                <Form.Text className="text-muted">Enter a descriptive title for your post</Form.Text>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Description</Form.Label>
-                                <Form.Control
-                                    as="textarea"
-                                    rows={4}
-                                    field="description"
-                                    onChange={(e) => handleChange(e, "description")} />
-                                <Form.Text className="text-muted">Enter a more thorough description of the work you did</Form.Text>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Images</Form.Label>
-                                <div>
-                                    <input type="file" accept="image/*" multiple onChange={(e) => handleChange(e, "images")} />
-                                </div>
-                                <Form.Text className="text-muted">Choose up to 10 images for your post</Form.Text>
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Select Tags</Form.Label>
-                                {showTags()}
-                                <Form.Text className="text-muted">Select any relevant tags to the post.</Form.Text>
-                            </Form.Group>
-                        </Form>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                            Close
-                </Button>
-                        <Button variant="primary" onClick={handleSubmit}>
-                            Publish Post
-                </Button>
-                    </Modal.Footer>
-                </Modal>
-            </div >
-        );
-    }
+                </Modal.Footer>
+            </Modal>
+        </div >
+    );
 
 }
 
