@@ -22,7 +22,7 @@ const ClientInfo = () => {
 		}
 	}
 	return (
-		<div className="infoPanel">
+		<div className="infoPanel2">
 			{showUserInfo()}
 		</div>
 	)
