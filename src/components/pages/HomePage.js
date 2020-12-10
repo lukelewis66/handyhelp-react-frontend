@@ -53,7 +53,9 @@ const HomePage = () => {
                 <h1><b>HandyHelp</b></h1>
                 <h3>Share a helping hand</h3>
             </div>
-            <HomeInfo />
+            <div id="homeinfo">
+                <HomeInfo />
+            </div>
         </div>
     );
 }
