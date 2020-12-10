@@ -10,7 +10,7 @@ const IndividualFeedList = ({ c_UID }) => {
   const [feedItems, setFeedItems] = useState();
   const [noFeed, setFeed] = useState(0);
   useEffect(() => {
-    console.log("Before Get all Feed ITems: ", c_UID);
+    console.log("Before Get all Feed Items: ", c_UID);
     getAllFeedItems(c_UID).then((list) => {
       console.log("feed items retrieved on feedlist: ", list);
       setFeedItems(list);
@@ -20,8 +20,8 @@ const IndividualFeedList = ({ c_UID }) => {
   }, []);
 
   if (!feedItems && !noFeed) {
-    return(
-        <div>
+    return (
+      <div>
         <div className="listingAndFeedTab">
           <div className="flex-list">
             <Spinner animation="border" />
@@ -29,11 +29,11 @@ const IndividualFeedList = ({ c_UID }) => {
         </div>
         <ToastProvider placement='top-center'> <MakeFeedItemModal /> </ToastProvider>
       </div>
-       
-    ); 
-  }else if (!feedItems && noFeed) {
-    return(
-        <div>
+
+    );
+  } else if (!feedItems && noFeed) {
+    return (
+      <div>
         <div className="listingAndFeedTab">
           <div className="flex-list">
             No Feed Found
@@ -47,11 +47,9 @@ const IndividualFeedList = ({ c_UID }) => {
     return (
       <div>
         <div className="listingAndFeedTab">
-          <div className="flex-list">
-            {feedItems.map((item) => (
-              <FeedItem key={item.id} props={item} />
-            ))}
-          </div>
+          {feedItems.map((item) => (
+            <FeedItem key={item.id} props={item} />
+          ))}
         </div>
         <ToastProvider placement='top-center'> <MakeFeedItemModal /> </ToastProvider>
       </div>
