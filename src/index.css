@@ -15,6 +15,7 @@ code {
 
 html {
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 .specialHeader {
@@ -65,6 +66,14 @@ html {
   padding: 25px 25px;
 }
 
+.infoPanel2 {
+  height: 100px;
+  width: 100%;
+  margin: 0px 0px 50px 0px;
+  padding: 25px 25px;
+  text-align: center;
+}
+
 .infoPanelCon {
   width: 50%;
   padding: 1%;
@@ -93,10 +102,12 @@ html {
   display: flex;
   flex-wrap: wrap;
   background-color: white;
+  border-radius: 0 0 5px 5px;
   margin: 0% 13% 0 13%;
   padding: 25px 25px;
   height: 600px;
-  max-height: 1000px;
+  overflow: scroll;
+  margin-bottom: 1rem;
 }
 
 .aboutnames {
@@ -355,13 +366,14 @@ hr.solid {
   margin: 3px 3px;
 }
 
-.listingModal {
-  display: flex;
-  width: auto;
+.listing-modal {
   background-color: white;
-  margin: 0% 13% 1% 13%;
-  border-radius: 0 0 5px 5px;
+  width: auto;
+  margin: 0% 13% 0% 13%;
   padding: 25px;
+  text-align: center;
+  border-bottom: solid 1px;
+  border-color: #0098ff;
 }
 
 .feedModal {
@@ -376,6 +388,82 @@ hr.solid {
 .screen {
   background-color: #0098ff;
   height: 100%;
+}
+
+.homepage-carousel-item {
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.homepage-img-transform{   
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.homepage-main-text {
+  position: absolute;
+  top: 75px;
+  color: #FFF;
+  background-color: rgba(0,152,255, .7);
+  border-radius: 5rem;
+  display: inline-block;
+  padding: .25em .4em;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  vertical-align: baseline;
+  width: 50%;
+  margin-left: 25%;
+}
+
+.homepage-under-text {
+  background-color: white;
+  border-radius: 5rem;
+  padding: .25em .4em;
+  font-weight: 500;
+  line-height: 1;
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-bottom: 2rem;
+}
+
+.homepage-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 0 0 5px 5px;
+  margin: 0% 13% 0 13%;
+  padding: 25px 25px;
+}
+
+.homepage-description-blurb {
+  display: flex;
+  text-align: left;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.homepage-blurb-title {
+  width: 30%;
+}
+
+.homepage-blurb-text {
+  width: 60%;
+}
+
+.homepage-blurb-image {
+  width: 30%;
+  text-align: center;
+}
+
+.homepage-blurb-image img{
+  height: 100px;
 }
 
 .react-toast-notifications__container {

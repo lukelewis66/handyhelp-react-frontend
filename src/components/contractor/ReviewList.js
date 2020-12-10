@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ReviewItem from "./ReviewItem";
 import { getReviews } from "../../firebase/Contractor";
+import MakeReviewModal from "../pages/MakeReviewModal";
+
 
 const ReviewList = () => {
 
@@ -18,6 +20,7 @@ const ReviewList = () => {
                 {reviewItems.map((item) => (
                     <ReviewItem key={item.id} props={item} />
                 ))}
+                <MakeReviewModal></MakeReviewModal>
             </div>
         </div>
     );
