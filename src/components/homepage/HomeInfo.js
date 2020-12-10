@@ -18,7 +18,7 @@ const HomeInfo = () => {
 
     return (
         <div style={{ textAlign: "center", marginTop: "2rem" }}>
-            <h1>How does HandyHelp work?</h1>
+            <h1 className="homepage-under-text"> How does HandyHelp work?</h1>
             <Nav fill variant="tabs" className="tabsStyle" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
                 <Nav.Item >
                     <Nav.Link eventKey="ForClients">For Clients</Nav.Link>

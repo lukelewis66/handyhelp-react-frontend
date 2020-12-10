@@ -77,7 +77,7 @@ const MakeFeedItemModal = () => {
         console.log("Form: ", form);
         if (form.title === "" || form.description === "") {
             var content = 'Post title and description must be filled out'
-            addToast( content, {
+            addToast(content, {
                 appearance: 'error',
                 autoDismiss: true,
             });
@@ -112,7 +112,7 @@ const MakeFeedItemModal = () => {
                             fetch(updateUrl, requestOpts).then((response => response.text().then(message => console.log(message))));
                         }
                         var content = 'Your post has been added';
-                        addToast( content, {
+                        addToast(content, {
                             appearance: 'success',
                             autoDismiss: true,
                         });
@@ -122,9 +122,9 @@ const MakeFeedItemModal = () => {
                     })));
         }
     }
-    if(getUserRole(localStorage.getItem("UID")) == "contractor") {
+    if (getUserRole(localStorage.getItem("UID")) == "contractor") {
         return (
-            <div className = "feedModal">
+            <div className="feedModal">
                 <Button variant="primary" onClick={handleShow}>
                     Create Post
             </Button>
@@ -180,7 +180,7 @@ const MakeFeedItemModal = () => {
     }
     else {
         return (
-            <div className = "feedModal">
+            <div className="feedModal">
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                         <Modal.Title>Enter Post Info</Modal.Title>
@@ -228,7 +228,7 @@ const MakeFeedItemModal = () => {
                     </Modal.Footer>
                 </Modal>
             </div >
-        );   
+        );
     }
 
 }

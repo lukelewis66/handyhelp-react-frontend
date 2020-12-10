@@ -20,7 +20,7 @@ const IndividualContractorProfile = ({ contractor }) => {
   const showActive = () => {
     switch (active) {
       case "Reviews":
-        return <IndividualReviewList c_UID={c_UID}/>;
+        return <IndividualReviewList c_UID={c_UID} />;
       default:
         return <IndividualFeedList c_UID={c_UID} />;
     }
@@ -52,44 +52,27 @@ const IndividualContractorProfile = ({ contractor }) => {
             <p>{contractor.bio}</p>
             <Message UID={c_UID}/>
           </div>
+// =======
+//   return (
+//     <div>
+//       <div className="">
+//         <div className="profileHeader">
+//           <IndividualContractorPhoto photoURL={contractor.profilepic} />
+//           <IndividualContractorInfo c_UID={c_UID} />
+// >>>>>>> main
         </div>
       </div>
-      <Nav
-        fill
-        variant="tabs"
-        className="tabsStyle"
-        activeKey={active}
-        onSelect={(activeKey) => setActive(activeKey)}
-      >
-        <Nav.Item>
+      <Nav fill variant="tabs" className="tabsStyle" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
+        <Nav.Item >
           <Nav.Link eventKey="Feed">Feed</Nav.Link>
         </Nav.Item>
-        <Nav.Item>
+        <Nav.Item >
           <Nav.Link eventKey="Reviews">Reviews</Nav.Link>
         </Nav.Item>
       </Nav>
       {showActive()}
     </div>
   );
-  // return (
-  //   <div>
-  //       <div className = "">
-  //           <div className = "profileHeader">
-  //               <IndividualContractorPhoto photoURL={contractor.profilepic} />
-  //               <IndividualContractorInfo c_UID={c_UID}/>
-  //           </div>
-  //       </div>
-  //       <Nav fill variant="tabs" className = "tabsStyle" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
-  //           <Nav.Item >
-  //               <Nav.Link eventKey="Feed">Feed</Nav.Link>
-  //           </Nav.Item>
-  //           <Nav.Item >
-  //               <Nav.Link eventKey="Reviews">Reviews</Nav.Link>
-  //           </Nav.Item>
-  //       </Nav>
-  //       {showActive()}
-  //   </div>
-  // );
 };
 
 export default IndividualContractorProfile;
