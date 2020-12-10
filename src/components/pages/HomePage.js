@@ -4,7 +4,7 @@ import HomeInfo from "../homepage/HomeInfo";
 
 const HomePage = () => {
     return (
-        <div style={{ backgroundColor: "#0098ff" }}>
+        <div style={{ backgroundColor: "#0098ff", paddingBottom: "1rem" }}>
             <Carousel style={{ height: "700px", overflow: "hidden" }}>
                 <Carousel.Item className="homepage-carousel-item">
                     <img

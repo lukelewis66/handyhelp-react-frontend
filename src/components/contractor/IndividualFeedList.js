@@ -10,7 +10,7 @@ const IndividualFeedList = ({ c_UID }) => {
   const [feedItems, setFeedItems] = useState();
   const [noFeed, setFeed] = useState(0);
   useEffect(() => {
-    console.log("Before Get all Feed ITems: ", c_UID);
+    console.log("Before Get all Feed Items: ", c_UID);
     getAllFeedItems(c_UID).then((list) => {
       console.log("feed items retrieved on feedlist: ", list);
       setFeedItems(list);

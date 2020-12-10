@@ -409,6 +409,31 @@ hr.solid {
   vertical-align: baseline;
 }
 
+.homepage-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: 0 0 5px 5px;
+  margin: 0% 13% 0 13%;
+  padding: 25px 25px;
+}
+
+.homepage-description-blurb {
+  display: flex;
+  text-align: left;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.homepage-blurb-title {
+  width: 30%;
+}
+
+.homepage-blurb-text {
+  width: 60%;
+}
+
 .react-toast-notifications__container {
   z-index: 200000 !important;
   /* transform: scale(1.5) !important; */
