@@ -27,13 +27,13 @@ const IndividualContractorProfile = ({ contractor }) => {
   };
   function showRating() {
     if (contractor.ratingCount !== 0) {
-        return <span className="rating-display">&#9734;{contractor.rating ? contractor.rating.toFixed(2) : "0"}</span>
+      return <span className="rating-display">&#9734;{contractor.rating ? contractor.rating.toFixed(2) : "0"}</span>
     }
     else {
-        return <span className="rating-display">No Ratings</span>
+      return <span className="rating-display">No Ratings</span>
     }
 
-}
+  }
   return (
     <div>
       <div className="profileHeader">
@@ -50,16 +50,8 @@ const IndividualContractorProfile = ({ contractor }) => {
             <h3>Based in {contractor.location_string}</h3>
             <div>{contractor.rating ? showRating() : ""}</div>
             <p>{contractor.bio}</p>
-            <Message UID={c_UID}/>
+            <Message UID={c_UID} />
           </div>
-// =======
-//   return (
-//     <div>
-//       <div className="">
-//         <div className="profileHeader">
-//           <IndividualContractorPhoto photoURL={contractor.profilepic} />
-//           <IndividualContractorInfo c_UID={c_UID} />
-// >>>>>>> main
         </div>
       </div>
       <Nav fill variant="tabs" className="tabsStyle" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>

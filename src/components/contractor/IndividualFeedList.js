@@ -27,7 +27,6 @@ const IndividualFeedList = ({ c_UID }) => {
             <Spinner animation="border" />
           </div>
         </div>
-        <ToastProvider placement='top-center'> <MakeFeedItemModal /> </ToastProvider>
       </div>
 
     );
@@ -39,7 +38,6 @@ const IndividualFeedList = ({ c_UID }) => {
             No Feed Found
           </div>
         </div>
-        <ToastProvider placement='top-center'> <MakeFeedItemModal /> </ToastProvider>
       </div>
     );
   }
@@ -51,7 +49,6 @@ const IndividualFeedList = ({ c_UID }) => {
             <FeedItem key={item.id} props={item} />
           ))}
         </div>
-        <ToastProvider placement='top-center'> <MakeFeedItemModal /> </ToastProvider>
       </div>
     );
   }
