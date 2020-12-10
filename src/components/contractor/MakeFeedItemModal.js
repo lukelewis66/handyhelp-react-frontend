@@ -122,6 +122,7 @@ const MakeFeedItemModal = () => {
                     })));
         }
     }
+    
     if(getUserRole(localStorage.getItem("UID")) == "contractor") {
         return (
             <div className = "feedModal">
