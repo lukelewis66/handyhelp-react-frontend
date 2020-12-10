@@ -66,6 +66,14 @@ html {
   padding: 25px 25px;
 }
 
+.infoPanel2 {
+  height: 100px;
+  width: 100%;
+  margin: 0px 0px 50px 0px;
+  padding: 25px 25px;
+  text-align: center;
+}
+
 .infoPanelCon {
   width: 50%;
   padding: 1%;
@@ -112,15 +120,21 @@ html {
   max-height: 1000px;
 }
 
+
 .tabStyleEdit {
   flex-wrap: wrap;
   justify-content: center;
   background-color: white;
-  margin: 0% 13% 1% 13%;
+  margin: 0% 13% 8% 13%;
   padding: 25px 25px;
-  height: 100%;
-  max-height: 100%px;
+  height: 470px;
+  max-height: 2000px;
   border-radius: 0 0 5px 5px;
+}
+
+.accSetup {
+  font-size: 24px;
+  font-family: Verdana;
 }
 
 .tabsStyle {
@@ -182,6 +196,7 @@ html {
   margin: 2rem auto;
 }
 
+
 #submitButton {
   width: auto;
 }
@@ -224,6 +239,7 @@ hr.solid {
   height: auto;
   border-radius: 25px;
   background-color: rgba(65, 72, 87, 0);
+  
 }
 .search-filter {
   margin: 1rem 0 1rem 1rem;

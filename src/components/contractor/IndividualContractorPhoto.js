@@ -1,17 +1,10 @@
 import React from "react";
-import { Image } from "react-bootstrap"; 
+import { Image } from "react-bootstrap";
 
-const IndividualContractorPhoto = ({photoURL}) => {
-	
-	
-	console.log(photoURL);
+const IndividualContractorPhoto = ({ photoURL }) => {
+  console.log(photoURL);
 
-    return(
-		<div className = "profilePhoto">
-			<Image fluid src={photoURL ? photoURL : "/contractor-anon.jpg"} />
-		</div>
-	);
-	
-}
+  return <Image fluid src={photoURL ? photoURL : "/contractor-anon.jpg"} />;
+};
 
-export default IndividualContractorPhoto
+export default IndividualContractorPhoto;
