@@ -1,24 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import FeedItem from "./FeedItem";
 import MakeFeedItemModal from "./MakeFeedItemModal";
-import { getAllFeedItems } from "../../firebase/Contractor";
 import { ToastProvider } from "react-toast-notifications";
+import { Spinner } from "react-bootstrap";
 
-const FeedList = () => {
-    const [feedItems, setFeedItems] = useState([]);
-    useEffect(() => {
-        getAllFeedItems(localStorage.getItem("UID")).then((list) => {
-            console.log("feed items retrieved on feedlist: ", list);
-            setFeedItems(list);
-        })
-    }, []);
+const FeedList = ({ feedItems }) => {
 
+    const showFeed = () => {
+        if (feedItems === null) {
+            return <Spinner animation="border" />
+        }
+        else {
+            if (feedItems.length === 0) {
+                return <h3>Feed is empty.</h3>
+            }
+            else {
+                return feedItems.map((item) => (
+                    <FeedItem key={item.id} props={item} />
+                ));
+            }
+        }
+    }
     return (
         <div >
             <div className="listingAndFeedTab">
-                {feedItems.map((item) => (
-                    <FeedItem key={item.id} props={item} />
-                ))}
+                {showFeed()}
             </div>
             <ToastProvider placement='top-center'> <MakeFeedItemModal /> </ToastProvider>
         </div>

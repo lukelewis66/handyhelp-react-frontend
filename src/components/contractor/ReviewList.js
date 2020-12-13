@@ -1,26 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import ReviewItem from "./ReviewItem";
-import { getReviews } from "../../firebase/Contractor";
 import MakeReviewModal from "../pages/MakeReviewModal";
+import { Spinner } from "react-bootstrap";
 
 
-const ReviewList = () => {
+const ReviewList = ({ reviewItems }) => {
 
-    const[reviewItems, setReviewList] = useState([]);
-    useEffect(() => {
-        getReviews(localStorage.getItem("UID")).then((list) => {
-            console.log("reviews retrieved on ReviewList.js ", list);
-            setReviewList(list);
-        })
-    }, []);
-
-    return (
-        <div className = "tabStyle">
-            <div className = "reviews">
-                {reviewItems.map((item) => (
+    const showReviews = () => {
+        if (reviewItems === null) {
+            return <Spinner animation="border" />
+        }
+        else {
+            if (reviewItems.length === 0) {
+                return <h3>No reviews.</h3>
+            }
+            else {
+                return reviewItems.map((item) => (
                     <ReviewItem key={item.id} props={item} />
-                ))}
-                <MakeReviewModal></MakeReviewModal>
+                ));
+            }
+        }
+    }
+    return (
+        <div className="tabStyle">
+            <div className="reviews">
+                {showReviews()}
+                <MakeReviewModal />
             </div>
         </div>
     );

@@ -7,35 +7,35 @@ import ContractorPhoto from "./ContractorPhoto"
 import ContractorInfo from "./ContractorInfo"
 import { ToastProvider } from "react-toast-notifications";
 import { Nav } from "react-bootstrap";
-import { getAllFeedItems } from "../../firebase/Contractor";
+import { getAllFeedItems, getReviews } from "../../firebase/Contractor";
 
 //https://react-bootstrap.netlify.app/components/navs/
 
 const ContractorProfile = () => {
     const [active, setActive] = useState("Feed");
-    // const [feedItems, setFeedItems] = useState([]);
-    // const [reviewItems, setReviewItems] = useState([]);
+    const [feedItems, setFeedItems] = useState(null);
+    const [reviewItems, setReviewItems] = useState(null);
 
-    // useEffect(() => {
-    //     const UID = localStorage.getItem("UID");
-    //     getAllFeedItems(UID).then((feeds) => {
-    //         console.log("feed items retrieved on feedlist: ", feeds);
-    //         setFeedItems(feeds);
-    //     });
-    //     getReviews(UID).then((reviews) => {
-    //         console.log("reviews retrieved on getReviews.js ", reviews);
-    //         setReviewItems(reviews);
-    //     });
-    // }, []);
+    useEffect(() => {
+        const UID = localStorage.getItem("UID");
+        getAllFeedItems(UID).then((feeds) => {
+            console.log("feed items retrieved on contractor profile ", feeds);
+            setFeedItems(feeds);
+        });
+        getReviews(UID).then((reviews) => {
+            console.log("reviews retrieved on contractor profile", reviews);
+            setReviewItems(reviews);
+        });
+    }, []);
 
     const showActive = () => {
         switch (active) {
             case "Reviews":
-                return <ToastProvider placement='bottom-center'><ReviewList /></ToastProvider>
+                return <ToastProvider placement='bottom-center'><ReviewList reviewItems={reviewItems} /></ToastProvider>
             case "Edit":
                 return <ToastProvider placement='bottom-center'> <ContractorEditProfile /> </ToastProvider>
             default:
-                return <ToastProvider placement='bottom-center'> <FeedList /></ToastProvider>
+                return <ToastProvider placement='bottom-center'> <FeedList feedItems={feedItems} /></ToastProvider>
         }
     }
     return (
