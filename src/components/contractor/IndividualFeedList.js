@@ -10,7 +10,7 @@ const IndividualFeedList = ({ feedItems }) => {
     }
     else {
       if (feedItems.length === 0) {
-        return <h3>Contractor has nothing on their feed.</h3>
+        return <h3>Contractor has nothing on their feed</h3>
       }
       else {
         return feedItems.map(item => (
@@ -21,7 +21,7 @@ const IndividualFeedList = ({ feedItems }) => {
   };
 
   return (
-    <div className="listingAndFeedTab">
+    <div className="indFeedTab">
       {showFeed()}
     </div>
   );

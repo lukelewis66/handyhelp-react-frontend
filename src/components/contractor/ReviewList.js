@@ -22,10 +22,9 @@ const ReviewList = ({ reviewItems }) => {
         }
     }
     return (
-        <div className="tabStyle">
+        <div className="tabStyle" style={{margin: "0% 13% 1% 13%"}}>
             <div className="reviews">
                 {showReviews()}
-                <MakeReviewModal />
             </div>
         </div>
     );

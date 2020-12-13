@@ -49,6 +49,7 @@ const IndividualContractorProfile = ({ contractor }) => {
         return <IndividualFeedList feedItems={feedItems} />;
     }
   };
+  
   function showRating() {
     if (contractor.ratingCount !== 0) {
       return <span className="rating-display">&#9734;{contractor.rating ? contractor.rating.toFixed(2) : "0"}</span>
@@ -56,10 +57,11 @@ const IndividualContractorProfile = ({ contractor }) => {
     else {
       return <span className="rating-display">No Ratings</span>
     }
-
   }
+
   return (
     <div>
+      {/*
       <div className="profileHeader">
         <div className="profile-photo">
           <div className="profileHeader">
@@ -76,6 +78,19 @@ const IndividualContractorProfile = ({ contractor }) => {
             <p>{contractor.bio}</p>
             <Message UID={c_UID} />
           </div>
+        </div>
+      </div>
+      */}
+      <div className = "profileHeader">
+        <div className = "profilePhoto">
+          <IndividualContractorPhoto photoURL={contractor.profilepic} />
+        </div>
+        <div>
+          <IndividualContractorInfo c_UID = {c_UID} />
+          <div className = "messageButton">
+            <Message UID={c_UID} />
+          </div>
+
         </div>
       </div>
       <Nav fill variant="tabs" className="tabsStyle" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
