@@ -28,7 +28,7 @@ const SearchContractorsItem = ({ props }) => {
             <Card.Body className="contractor-card-body">
                 <div style={{ display: "flex" }}>
                     <div style={{ display: "flex", flexDirection: "column" }}>
-                        
+
 
                         <img className="contractor-search-image" src={(props.profilepic.length >= 1) ? props.profilepic : "/contractor-anon.jpg"} />
                         {showRating()}
@@ -45,7 +45,7 @@ const SearchContractorsItem = ({ props }) => {
                     </div>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                    <div style={{ display: "flex", marginBottom: "10px", marginTop: "10px" }}>
+                    <div style={{ display: "flex", marginBottom: "10px", marginTop: "10px", flexWrap: "wrap" }}>
                         {showTags()}
                     </div>
                     <Button as={Link} to={fullLink} target="_blank">View Profile</Button>
