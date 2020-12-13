@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import IndividualFeedList from "./IndividualFeedList";
 import IndividualReviewList from "./IndividualReviewList";
 import IndividualContractorPhoto from "./IndividualContractorPhoto";
 import IndividualContractorInfo from "./IndividualContractorInfo";
+import { getReviews, getAllFeedItems } from "../../firebase/Contractor";
+
+
 import Message from "../Message";
 
 
@@ -11,18 +14,39 @@ import { Nav } from "react-bootstrap";
 //https://react-bootstrap.netlify.app/components/navs/
 
 const IndividualContractorProfile = ({ contractor }) => {
-  console.log("|||||||||||||: ", contractor);
   const [active, setActive] = useState("Feed");
+  const [feedItems, setFeedItems] = useState(null);
+  const [reviewItems, setReviewItems] = useState(null);
 
   const [c_UID] = useState(contractor.c_UID);
   console.log("Getting contractor id: ", c_UID);
 
+  useEffect(() => {
+    console.log("Before Get all Feed Items: ", c_UID);
+    getAllFeedItems(c_UID).then((list) => {
+      console.log("feed items retrieved on feedlist: ", list);
+      setFeedItems(list);
+    });
+
+    getReviews(c_UID).then((list) => {
+      console.log("feed items retrieved on feedlist: ", list);
+      setReviewItems(list);
+    });
+  }, []);
+
+  const refreshReviews = () => {
+    getReviews(c_UID).then((list) => {
+      console.log("reviews refreshed");
+      setReviewItems(list);
+    })
+  }
+
   const showActive = () => {
     switch (active) {
       case "Reviews":
-        return <IndividualReviewList c_UID={c_UID} />;
+        return <IndividualReviewList c_UID={c_UID} reviewItems={reviewItems} refreshReviews={refreshReviews} />;
       default:
-        return <IndividualFeedList c_UID={c_UID} />;
+        return <IndividualFeedList feedItems={feedItems} />;
     }
   };
   function showRating() {
