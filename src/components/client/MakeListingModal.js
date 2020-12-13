@@ -52,9 +52,9 @@ const MakeListingModal = ({ refreshListings }) => {
     }
 
     const isImage = (file) => {
-        var ext = getExtension(file);
+        var ext = getExtension(file).toLowerCase();
         console.log(ext);
-        if(ext === "jpg" || ext === "jpeg" || ext === "png") {
+        if (ext === "jpg" || ext === "jpeg" || ext === "png") {
             return true;
         }
         return false;
@@ -78,24 +78,24 @@ const MakeListingModal = ({ refreshListings }) => {
             const files = Array.from(e.target.files);
             var i;
             var correctFiles = true;
-            for(i = 0; i < files.length; i++) {
-                if(!(isImage(files[i].name))) {
+            for (i = 0; i < files.length; i++) {
+                if (!(isImage(files[i].name))) {
                     correctFiles = false;
                 }
             }
-            if(correctFiles) {
+            if (correctFiles) {
                 setImageFiles(files);
                 val = [];
             }
-             else {
-                 setImageFiles([]);
+            else {
+                setImageFiles([]);
                 val = [];
                 var content = "Incorrect file type(s)! Please reselect your images"
-                addToast( content, {
+                addToast(content, {
                     appearance: 'error',
                     autoDismiss: true,
                 });
-             }
+            }
         }
         else {
             val = e.target.value;
@@ -160,7 +160,7 @@ const MakeListingModal = ({ refreshListings }) => {
                         <Form.Group>
                             <Form.Label>Images</Form.Label>
                             <div>
-                                <input type="file" accept="image/*" multiple onChange={(e) => handleChange(e, "images")} />
+                                <input type="file" accept="image/*" multiple style={{ overflow: "hidden" }} onChange={(e) => handleChange(e, "images")} />
                             </div>
                             <Form.Text className="text-muted">Choose up to 10 images for your listing</Form.Text>
                         </Form.Group>
