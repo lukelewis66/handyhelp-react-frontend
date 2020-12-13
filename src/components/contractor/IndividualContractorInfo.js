@@ -29,10 +29,21 @@ const IndividualContractorInfo = (c_UID) => {
 		));
 	}
 
+	function showRating() {
+		if (contractor.ratingCount !== 0) {
+		  return <span className="rating-display">&#9734;{contractor.rating ? contractor.rating.toFixed(2) : "0"}</span>
+		}
+		else {
+		  return <span className="rating-display">No Ratings</span>
+		}
+	
+	}
+
 	return (
-		<div className="infoPanelCon">
+		<div className="infoPanelIndCon">
 			<h1>{contractor.name}</h1>
-			<h3>{contractor.location_string} {showTags()}</h3>
+			<h3>Based in {contractor.location_string}</h3>
+			<h7>{contractor.rating ? showRating() : ""} {showTags()}</h7>
 			<p>{contractor.bio}</p>
 		</div>
 	);

@@ -74,9 +74,30 @@ html {
   text-align: center;
 }
 
-.infoPanelCon {
-  width: 50%;
+.infoPanelIndCon {
+  width: 100%;
   padding: 1%;
+  margin: 10px 0 0 0;
+  border-radius: 5px 5px 0 0;
+  background-color:rgb(198, 220, 245);
+}
+
+.messageButton {
+  background-color:rgb(198, 220, 245);
+  border-radius: 0 0 5px 5px;
+  width: 100%;
+}
+
+.messageButt {
+  margin: 5px;
+}
+
+.infoPanelCon {
+  width: 60%;
+  padding: 1%;
+  margin: 10px 0 0 0;
+  border-radius: 5px 5px 5px 5px;
+  background-color:rgb(198, 220, 245);
 }
 .infoPanelCon2 {
   padding: 1%;
@@ -99,6 +120,17 @@ html {
 }
 
 .listingAndFeedTab {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: white;
+  border-radius: 0 0 5px 5px;
+  margin: 0% 13% 0 13%;
+  padding: 25px 25px;
+  height: 600px;
+  overflow: scroll;
+}
+
+.indFeedTab {
   display: flex;
   flex-wrap: wrap;
   background-color: white;
@@ -372,7 +404,7 @@ hr.solid {
   margin: 0% 13% 0% 13%;
   padding: 25px;
   text-align: center;
-  border-bottom: solid 1px;
+  border-bottom: solid 0.5px;
   border-color: #0098ff;
 }
 

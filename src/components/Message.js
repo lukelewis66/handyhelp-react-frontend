@@ -57,7 +57,7 @@ const Message = (props) => {
 
     return (
         <div className = "">
-            <Button variant="primary" onClick={handleShow}>
+            <Button variant="primary" onClick={handleShow} className = "messageButt">
                 Send Message
             </Button>
 

@@ -75,14 +75,26 @@ const ContractorEditProfile = () => {
     } else {
       const imgurls = Upload(imageFiles, localStorage.getItem("UID"), "ProfilePic", "placeholder");
       console.log("imgurls: ", imgurls);
-      editContractor(
-        name,
-        phone,
-        bio,
-        tags,
-        localStorage.getItem("UID"),
-        imgurls
-      ).then(() => window.location.reload());
+      if(imgurls[0]) {
+        editContractor(
+          name,
+          phone,
+          bio,
+          tags,
+          localStorage.getItem("UID"),
+          imgurls
+        ).then(() => window.location.reload());
+      }
+      else {
+        editContractor(
+          name,
+          phone,
+          bio,
+          tags,
+          localStorage.getItem("UID"),
+          contractorInfo.profilepic
+        ).then(() => window.location.reload());
+      }
     }
     e.preventDefault();
   };

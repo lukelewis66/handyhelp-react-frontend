@@ -38,7 +38,7 @@ const ContractorProfile = () => {
     }
     return (
         <div>
-            <div className="">
+            <div>
                 <div className="profileHeader">
                     <ContractorPhoto />
                     <ContractorInfo />
