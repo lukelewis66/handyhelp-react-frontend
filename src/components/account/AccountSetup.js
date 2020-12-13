@@ -127,13 +127,13 @@ const AccountSetup = ({ UID }) => {
   };
 
   return (
-    <div class="screen">
+    <div className="screen">
       <Container style={{ display: "flex", flexDirection: "column" }}>
         <br></br>
         <br></br>
         <div className="infoPanelCon2">
-          <div class="profile-info3">
-            <div class="accSetup">{body.render}</div>
+          <div className="profile-info3">
+            <div className="accSetup">{body.render}</div>
             <br></br>
 
             <div style={{ display: "flex" }}>

@@ -18,7 +18,7 @@ function Upload(images, UID, type, id) {
             const formData = new FormData();
             formData.append("type", type);
             formData.append("IDnum", id);
-            formData.append("bucket", UID);
+            formData.append("UID", UID);
             formData.append("acl", "public-read-write");
             formData.append("key", files[i].name);
             formData.append("file", files[i]);

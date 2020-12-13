@@ -4,7 +4,6 @@
 function BucketInit(UID) {
     console.log("in BucketInit");
     var stringUID = UID.toString();
-    debugger;
     var result = 'Bucket initialized under: ' + UID;
     var alphanumeric = /^[0-9a-zA-Z]+$/;
     if (stringUID && stringUID.match(alphanumeric)) {
@@ -13,6 +12,7 @@ function BucketInit(UID) {
         let server = `${process.env.REACT_APP_SERVER_URL}/bucketinit`;
         formData.append('UID', UID);
         formData.append('ACL', 'public-read-write');
+        console.log("formdata: ", formData);
         fetch(server, {
             method: "POST",
             body: formData,
