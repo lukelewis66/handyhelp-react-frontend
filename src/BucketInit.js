@@ -4,7 +4,6 @@
 function BucketInit(UID) {
     console.log("in BucketInit");
     var stringUID = UID.toString();
-    console.log("stringUID: ", stringUID);
     debugger;
     var result = 'Bucket initialized under: ' + UID;
     var alphanumeric = /^[0-9a-zA-Z]+$/;
