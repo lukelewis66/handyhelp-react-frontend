@@ -12,7 +12,7 @@ function BucketInit(UID) {
         UID = UID.toLowerCase();
         let formData = new FormData();
         let server = `${process.env.REACT_APP_SERVER_URL}/bucketinit`;
-        formData.append('Bucket', UID);
+        formData.append('UID', UID);
         formData.append('ACL', 'public-read-write');
         fetch(server, {
             method: "POST",
