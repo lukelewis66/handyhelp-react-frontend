@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import FeedList from "./FeedList";
 import ReviewList from "./ReviewList";
@@ -7,11 +7,26 @@ import ContractorPhoto from "./ContractorPhoto"
 import ContractorInfo from "./ContractorInfo"
 import { ToastProvider } from "react-toast-notifications";
 import { Nav } from "react-bootstrap";
+import { getAllFeedItems } from "../../firebase/Contractor";
 
 //https://react-bootstrap.netlify.app/components/navs/
 
 const ContractorProfile = () => {
     const [active, setActive] = useState("Feed");
+    // const [feedItems, setFeedItems] = useState([]);
+    // const [reviewItems, setReviewItems] = useState([]);
+
+    // useEffect(() => {
+    //     const UID = localStorage.getItem("UID");
+    //     getAllFeedItems(UID).then((feeds) => {
+    //         console.log("feed items retrieved on feedlist: ", feeds);
+    //         setFeedItems(feeds);
+    //     });
+    //     getReviews(UID).then((reviews) => {
+    //         console.log("reviews retrieved on getReviews.js ", reviews);
+    //         setReviewItems(reviews);
+    //     });
+    // }, []);
 
     const showActive = () => {
         switch (active) {

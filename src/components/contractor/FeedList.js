@@ -16,11 +16,9 @@ const FeedList = () => {
     return (
         <div >
             <div className="listingAndFeedTab">
-                <div className="flex-list">
-                    {feedItems.map((item) => (
-                        <FeedItem key={item.id} props={item} />
-                    ))}
-                </div>
+                {feedItems.map((item) => (
+                    <FeedItem key={item.id} props={item} />
+                ))}
             </div>
             <ToastProvider placement='top-center'> <MakeFeedItemModal /> </ToastProvider>
         </div>

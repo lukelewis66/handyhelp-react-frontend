@@ -15,7 +15,6 @@ const ContractorInfo = () => {
 
 	useEffect(() => {
 		getContractor(localStorage.getItem("UID")).then((contractor) => {
-			//getCityName(contractor.location[0], contractor.location[1]).then((city) => setUserCity(city));
 			setContractor(contractor);
 		})
 	}, [])
