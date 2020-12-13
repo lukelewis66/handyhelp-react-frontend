@@ -10,7 +10,7 @@ import { useToasts } from "react-toast-notifications";
 
 //https://codeburst.io/react-image-upload-with-kittens-cc96430eaece
 
-const MakeReviewModal = ({ UID }) => {
+const MakeReviewModal = ({ UID, refreshReviews }) => {
   console.log("Passed UID: " + UID);
   //https://react-bootstrap.github.io/components/modal/
   const [show, setShow] = useState(false);
@@ -107,9 +107,13 @@ const MakeReviewModal = ({ UID }) => {
           // Whoever is uploading should pass their UID and LID (if uploading listing images) or 'ProfilePic' (if uploading profile pictures)
           // upload images and update listing document if user has added photos
 
-          alert("Your review has been added.");
           handleClose();
           clearForm();
+          addToast("Your review has been added", {
+            appearance: "success",
+            autoDismiss: true,
+          });
+          refreshReviews();
         })
       );
     }

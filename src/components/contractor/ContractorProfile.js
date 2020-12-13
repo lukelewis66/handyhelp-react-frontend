@@ -19,11 +19,9 @@ const ContractorProfile = () => {
     useEffect(() => {
         const UID = localStorage.getItem("UID");
         getAllFeedItems(UID).then((feeds) => {
-            console.log("feed items retrieved on contractor profile ", feeds);
             setFeedItems(feeds);
         });
         getReviews(UID).then((reviews) => {
-            console.log("reviews retrieved on contractor profile", reviews);
             setReviewItems(reviews);
         });
     }, []);
