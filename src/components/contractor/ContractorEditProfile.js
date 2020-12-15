@@ -71,7 +71,7 @@ const ContractorEditProfile = () => {
     } else {
       const imgurls = Upload(imageFiles, localStorage.getItem("UID"), "ProfilePic", "placeholder");
       console.log("imgurls: ", imgurls);
-      if(imgurls[0]) {
+      if(imgurls[0] && tags[0]) {
         editContractor(
           name,
           phone,
@@ -81,12 +81,32 @@ const ContractorEditProfile = () => {
           imgurls
         ).then(() => window.location.reload());
       }
-      else {
+      else if(imgurls[0]) {
+        editContractor(
+          name,
+          phone,
+          bio,
+          contractorInfo.skilltags,
+          localStorage.getItem("UID"),
+          imgurls
+        ).then(() => window.location.reload());
+      }
+      else if(tags[0]){
         editContractor(
           name,
           phone,
           bio,
           tags,
+          localStorage.getItem("UID"),
+          contractorInfo.profilepic
+        ).then(() => window.location.reload());
+      }
+      else {
+        editContractor(
+          name,
+          phone,
+          bio,
+          contractorInfo.skilltags,
           localStorage.getItem("UID"),
           contractorInfo.profilepic
         ).then(() => window.location.reload());
