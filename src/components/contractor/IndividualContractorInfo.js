@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { distance } from "../../gmaps/distance"
 import { getContractor } from "../../firebase/Contractor";
-import { getCityName } from "../../gmaps/geocode";
 import { SKILLTAG_PILLS } from "../../constants/skilltags";
 
 
@@ -42,7 +40,7 @@ const IndividualContractorInfo = (c_UID) => {
 	return (
 		<div className="infoPanelIndCon">
 			<h1>{contractor.name}</h1>
-			<h3>Based in {contractor.location_string}</h3>
+			<h3>{contractor.location_string?"Based in ":""}{contractor.location_string}</h3>
 			<h7>{contractor.rating ? showRating() : ""} {showTags()}</h7>
 			<p>{contractor.bio}</p>
 		</div>

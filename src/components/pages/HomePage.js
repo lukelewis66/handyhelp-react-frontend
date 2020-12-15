@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Carousel } from "react-bootstrap";
 import HomeInfo from "../homepage/HomeInfo";
 
@@ -10,42 +10,42 @@ const HomePage = () => {
                     <img
                         className="d-block w-100 justify-content-center"
                         src={require("../../homepage-photos/pic1.jpg")}
-                        alt="Image 1"
+                        alt="HomePage 1"
                     />
                 </Carousel.Item>
                 <Carousel.Item className="homepage-carousel-item">
                     <img
                         className="d-block w-100 justify-content-center"
                         src={require("../../homepage-photos/pic2.jpg")}
-                        alt="Image 2"
+                        alt="HomePage 2"
                     />
                 </Carousel.Item>
                 <Carousel.Item className="homepage-carousel-item">
                     <img
                         className="d-block w-100 justify-content-center homepage-img-transform"
                         src={require("../../homepage-photos/pic3.jpg")}
-                        alt="Image 3"
+                        alt="HomePage 3"
                     />
                 </Carousel.Item>
                 <Carousel.Item className="homepage-carousel-item">
                     <img
                         className="d-block w-100 justify-content-center homepage-img-transform"
                         src={require("../../homepage-photos/pic4.jpg")}
-                        alt="Image 4"
+                        alt="HomePage 4"
                     />
                 </Carousel.Item>
                 <Carousel.Item className="homepage-carousel-item">
                     <img
                         className="d-block w-100 justify-content-center"
                         src={require("../../homepage-photos/pic5.jpg")}
-                        alt="Image 5"
+                        alt="HomePage 5"
                     />
                 </Carousel.Item>
                 <Carousel.Item className="homepage-carousel-item">
                     <img
                         className="d-block w-100 justify-content-center"
                         src={require("../../homepage-photos/pic6.jpg")}
-                        alt="Image 6"
+                        alt="HomePage 6"
                     />
                 </Carousel.Item>
             </Carousel>

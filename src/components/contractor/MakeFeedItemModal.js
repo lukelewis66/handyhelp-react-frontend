@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 
 
 import { Modal, Button, Form } from "react-bootstrap";
@@ -7,7 +7,6 @@ import { SKILLTAGS } from "../../constants/skilltags";
 
 import Upload from "../../Upload";
 import { useToasts } from "react-toast-notifications";
-import { getUserRole } from "../../firebase/accountFunctions";
 
 //https://codeburst.io/react-image-upload-with-kittens-cc96430eaece
 
@@ -21,8 +20,6 @@ const MakeFeedItemModal = () => {
         images: [],
         skilltags: [],
     });
-
-    const [role, setRole] = useState(null);
 
     const [imageFiles, setImageFiles] = useState([])
 

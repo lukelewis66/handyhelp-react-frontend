@@ -12,7 +12,7 @@ const AccountInfo = ({ formData, handleChange, handleAccountTypeSelection, handl
     const contractorRef = useRef();
 
     useEffect(() => {
-        nameRef.current.value = formData.name;
+        nameRef.current.value = (formData.name);
         phoneRef.current.value = formData.phone;
         if (formData.role === "client") {
             clientRef.current.checked = true;

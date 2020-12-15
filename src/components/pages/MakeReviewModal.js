@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import { Modal, Button, Form, useAccordionToggle } from "react-bootstrap";
+import { Modal, Button, Form} from "react-bootstrap";
 
 import { SKILLTAGS } from "../../constants/skilltags";
-
-import Upload from "../../Upload";
 
 import { useToasts } from "react-toast-notifications";
 
@@ -29,16 +27,16 @@ const MakeReviewModal = ({ UID, refreshReviews }) => {
     }));
   }, []);
 
-  const showTags = () => {
-    return SKILLTAGS.map((tag) => (
-      <Form.Check
-        type="checkbox"
-        label={tag.label}
-        value={tag.label}
-        onChange={(e) => handleChange(e, "skilltags")}
-      />
-    ));
-  };
+  // const showTags = () => {
+  //   return SKILLTAGS.map((tag) => (
+  //     <Form.Check
+  //       type="checkbox"
+  //       label={tag.label}
+  //       value={tag.label}
+  //       onChange={(e) => handleChange(e, "skilltags")}
+  //     />
+  //   ));
+  // };
 
   const clearForm = () => {
     console.log("clear form called");

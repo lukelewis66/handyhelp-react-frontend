@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 
 import { SKILLTAGS } from "../../constants/skilltags";
-import Upload from "../../Upload";
 import { useToasts } from "react-toast-notifications";
 import { addListing } from "../../firebase/Client";
 

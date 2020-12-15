@@ -14,12 +14,12 @@ const FeedItem = ({ props }) => {
 
 	getUserRole(localStorage.getItem("UID"))
 		.then((response) => {
-			if (response.role == 'contractor') {
+			if (response.role === 'contractor') {
 				setRole('contractor');
 			}
 		})
 	const showDeleteButton = () => {
-		if (role == 'contractor') {
+		if (role === 'contractor') {
 			return (
 				<div style={{ display: "flex", justifyContent: "flex-end" }}>
 					<div>
@@ -58,36 +58,36 @@ const FeedItem = ({ props }) => {
 			</Card.Body>
 		</Card >
 	)
-	if (role == 'client') {
-		return (
-			<div>
-				<Card className="cardStyle" variant="outlined">
-					<Card.Body>
-						<Card.Img className="itemPhoto" variant="top" src={props.images[0] ? props.images[0] : "/hammer-icon.jpg"} alt="FeedItemImage" />
-						<Card.Title>{props.title}</Card.Title>
-						<Card.Text>
-							{props.description}
-						</Card.Text>
-					</Card.Body>
-				</Card>
-			</div>
-		);
-	} else {
-		return (
-			<div>
-				<Card className="cardStyle" variant="outlined">
-					<Card.Body>
-						<Card.Img className="itemPhoto" variant="top" src={props.images[0] ? props.images[0] : "/hammer-icon.jpg"} alt="FeedItemImage" />
-						<Card.Title>{props.title}</Card.Title>
-						<Card.Text>
-							{props.description}
-						</Card.Text>
-						<ToastProvider placement='top-center'> <DeleteFeedItemModal {...DeleteFeedItemProps} /> </ToastProvider>
-					</Card.Body>
-				</Card>
-			</div>
-		);
-	}
+	// if (role == 'client') {
+	// 	return (
+	// 		<div>
+	// 			<Card className="cardStyle" variant="outlined">
+	// 				<Card.Body>
+	// 					<Card.Img className="itemPhoto" variant="top" src={props.images[0] ? props.images[0] : "/hammer-icon.jpg"} alt="FeedItemImage" />
+	// 					<Card.Title>{props.title}</Card.Title>
+	// 					<Card.Text>
+	// 						{props.description}
+	// 					</Card.Text>
+	// 				</Card.Body>
+	// 			</Card>
+	// 		</div>
+	// 	);
+	// } else {
+	// 	return (
+	// 		<div>
+	// 			<Card className="cardStyle" variant="outlined">
+	// 				<Card.Body>
+	// 					<Card.Img className="itemPhoto" variant="top" src={props.images[0] ? props.images[0] : "/hammer-icon.jpg"} alt="FeedItemImage" />
+	// 					<Card.Title>{props.title}</Card.Title>
+	// 					<Card.Text>
+	// 						{props.description}
+	// 					</Card.Text>
+	// 					<ToastProvider placement='top-center'> <DeleteFeedItemModal {...DeleteFeedItemProps} /> </ToastProvider>
+	// 				</Card.Body>
+	// 			</Card>
+	// 		</div>
+	// 	);
+	// }
 }
 
 export default FeedItem;
