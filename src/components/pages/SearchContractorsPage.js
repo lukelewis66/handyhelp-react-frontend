@@ -8,18 +8,23 @@ import { SKILLTAG_PILLS } from "../../constants/skilltags";
 
 import SearchFilter from "../search/SearchFilter";
 
-const SearchContractorsPage = () => {
-    const [allContractors, setAllContractors] = useState([]);
+const SearchContractorsPage = ({ contractors }) => {
+    const [allContractors, setAllContractors] = useState(null);
     const [filteredContractors, setFilteredContractors] = useState(null);
     const [filterMessage, setFilterMessage] = useState(<span className="filter-message">Showing all relevant contractors</span>);
     const [skillFilterMessage, setSkillFilterMessage] = useState("");
 
+    // useEffect(() => {
+    //     getAllContractors().then((list) => {
+    //         setAllContractors(list);
+    //         setFilteredContractors(list);
+    //     });
+    // }, []);
     useEffect(() => {
-        getAllContractors().then((list) => {
-            setAllContractors(list);
-            setFilteredContractors(list);
-        });
-    }, []);
+        console.log("contractors: ", contractors);
+        setAllContractors(contractors);
+        setFilteredContractors(contractors);
+    }, [contractors]);
 
     function handleFilters(filters) {
         var filtered = allContractors;

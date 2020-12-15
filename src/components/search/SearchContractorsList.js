@@ -6,7 +6,8 @@ import { Spinner } from "react-bootstrap";
 
 const SearchContractorsList = ({ contractors, filterMessage, skillTagFilters }) => {
     const showContractors = () => {
-        if (contractors === null) {
+        console.log("contractors in show contractors: ", contractors);
+        if (contractors === null || contractors === undefined) {
             return <Spinner animation="border" />;
         }
         else if (contractors.length === 0) {
