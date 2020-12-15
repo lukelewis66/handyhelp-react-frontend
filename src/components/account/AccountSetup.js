@@ -58,7 +58,7 @@ const AccountSetup = ({ UID }) => {
   //in case someone tries route /setupaccount even though they already have an account set up.
   //this will redirect them to the home page.
   useEffect(() => {
-    checkUserExists(UID).then((data) => {
+    checkUserExists(UID?UID:"").then((data) => {
       if (data.exists) {
         window.location.assign("/");
       }
@@ -89,6 +89,7 @@ const AccountSetup = ({ UID }) => {
           render: <AccountConfirm formData={form} />,
           prev: true,
         });
+        break;
       default:
         break;
     }

@@ -65,7 +65,7 @@ const ContractorEditProfile = () => {
     var bio = bioRef.current.value;
     var tags = skills;
 
-    if(name === "" || phone === "" || bio === "" || !tags[0]) {
+    if(name == "" || phone == "" || bio == "" || !tags[0]) {
       var content = "All fields must be filled";
       addToast(content, {
         appearance: 'error',

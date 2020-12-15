@@ -14,7 +14,6 @@ const SignUp = () => {
         confirm_password: "",
     })
 
-    const [formMessage, setFormMessage] = useState("");
     const { addToast } = useToasts();
     const [show, setShow] = useState(false);
 
@@ -36,14 +35,12 @@ const SignUp = () => {
             form.password === "" ||
             form.confirm_password === ""
         ) {
-            setFormMessage("All fields must be filled");
             var content = "All fields must be filled";
             addToast(content, {
                 appearance: 'error',
                 autoDismiss: true,
             });
         } else if (form.password !== form.confirm_password) {
-            setFormMessage("Passwords do not match");
             var content = "Passwords do not match";
             addToast(content, {
                 appearance: 'error',
@@ -58,7 +55,6 @@ const SignUp = () => {
                 /// end test
                 //.catch((err) => setFormMessage(err));
                 .catch((err) => {
-                    setFormMessage(err);
                     var content = "Email badly formatted"
                     addToast( content, {
                         appearance: 'error',

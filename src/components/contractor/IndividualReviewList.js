@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Spinner } from "react-bootstrap";
 import { ToastProvider } from "react-toast-notifications";
 import ReviewItem from "./ReviewItem"
