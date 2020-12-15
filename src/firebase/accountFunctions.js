@@ -125,6 +125,7 @@ export function editContractor(name, phone, bio, skilltags, UID, profilepic) {
 }
 
 export function getUserRole(UID) {
+    console.log("getUserRole called");
     return new Promise(function (resolve, reject) {
         const server = process.env.REACT_APP_SERVER_URL;
         var url = new URL(`${server}/getrole`);

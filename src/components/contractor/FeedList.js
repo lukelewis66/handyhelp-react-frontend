@@ -4,7 +4,7 @@ import MakeFeedItemModal from "./MakeFeedItemModal";
 import { ToastProvider } from "react-toast-notifications";
 import { Spinner } from "react-bootstrap";
 
-const FeedList = ({ feedItems }) => {
+const FeedList = ({ feedItems, refreshFeed }) => {
 
     const showFeed = () => {
         if (feedItems === null) {
@@ -16,7 +16,7 @@ const FeedList = ({ feedItems }) => {
             }
             else {
                 return feedItems.map((item) => (
-                    <FeedItem key={item.id} props={item} />
+                    <FeedItem key={item.id} props={item} role={"contractor"} />
                 ));
             }
         }
@@ -26,7 +26,7 @@ const FeedList = ({ feedItems }) => {
             <div className="listingAndFeedTab">
                 {showFeed()}
             </div>
-            <ToastProvider placement='top-center'> <MakeFeedItemModal /> </ToastProvider>
+            <ToastProvider placement='top-center'> <MakeFeedItemModal refreshFeed={refreshFeed} /> </ToastProvider>
         </div>
     );
 }

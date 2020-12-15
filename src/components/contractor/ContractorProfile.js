@@ -26,6 +26,12 @@ const ContractorProfile = () => {
         });
     }, []);
 
+    const refreshFeed = () => {
+        getAllFeedItems(localStorage.getItem("UID")).then((feeds) => {
+            setFeedItems(feeds);
+        })
+    }
+
     const showActive = () => {
         switch (active) {
             case "Reviews":
@@ -33,7 +39,7 @@ const ContractorProfile = () => {
             case "Edit":
                 return <ToastProvider placement='bottom-center'> <ContractorEditProfile /> </ToastProvider>
             default:
-                return <ToastProvider placement='bottom-center'> <FeedList feedItems={feedItems} /></ToastProvider>
+                return <ToastProvider placement='bottom-center'> <FeedList feedItems={feedItems} refreshFeed={refreshFeed} /></ToastProvider>
         }
     }
     return (

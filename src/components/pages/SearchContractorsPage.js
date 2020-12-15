@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import SearchContractorsList from "../search/SearchContractorsList";
-import { getAllContractors } from "../../firebase/Contractor";
 import { getCityName } from "../../gmaps/geocode";
 import { filterByDistance, filterByTags } from "../search/filterFunctions";
 import { SKILLTAG_PILLS } from "../../constants/skilltags";
@@ -14,12 +13,6 @@ const SearchContractorsPage = ({ contractors }) => {
     const [filterMessage, setFilterMessage] = useState(<span className="filter-message">Showing all relevant contractors</span>);
     const [skillFilterMessage, setSkillFilterMessage] = useState("");
 
-    // useEffect(() => {
-    //     getAllContractors().then((list) => {
-    //         setAllContractors(list);
-    //         setFilteredContractors(list);
-    //     });
-    // }, []);
     useEffect(() => {
         console.log("contractors: ", contractors);
         setAllContractors(contractors);
