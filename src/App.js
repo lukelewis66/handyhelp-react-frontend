@@ -75,7 +75,7 @@ function App() {
                 <div className="box-body">
                     <Switch>
                         <Route path="/" exact>
-                            {userExists ? <HomePage /> : <Redirect to="/accountsetup" />}
+                            {(userExists  )? <HomePage /> : <Redirect to="/accountsetup" />}
                         </Route>
                         <Route path="/client" component={(isClient === 1 || isClient === 2) ? ClientPage : (isClient === 3 ? SpinnerPage : ErrorPage)} />
                         <Route path="/contractor" component={(isClient === 0 || isClient === 2) ? ContractorPage : (isClient === 3 ? SpinnerPage : ErrorPage)} />

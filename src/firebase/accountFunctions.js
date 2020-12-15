@@ -105,7 +105,6 @@ export function editInfo(name, phone, UID) {
 }
 
 export function editContractor(name, phone, bio, skilltags, UID, profilepic) {
-    console.log("profilepic: ", profilepic)
     return new Promise(function (resolve, reject) {
         const forms = {
             name: name,
