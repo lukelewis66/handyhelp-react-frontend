@@ -4,20 +4,12 @@ import DeleteFeedItemModal from "./DeleteFeedItemModal";
 import { ToastProvider } from "react-toast-notifications";
 import { getUserRole } from "../../firebase/accountFunctions";
 
-const FeedItem = ({ props }) => {
-	const [role, setRole] = useState('client');
-
+const FeedItem = ({ props, role }) => {
 	let DeleteFeedItemProps = {
 		UID: localStorage.getItem("UID"),
 		FID: props.id
 	}
-
-	getUserRole(localStorage.getItem("UID"))
-		.then((response) => {
-			if (response.role === 'contractor') {
-				setRole('contractor');
-			}
-		})
+	console.log("feeditem role: ", role);
 	const showDeleteButton = () => {
 		if (role === 'contractor') {
 			return (

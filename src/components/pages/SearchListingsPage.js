@@ -7,20 +7,16 @@ import { getCityName } from "../../gmaps/geocode";
 import { filterByDistance, filterByTags } from "../search/filterFunctions";
 import { SKILLTAG_PILLS } from "../../constants/skilltags";
 
-const SearchListingsPage = () => {
-    const [allListings, setAllListings] = useState([]);
+const SearchListingsPage = ({ listings }) => {
+    const [allListings, setAllListings] = useState(null);
     const [filteredListings, setFilteredListings] = useState(null);
     const [filterMessage, setFilterMessage] = useState(<span className="filter-message">Showing all relevant listings</span>);
     const [skillFilterMessage, setSkillFilterMessage] = useState("");
 
     useEffect(() => {
-        const filterUID = false;
-        const active = true;
-        getAllListings(filterUID, active).then((list) => {
-            setAllListings(list);
-            setFilteredListings(list);
-        });
-    }, []);
+        setAllListings(listings);
+        setFilteredListings(listings);
+    }, [listings]);
 
     const handleFilters = (filters) => {
         var filtered = allListings;

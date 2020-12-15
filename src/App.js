@@ -14,6 +14,8 @@ import AccountSetup from './components/account/AccountSetup';
 import "bootstrap/dist/css/bootstrap.min.css";
 import IndividualListing from './components/pages/IndividualListing';
 import IndividualContractor from './components/pages/IndividualContractor.js';
+import { getAllContractors } from "./firebase/Contractor";
+import { getAllListings } from "./firebase/Client";
 
 import { checkUserExists, getUserRole } from "./firebase/accountFunctions";
 
@@ -25,7 +27,9 @@ function App() {
     const UID = localStorage.getItem("UID");
     const [userExists, setUserExists] = useState(true);
     const pageOnLoad = window.location.pathname.toString();
-    console.log("pageOnLoad: ", pageOnLoad);
+
+    const [contractors, setContractors] = useState(null);
+    const [listings, setListings] = useState(null);
 
     useEffect(() => {
         console.log("in use effect with apicalls: ", apiCalls);
@@ -43,13 +47,17 @@ function App() {
                                 setApiCalls(apiCalls + 1);
                                 if (response.role === "client") {
                                     console.log("Logging in as a client");
+                                    loadContractors();
                                     setClient(1);
                                 }
                                 else if (response.role === "contractor") {
                                     console.log("Logging in as a contractor");
+                                    loadListings();
                                     setClient(0);
                                 }
                                 else if (response.role === "Admin") {
+                                    loadContractors();
+                                    loadListings();
                                     setClient(2);
                                 }
                                 else {
@@ -63,7 +71,18 @@ function App() {
         }
     }, []);
 
+    function loadContractors() {
+        getAllContractors().then((contractors) => {
+            console.log("contractors loaded in App.js: ", contractors);
+            setContractors(contractors);
+        })
+    }
 
+    function loadListings() {
+        getAllListings(false, true).then((listings) => {
+            setListings(listings);
+        })
+    }
 
     return (
         <main>
@@ -75,12 +94,12 @@ function App() {
                 <div className="box-body">
                     <Switch>
                         <Route path="/" exact>
-                            {(userExists  )? <HomePage /> : <Redirect to="/accountsetup" />}
+                            {(userExists) ? <HomePage /> : <Redirect to="/accountsetup" />}
                         </Route>
                         <Route path="/client" component={(isClient === 1 || isClient === 2) ? ClientPage : (isClient === 3 ? SpinnerPage : ErrorPage)} />
                         <Route path="/contractor" component={(isClient === 0 || isClient === 2) ? ContractorPage : (isClient === 3 ? SpinnerPage : ErrorPage)} />
-                        <Route path="/searchlistings" component={(isClient === 0 || isClient === 2) ? SearchListingsPage : (isClient === 3 ? SpinnerPage : ErrorPage)} />
-                        <Route path="/searchcontractors" component={(isClient === 1 || isClient === 2) ? SearchContractorsPage : (isClient === 3 ? SpinnerPage : ErrorPage)} />
+                        <Route path="/searchlistings" component={() => (isClient === 0 || isClient === 2) ? <SearchListingsPage listings={listings} /> : (isClient === 3 ? SpinnerPage : ErrorPage)} />
+                        <Route path="/searchcontractors" component={() => (isClient === 1 || isClient === 2) ? <SearchContractorsPage contractors={contractors} /> : (isClient === 3 ? SpinnerPage : ErrorPage)} />
                         <Route path="/about" component={AboutPage} />
                         <Route path="/listing/:LID" children={<IndividualListing />} />
                         <Route path="/contractors/:UID" children={<IndividualContractor />} />

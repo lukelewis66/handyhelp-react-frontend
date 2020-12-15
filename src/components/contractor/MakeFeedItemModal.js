@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 
 
 import { Modal, Button, Form } from "react-bootstrap";
@@ -10,7 +10,7 @@ import { useToasts } from "react-toast-notifications";
 
 //https://codeburst.io/react-image-upload-with-kittens-cc96430eaece
 
-const MakeFeedItemModal = () => {
+const MakeFeedItemModal = ({ refreshFeed }) => {
     //https://react-bootstrap.github.io/components/modal/
     const [show, setShow] = useState(false);
     const [form, setForm] = useState({
@@ -107,7 +107,7 @@ const MakeFeedItemModal = () => {
                                 headers: { "Content-Type": "application/json" },
                                 body: JSON.stringify(updateBody),
                             }
-                            fetch(updateUrl, requestOpts).then((response => response.text().then(message => console.log(message))));
+                            fetch(updateUrl, requestOpts).then(() => refreshFeed());
                         }
                         var content = 'Your post has been added';
                         addToast(content, {
