@@ -14,6 +14,8 @@ import Upload from "../../Upload";
 const ContractorEditProfile = () => {
   const [imageFiles, setImageFiles] = useState([]); 
   const [active, setActive] = useState();
+  const [contractorInfo, setInfo] = useState([]);
+
   useEffect(() => {
     checkUserActive(localStorage.getItem("UID")).then((data) => {
       if (data.active) {
@@ -22,16 +24,11 @@ const ContractorEditProfile = () => {
         setActive(<AccountReactivate />);
       }
     });
-  }, []);
-
-  const [contractorInfo, setInfo] = useState([]);
-  useEffect(() => {
     getContractor(localStorage.getItem("UID")).then((data) => {
       setInfo(data);
     });
   }, []);
 
-  const [formMessage, setFormMessage] = useState("");
   const { addToast } = useToasts();
 
   const showTags = () => {
@@ -65,13 +62,12 @@ const ContractorEditProfile = () => {
     var bio = bioRef.current.value;
     var tags = skills;
 
-    if(name == "" || phone == "" || bio == "" || !tags[0]) {
+    if(name == "" || phone == "" || bio == "") {
       var content = "All fields must be filled";
       addToast(content, {
         appearance: 'error',
         autoDismiss: true,
       });
-      setFormMessage("All fields must be filled");
     } else {
       const imgurls = Upload(imageFiles, localStorage.getItem("UID"), "ProfilePic", "placeholder");
       console.log("imgurls: ", imgurls);
@@ -135,29 +131,6 @@ const ContractorEditProfile = () => {
     console.log('correctFiles: ', correctFiles);
   }
 
-  // const handleSubmit = () => {
-  //   if (imageFiles.length > 0) {
-  //     const imgurls = Upload(imageFiles, localStorage.getItem("UID"), "ProfilePic", "");
-  //     const server = process.env.REACT_APP_SERVER_URL;
-  //     const updateBody = { imageUrls: imgurls }
-  //     const updateUrl = `${server}/updateprofilepicture`;
-  //     const requestOpts = {
-  //         method: "POST",
-  //         headers: { "Content-Type": "application/json" },
-  //         body: JSON.stringify(updateBody),
-  //     }
-  //     fetch(updateUrl, requestOpts).then((response => response.text().then(message => console.log(message))));
-  //   }
-  //   var content = 'Your profile picture has been added';
-  //   addToast( content, {
-  //     appearance: 'success',
-  //     autoDismiss: true,
-  //   });
-  // }
-  //This was at the botton of the return statement.
-  /*
-    
-  */
   return (
     <div>
       <div className="tabStyleEdit">
@@ -221,37 +194,6 @@ const ContractorEditProfile = () => {
           </Button>
           {active}
         </Form>
-        {/* <button
-          otrype="button"
-          class="btn btn-info btn-lg"
-          data-toggle="modal"
-          data-target="#myModal"
-        >
-          Deactivate Account
-        </button> */}
-        {/* <div class="modal fade" id="myModal" role="dialog"></div>
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">
-                &times;
-              </button>
-              <h4 class="modal-title">Modal Header</h4>
-            </div>
-            <div class="modal-body">
-              <p>Some text in the modal.</p>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-default"
-                data-dismiss="modal"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );
