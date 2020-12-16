@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Modal, Form } from "react-bootstrap";
+import { Button, Modal, Form, Spinner } from "react-bootstrap";
 import { useToasts } from "react-toast-notifications";
 /// for BucketInit(UID) function
 import BucketInit from '../BucketInit';
@@ -7,6 +7,7 @@ import BucketInit from '../BucketInit';
 import { signUp } from "../firebase/authFunctions";
 
 const SignUp = () => {
+    const [spinnerActive, setSpinnerActive] = useState(false);
     //https://react-bootstrap.github.io/components/modal/
     const [form, setForm] = useState({
         email: "",
@@ -47,16 +48,19 @@ const SignUp = () => {
                 autoDismiss: true,
             });
         } else {
+            setSpinnerActive(true);
             console.log("calling signup....");
             signUp(form.email, form.password)
-                .then(() => BucketInit(localStorage.getItem("UID")))
-                .then(() => window.location.assign("/"))
+                .then(() => BucketInit(localStorage.getItem("UID")).then(() => {
+                    setSpinnerActive(false);
+                    window.location.assign("/")
+                }))
                 /// calling test version of bucket initialization here
                 /// end test
                 //.catch((err) => setFormMessage(err));
                 .catch((err) => {
                     var content = "Email badly formatted"
-                    addToast( content, {
+                    addToast(content, {
                         appearance: 'error',
                         autoDismiss: true,
                     });
@@ -99,6 +103,7 @@ const SignUp = () => {
 
                         Sign Up
               </Button>
+                    {spinnerActive ? <Spinner animation="border" /> : null}
                 </Modal.Footer>
             </Modal>
         </div>
