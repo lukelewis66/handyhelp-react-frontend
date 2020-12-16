@@ -84,6 +84,34 @@ export function getUserInfo(UID) {
     })
 }
 
+export function deactivateListing(LID) {
+    return new Promise(function (resolve, reject) {
+        const formData = new FormData();
+        formData.append("LID", LID);
+        const server = process.env.REACT_APP_SERVER_URL;
+        fetch(`${server}/deactivatelisting`, {
+            method: 'POST',
+            body: formData,
+        })
+            .then((response) => resolve(response.text()))
+            .catch((err) => reject(err));
+    });
+}
+
+export function reactivateListing(LID) {
+    return new Promise(function (resolve, reject) {
+        const formData = new FormData();
+        formData.append("LID", LID);
+        const server = process.env.REACT_APP_SERVER_URL;
+        fetch(`${server}/reactivatelisting`, {
+            method: 'POST',
+            body: formData,
+        })
+            .then((response) => resolve(response.text()))
+            .catch((err) => reject(err));
+    });
+}
+
 export function addListing(UID, listingForm, imageFiles) {
     console.log("Form: ", listingForm);
     const server = process.env.REACT_APP_SERVER_URL;
