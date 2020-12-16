@@ -29,6 +29,7 @@ const DeleteFeedItemModal = (props) => {
                 autoDismiss: true,
             });
             handleClose();
+            window.location.assign("/contractor");
         });
     }
 

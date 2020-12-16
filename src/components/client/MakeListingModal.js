@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button, Form, Spinner } from "react-bootstrap";
 
 import { SKILLTAGS } from "../../constants/skilltags";
 import { useToasts } from "react-toast-notifications";
@@ -12,6 +12,7 @@ import { addListing } from "../../firebase/Client";
 
 const MakeListingModal = ({ refreshListings }) => {
     //https://react-bootstrap.github.io/components/modal/
+    const [spinnerActive, setSpinnerActive] = useState(false);
     const [show, setShow] = useState(false);
     const [form, setForm] = useState({
         active: true,
@@ -107,6 +108,7 @@ const MakeListingModal = ({ refreshListings }) => {
     }
 
     const handleSubmit = () => {
+        setSpinnerActive(true);
         addListing(localStorage.getItem("UID"), form, imageFiles)
             .then(content => {
                 addToast(content, {
@@ -117,12 +119,14 @@ const MakeListingModal = ({ refreshListings }) => {
                 refreshListings();
                 handleClose();
                 clearForm();
+                setSpinnerActive(false);
             })
             .catch(content => {
                 addToast(content, {
                     appearance: 'error',
                     autoDismiss: true,
                 });
+                setSpinnerActive(false);
             });
 
     }
@@ -177,6 +181,8 @@ const MakeListingModal = ({ refreshListings }) => {
                     <Button variant="primary" onClick={handleSubmit}>
                         Publish Listing
               </Button>
+                    {spinnerActive ? <Spinner animation="border" /> : null}
+
                 </Modal.Footer>
             </Modal>
         </div >

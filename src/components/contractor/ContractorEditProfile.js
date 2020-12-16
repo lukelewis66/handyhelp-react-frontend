@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Modal, Form, Button } from "react-bootstrap";
+import { Modal, Form, Button, Spinner } from "react-bootstrap";
 import { getContractor } from "../../firebase/Contractor";
 import { SKILLTAGS } from "../../constants/skilltags";
 import {
@@ -12,9 +12,10 @@ import { useToasts } from "react-toast-notifications";
 import Upload from "../../Upload";
 
 const ContractorEditProfile = () => {
-  const [imageFiles, setImageFiles] = useState([]); 
+  const [imageFiles, setImageFiles] = useState([]);
   const [active, setActive] = useState();
   const [contractorInfo, setInfo] = useState([]);
+  const [spinnerActive, setSpinnerActive] = useState(false);
 
   useEffect(() => {
     checkUserActive(localStorage.getItem("UID")).then((data) => {
@@ -57,69 +58,57 @@ const ContractorEditProfile = () => {
   const bioRef = useRef();
 
   const handleClick = (e) => {
+    setSpinnerActive(true);
     var name = nameRef.current.value;
     var phone = phoneRef.current.value;
     var bio = bioRef.current.value;
     var tags = skills;
 
-    if(name == "" || phone == "" || bio == "") {
+    if (name == "" || phone == "" || bio == "") {
       var content = "All fields must be filled";
       addToast(content, {
         appearance: 'error',
         autoDismiss: true,
       });
     } else {
-      const imgurls = Upload(imageFiles, localStorage.getItem("UID"), "ProfilePic", "placeholder");
-      console.log("imgurls: ", imgurls);
-      if(imgurls[0] && tags[0]) {
-        editContractor(
-          name,
-          phone,
-          bio,
-          tags,
-          localStorage.getItem("UID"),
-          imgurls
-        ).then(() => window.location.reload());
-      }
-      else if(imgurls[0]) {
-        editContractor(
-          name,
-          phone,
-          bio,
-          contractorInfo.skilltags,
-          localStorage.getItem("UID"),
-          imgurls
-        ).then(() => window.location.reload());
-      }
-      else if(tags[0]){
-        editContractor(
-          name,
-          phone,
-          bio,
-          tags,
-          localStorage.getItem("UID"),
-          contractorInfo.profilepic
-        ).then(() => window.location.reload());
-      }
-      else {
-        editContractor(
-          name,
-          phone,
-          bio,
-          contractorInfo.skilltags,
-          localStorage.getItem("UID"),
-          contractorInfo.profilepic
-        ).then(() => window.location.reload());
-      }
+      Upload(imageFiles, localStorage.getItem("UID"), "ProfilePic", "placeholder").then(imgurls => {
+        console.log("imgurls: ", imgurls);
+        if (imgurls[0]) {
+          editContractor(
+            name,
+            phone,
+            bio,
+            tags,
+            localStorage.getItem("UID"),
+            imgurls
+          ).then(() => {
+            setSpinnerActive(false);
+            window.location.reload()
+          });
+        }
+        else {
+          editContractor(
+            name,
+            phone,
+            bio,
+            tags,
+            localStorage.getItem("UID"),
+            contractorInfo.profilepic
+          ).then(() => {
+            setSpinnerActive(false);
+            window.location.reload();
+          });
+        }
+      })
     }
     e.preventDefault();
   };
 
   const isImage = (file) => {
-    var ext = getExtension(file);
+    var ext = getExtension(file).toLowerCase();
     console.log(ext);
-    if(ext === "jpg" || ext === "jpeg" || ext === "png") {
-        return true;
+    if (ext === "jpg" || ext === "jpeg" || ext === "png") {
+      return true;
     }
     return false;
   }
@@ -133,17 +122,17 @@ const ContractorEditProfile = () => {
     const files = Array.from(e.target.files);
     var i;
     var correctFiles = true;
-    for(i = 0; i < files.length; i++) {
-      if(!(isImage(files[i].name))) {
+    for (i = 0; i < files.length; i++) {
+      if (!(isImage(files[i].name))) {
         correctFiles = false;
       }
     }
-    if(correctFiles) {
+    if (correctFiles) {
       setImageFiles(files);
     } else {
       setImageFiles([]);
       var content = "Incorrect file type(s)! Please reselect your images"
-      addToast( content, {
+      addToast(content, {
         appearance: 'error',
         autoDismiss: true,
       });
@@ -156,7 +145,7 @@ const ContractorEditProfile = () => {
       <div className="tabStyleEdit">
         <Form className="formStyle">
           <Form.Group>
-          <Form.Label>Upload a profile picture</Form.Label>
+            <Form.Label>Upload a profile picture</Form.Label>
             <br />
             <input type="file" accept="image/*" onChange={(e) => handleImageChange(e)} />
           </Form.Group>
@@ -212,6 +201,7 @@ const ContractorEditProfile = () => {
           >
             Submit
           </Button>
+          {spinnerActive ? <Spinner animation="border" /> : null}
           {active}
         </Form>
       </div>

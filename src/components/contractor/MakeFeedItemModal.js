@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button, Form, Spinner } from "react-bootstrap";
 
 import { SKILLTAGS } from "../../constants/skilltags";
 
@@ -12,6 +12,7 @@ import { useToasts } from "react-toast-notifications";
 
 const MakeFeedItemModal = ({ refreshFeed }) => {
     //https://react-bootstrap.github.io/components/modal/
+    const [spinnerActive, setSpinnerActive] = useState(false);
     const [show, setShow] = useState(false);
     const [form, setForm] = useState({
         contractor: localStorage.getItem("UID"),
@@ -81,6 +82,7 @@ const MakeFeedItemModal = ({ refreshFeed }) => {
             });
         }
         else {
+            setSpinnerActive(true);
             const server = process.env.REACT_APP_SERVER_URL;
             const url = `${server}/addfeeditem/`;
             const requestOptions = {
@@ -96,27 +98,30 @@ const MakeFeedItemModal = ({ refreshFeed }) => {
                         // Whoever is uploading should pass their UID and LID (if uploading listing images) or 'ProfilePic' (if uploading profile pictures)
                         // upload images and update listing document if user has added photos
                         if (imageFiles.length > 0) {
-                            const imgurls = Upload(imageFiles, localStorage.getItem("UID"), "Feed", id);
-                            const updateBody = {
-                                feedID: id,
-                                imageUrls: imgurls,
-                            }
-                            const updateUrl = `${server}/updatefeeditemimages`;
-                            const requestOpts = {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify(updateBody),
-                            }
-                            fetch(updateUrl, requestOpts).then(() => refreshFeed());
+                            Upload(imageFiles, localStorage.getItem("UID"), "Feed", id).then(imgurls => {
+                                const updateBody = {
+                                    feedID: id,
+                                    imageUrls: imgurls,
+                                }
+                                const updateUrl = `${server}/updatefeeditemimages`;
+                                const requestOpts = {
+                                    method: "POST",
+                                    headers: { "Content-Type": "application/json" },
+                                    body: JSON.stringify(updateBody),
+                                }
+                                fetch(updateUrl, requestOpts).then(() => {
+                                    refreshFeed();
+                                    handleClose();
+                                    clearForm();
+                                    setSpinnerActive(false);
+                                    var content = 'Your post has been added';
+                                    addToast(content, {
+                                        appearance: 'success',
+                                        autoDismiss: true,
+                                    });
+                                })
+                            })
                         }
-                        var content = 'Your post has been added';
-                        addToast(content, {
-                            appearance: 'success',
-                            autoDismiss: true,
-                        });
-                        //alert("Your post has been added.");
-                        handleClose();
-                        clearForm();
                     })));
         }
     }
@@ -170,6 +175,7 @@ const MakeFeedItemModal = ({ refreshFeed }) => {
                     <Button variant="primary" onClick={handleSubmit}>
                         Publish Post
                 </Button>
+                    {spinnerActive ? <Spinner animation="border" /> : null}
                 </Modal.Footer>
             </Modal>
         </div >
