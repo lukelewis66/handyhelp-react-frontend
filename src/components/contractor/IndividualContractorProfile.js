@@ -5,10 +5,7 @@ import IndividualContractorPhoto from "./IndividualContractorPhoto";
 import IndividualContractorInfo from "./IndividualContractorInfo";
 import { getReviews, getAllFeedItems } from "../../firebase/Contractor";
 
-
 import Message from "../Message";
-
-
 
 import { Nav } from "react-bootstrap";
 //https://react-bootstrap.netlify.app/components/navs/
@@ -38,24 +35,33 @@ const IndividualContractorProfile = ({ contractor }) => {
     getReviews(c_UID).then((list) => {
       console.log("reviews refreshed");
       setReviewItems(list);
-    })
-  }
+    });
+  };
 
   const showActive = () => {
     switch (active) {
       case "Reviews":
-        return <IndividualReviewList c_UID={c_UID} reviewItems={reviewItems} refreshReviews={refreshReviews} />;
+        return (
+          <IndividualReviewList
+            c_UID={c_UID}
+            reviewItems={reviewItems}
+            refreshReviews={refreshReviews}
+          />
+        );
       default:
         return <IndividualFeedList feedItems={feedItems} />;
     }
   };
-  
+
   function showRating() {
     if (contractor.ratingCount !== 0) {
-      return <span className="rating-display">&#9734;{contractor.rating ? contractor.rating.toFixed(2) : "0"}</span>
-    }
-    else {
-      return <span className="rating-display">No Ratings</span>
+      return (
+        <span className="rating-display">
+          &#9734;{contractor.rating ? contractor.rating.toFixed(2) : "0"}
+        </span>
+      );
+    } else {
+      return <span className="rating-display">No Ratings</span>;
     }
   }
 
@@ -81,23 +87,28 @@ const IndividualContractorProfile = ({ contractor }) => {
         </div>
       </div>
       */}
-      <div className = "profileHeader">
-        <div className = "profilePhoto">
+      <div className="profileHeader">
+        <div className="profilePhoto">
           <IndividualContractorPhoto photoURL={contractor.profilepic} />
         </div>
-        <div>
-          <IndividualContractorInfo c_UID = {c_UID} />
-          <div className = "messageButton">
+        <div style={{width: "63.4%"}} >
+          <IndividualContractorInfo c_UID={c_UID} />
+          <div className="messageButton">
             <Message UID={c_UID} />
           </div>
-
         </div>
       </div>
-      <Nav fill variant="tabs" className="tabsStyle" activeKey={active} onSelect={(activeKey) => setActive(activeKey)}>
-        <Nav.Item >
+      <Nav
+        fill
+        variant="tabs"
+        className="tabsStyle"
+        activeKey={active}
+        onSelect={(activeKey) => setActive(activeKey)}
+      >
+        <Nav.Item>
           <Nav.Link eventKey="Feed">Feed</Nav.Link>
         </Nav.Item>
-        <Nav.Item >
+        <Nav.Item>
           <Nav.Link eventKey="Reviews">Reviews</Nav.Link>
         </Nav.Item>
       </Nav>
