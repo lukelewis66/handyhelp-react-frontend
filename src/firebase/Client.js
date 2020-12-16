@@ -135,20 +135,21 @@ export function addListing(UID, listingForm, imageFiles) {
                         // Whoever is uploading should pass their UID and LID (if uploading listing images) or 'ProfilePic' (if uploading profile pictures)
                         // upload images and update listing document if user has added photos
                         if (imageFiles.length > 0) {
-                            const imgurls = Upload(imageFiles, UID, "Listing", id);
-                            const updateBody = {
-                                listingID: id,
-                                imageUrls: imgurls,
-                            }
-                            const updateUrl = `${server}/updatelistingimages`;
-                            const requestOpts = {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify(updateBody),
-                            }
-                            fetch(updateUrl, requestOpts)
-                                .then(() => resolve('Your listing has been added'))
-                                .catch(() => reject('There was an error in uploading your listing images. Please try again.'));
+                            Upload(imageFiles, UID, "Listing", id).then(imgurls => {
+                                const updateBody = {
+                                    listingID: id,
+                                    imageUrls: imgurls,
+                                }
+                                const updateUrl = `${server}/updatelistingimages`;
+                                const requestOpts = {
+                                    method: "POST",
+                                    headers: { "Content-Type": "application/json" },
+                                    body: JSON.stringify(updateBody),
+                                }
+                                fetch(updateUrl, requestOpts)
+                                    .then(() => resolve('Your listing has been added'))
+                                    .catch(() => reject('There was an error in uploading your listing images. Please try again.'));
+                            })
                         }
                         else {
                             resolve('Your listing has been added')
