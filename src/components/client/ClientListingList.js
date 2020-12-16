@@ -23,7 +23,7 @@ const ClientListingList = ({ active, listings, refreshListings }) => {
         else {
             return (
                 listings.map((item) => (
-                    <ClientListingItem key={item.id} props={item} />
+                    <ClientListingItem key={item.id} props={item} refreshListings={refreshListings} />
                 ))
             )
         }

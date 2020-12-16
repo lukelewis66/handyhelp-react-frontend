@@ -1,14 +1,38 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { SKILLTAG_PILLS } from "../../constants/skilltags";
+import { deactivateListing, reactivateListing } from "../../firebase/Client";
 
-
-const ClientListingItem = ({ props }) => {
-
+const ClientListingItem = ({ props, refreshListings }) => {
+	console.log("listing item props: ", props);
 	const showTags = () => {
 		return props.skilltags.map(tag => (
 			SKILLTAG_PILLS[tag]
 		));
+	}
+
+	function doSomething() {
+		console.log("listing id: ", props.id);
+	}
+
+	function deactivate() {
+		console.log("deactivating listing with id: ", props.id);
+		deactivateListing(props.id).then(() => refreshListings());
+	}
+
+	function reactivate() {
+		console.log("reactivating listing with id: ", props.id);
+		reactivateListing(props.id).then(() => refreshListings());
+	}
+
+	const showDeactivateButton = () => {
+		return (
+			<div style={{ display: "flex", justifyContent: "flex-end" }}>
+				<div>
+					{props.active ? <Button variant="secondary" onClick={() => deactivate()}>Deactivate Listing</Button> : <Button variant="secondary" onClick={() => reactivate()}>Reactivate Listing</Button>}
+				</div>
+			</div>
+		)
 	}
 
 	return (
@@ -33,6 +57,7 @@ const ClientListingItem = ({ props }) => {
 									{props.description}
 								</Card.Text>
 							</div>
+							{showDeactivateButton()}
 						</div>
 					</div>
 				</div>
