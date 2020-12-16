@@ -31,12 +31,17 @@ const ClientProfile = () => {
             console.log("active listings retrieved: ", actives);
             setActiveListings(actives);
         });
+
+        getAllListings(localStorage.getItem("UID"), false).then((inactives) => {
+            console.log("inactive listings retreived: ", inactives);
+            setInactiveListings(inactives);
+        })
     }
 
     const showActive = () => {
         switch (active) {
             case "PastListings":
-                return <ClientListingList active={false} listings={inactiveListings} />;
+                return <ClientListingList active={false} listings={inactiveListings} refreshListings={refreshListings} />;
             case "Edit":
                 return <ToastProvider placement='bottom-center'> <ClientEditProfile /> </ToastProvider>
             default:
