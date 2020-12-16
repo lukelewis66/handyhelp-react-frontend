@@ -138,7 +138,7 @@ html {
   margin: 0% 13% 0 13%;
   padding: 25px 25px;
   height: 600px;
-  overflow: scroll;
+  overflow-y: scroll;
   margin-bottom: 1rem;
 }
 
